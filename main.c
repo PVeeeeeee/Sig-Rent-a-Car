@@ -17,6 +17,7 @@ void menu_principal(void);
 void menu_sobre(void);
 void menu_desenvolvedores(void);
 void menu_pessoas(void);
+void menu_veiculos(void);
 
 // FUNÇÃO MAIN
 int main(void) {
@@ -24,6 +25,7 @@ int main(void) {
     menu_principal();
     menu_sobre();
     menu_pessoas();
+    menu_veiculos();
     return 0;
 }
 
@@ -99,6 +101,28 @@ void menu_pessoas(void) {
     printf("|                 1 - Cadastrar Pessoa                   |\n");
     printf("|                 2 - Checar Pessoa                      |\n");
     printf("|                 3 - Relatório                          |\n");
+    printf("|                 0 - Menu Principal                     |\n");
+    printf("|                                                        |\n");
+    printf("----------------------------------------------------------\n");
+    printf("\n");
+    printf("-> Escolha sua opção: \n");
+}
+
+// MENU VEÍCULOS
+void menu_veiculos(void) {
+    printf("_____------------------------------------------------_____\n");
+    printf("|   |              == SIG-Rent-a-Car ==              |   |\n");
+    printf("|   |         Sistema de Locação de Veículos         |   |\n");
+    printf("----------------------------------------------------------\n");
+    printf("|   |                  VEÍCULOS                      |   |\n");
+    printf("----------------------------------------------------------\n");
+    printf("|                                                        |\n");
+    printf("|                 1 - Cadastrar Veículo                  |\n");
+    printf("|                 2 - Checar Veículo                     |\n");
+    printf("|                 3 - Relatório                          |\n");
+    printf("|                 4 - Cadastrar Marca                    |\n");
+    printf("|                 5 - Cadastrar Tipo                     |\n");
+    printf("|                 6 - Cadastrar Combustível              |\n");
     printf("|                 0 - Menu Principal                     |\n");
     printf("|                                                        |\n");
     printf("----------------------------------------------------------\n");
