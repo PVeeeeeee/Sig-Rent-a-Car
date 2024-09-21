@@ -18,6 +18,7 @@ void menu_sobre(void);
 void menu_desenvolvedores(void);
 void menu_pessoas(void);
 void menu_veiculos(void);
+void menu_locacoes(void);
 
 // FUNÇÃO MAIN
 int main(void) {
@@ -26,6 +27,7 @@ int main(void) {
     menu_sobre();
     menu_pessoas();
     menu_veiculos();
+    menu_locacoes();
     return 0;
 }
 
@@ -124,6 +126,25 @@ void menu_veiculos(void) {
     printf("|                 5 - Cadastrar Tipo                     |\n");
     printf("|                 6 - Cadastrar Combustível              |\n");
     printf("|                 0 - Menu Principal                     |\n");
+    printf("|                                                        |\n");
+    printf("----------------------------------------------------------\n");
+    printf("\n");
+    printf("-> Escolha sua opção: \n");
+}
+
+// MENU LOCAÇÕES
+void menu_locacoes(void) {
+    printf("_____------------------------------------------------_____\n");
+    printf("|   |              == SIG-Rent-a-Car ==              |   |\n");
+    printf("|   |         Sistema de Locação de Veículos         |   |\n");
+    printf("----------------------------------------------------------\n");
+    printf("|   |                  LOCAÇÕES                      |   |\n");
+    printf("----------------------------------------------------------\n");
+    printf("|                                                        |\n");
+    printf("|                1 - Cadastrar Locação                   |\n");
+    printf("|                2 - Checar Locação                      |\n");
+    printf("|                3 - Relatório                           |\n");
+    printf("|                0 - Menu Principal                      |\n");
     printf("|                                                        |\n");
     printf("----------------------------------------------------------\n");
     printf("\n");
