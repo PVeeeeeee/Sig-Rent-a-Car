@@ -15,6 +15,7 @@
 // FUNÇÕES
 void menu_principal(void);
 void menu_sobre(void);
+void menu_desenvolvedores(void);
 
 // FUNÇÃO MAIN
 int main(void) {
@@ -56,6 +57,25 @@ void menu_sobre(void) {
     printf("|    um Sistema para gestão de Locação de Veículos, utilizando   |\n");
     printf("|    o conhecimento adquirido durante o todo o 2° semestre do    |\n");
     printf("|          curso, como forma de avaliação. \u00A9 2024           |\n");
+    printf("|                                                                |\n");
+    printf("------------------------------------------------------------------\n");
+}
+
+// MENU DESENVOLVEDORES
+void menu_desenvolvedores(void) {
+    printf("_____--------------------------------------------------------_____\n");
+    printf("|   |                  == SIG-Rent-a-Car ==                  |   |\n");
+    printf("|   |             Sistema de Locação de Veículos             |   |\n");
+    printf("------------------------------------------------------------------\n");
+    printf("|   |                     DESENVOLVEDORES                        |   |\n");
+    printf("------------------------------------------------------------------\n");
+    printf("|                                                                |\n");
+    printf("|                          Developed by:                         |\n");
+    printf("|           Pedro Vitor (https://github.com/PVeeeeeee) and       |\n");
+    printf("|              Elder Bruno (https://github.com/veraxqy           |\n");
+    printf("|                                                                |\n");
+    printf("|                       Universidade Federal do                  |\n");
+    printf("|               Rio Grande do Norte (UFRN) \u00A9 2024           |\n");
     printf("|                                                                |\n");
     printf("------------------------------------------------------------------\n");
 }
