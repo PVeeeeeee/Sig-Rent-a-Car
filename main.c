@@ -16,12 +16,15 @@
 void menu_principal(void);
 void menu_sobre(void);
 void menu_desenvolvedores(void);
+void menu_pessoas(void);
 
 // FUNÇÃO MAIN
 int main(void) {
     //SetConsoleOutputCP(CP_UTF8);
     menu_principal();
     menu_sobre();
+    menu_pessoas();
+    return 0;
 }
 
 // FUNÇÕES
@@ -31,7 +34,9 @@ void menu_principal(void) {
     printf("_____------------------------------------------------_____\n");
     printf("|   |              == SIG-Rent-a-Car ==              |   |\n");
     printf("|   |         Sistema de Locação de Veículos         |   |\n");
-    printf("---------------------------------------------------------\n");
+    printf("----------------------------------------------------------\n");
+    printf("|   |                    OPÇÕES                      |   |\n");
+    printf("----------------------------------------------------------\n");
     printf("|                                                        |\n");
     printf("|                    1 - Pessoas                         |\n");
     printf("|                    2 - Veículos                        |\n");
@@ -69,7 +74,7 @@ void menu_desenvolvedores(void) {
     printf("|   |                  == SIG-Rent-a-Car ==                  |   |\n");
     printf("|   |             Sistema de Locação de Veículos             |   |\n");
     printf("------------------------------------------------------------------\n");
-    printf("|   |                     DESENVOLVEDORES                        |   |\n");
+    printf("|   |                     DESENVOLVEDORES                    |   |\n");
     printf("------------------------------------------------------------------\n");
     printf("|                                                                |\n");
     printf("|                          Developed by:                         |\n");
@@ -80,4 +85,23 @@ void menu_desenvolvedores(void) {
     printf("|               Rio Grande do Norte (UFRN) \u00A9 2024           |\n");
     printf("|                                                                |\n");
     printf("------------------------------------------------------------------\n");
+}
+
+// MENU PESSOAS
+void menu_pessoas(void) {
+    printf("_____------------------------------------------------_____\n");
+    printf("|   |              == SIG-Rent-a-Car ==              |   |\n");
+    printf("|   |         Sistema de Locação de Veículos         |   |\n");
+    printf("----------------------------------------------------------\n");
+    printf("|   |                   PESSOAS                      |   |\n");
+    printf("----------------------------------------------------------\n");
+    printf("|                                                        |\n");
+    printf("|                 1 - Cadastrar Pessoa                   |\n");
+    printf("|                 2 - Checar Pessoa                      |\n");
+    printf("|                 3 - Relatório                          |\n");
+    printf("|                 0 - Menu Principal                     |\n");
+    printf("|                                                        |\n");
+    printf("----------------------------------------------------------\n");
+    printf("\n");
+    printf("-> Escolha sua opção: \n");
 }
