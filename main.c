@@ -12,7 +12,7 @@
 //#include <windows.h>
 
 
-// FUNÇÕES
+// ATIVANDO FUNÇÕES
 void menu_principal(void);
 void menu_sobre(void);
 void menu_desenvolvedores(void);
@@ -23,6 +23,8 @@ int main(void) {
     menu_principal();
     menu_sobre();
 }
+
+// FUNÇÕES
 
 // MENU_PRINCIPAL
 void menu_principal(void) {
