@@ -15,7 +15,6 @@
 // ATIVANDO FUNÇÕES
 void menu_principal(void);
 void menu_sobre(void);
-void menu_desenvolvedores(void);
 void menu_pessoas(void);
 void menu_veiculos(void);
 void menu_locacoes(void);
@@ -69,16 +68,6 @@ void menu_sobre(void) {
     printf("|    o conhecimento adquirido durante o todo o 2° semestre do    |\n");
     printf("|          curso, como forma de avaliação. \u00A9 2024           |\n");
     printf("|                                                                |\n");
-    printf("------------------------------------------------------------------\n");
-}
-
-// MENU DESENVOLVEDORES
-void menu_desenvolvedores(void) {
-    printf("_____--------------------------------------------------------_____\n");
-    printf("|   |                  == SIG-Rent-a-Car ==                  |   |\n");
-    printf("|   |             Sistema de Locação de Veículos             |   |\n");
-    printf("------------------------------------------------------------------\n");
-    printf("|   |                     DESENVOLVEDORES                    |   |\n");
     printf("------------------------------------------------------------------\n");
     printf("|                                                                |\n");
     printf("|                          Developed by:                         |\n");
