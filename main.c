@@ -9,27 +9,30 @@
 
 // BIBLIOTECAS
 #include <stdio.h>
+#include <windows.h>
+
 
 // FUNÇÕES
 void menu_principal(void);
 
 // FUNÇÃO MAIN
 int main(void) {
+    SetConsoleOutputCP(CP_UTF8);
     menu_principal();
 }
 
 // MENU_PRINCIPAL
 void menu_principal(void) {
-    printf("_____--------------------------------------------------------_____");
-    printf("|   |                  == SIG-Rent-a-Car ==                  |   |");
-    printf("|   |             Sistema de Locação de Veículos             |   |");
-    printf("------------------------------------------------------------------");
-    printf("|                       1 - Módulo Pessoas                       |");
-    printf("|                       2 - Módulo Veículos                      |");
-    printf("|                       3 - Módulo Serviços                      |");
-    printf("|                       3 - Módulo Sobre                         |");
-    printf("|                       0 - Sair                                 |");
-    printf("------------------------------------------------------------------");
-    printf(" ");
-    printf("-> Escolha sua opção: ");
+    printf("_____--------------------------------------------------------_____\n");
+    printf("|   |                  == SIG-Rent-a-Car ==                  |   |\n");
+    printf("|   |             Sistema de Locação de Veículos             |   |\n");
+    printf("------------------------------------------------------------------\n");
+    printf("|                 1 - Pessoas                                    |\n");
+    printf("|                 2 - Veículos                                   |\n");
+    printf("|                 3 - Serviços                                   |\n");
+    printf("|                 4 - Sobre                                      |\n");
+    printf("|                 0 - Sair                                       |\n");
+    printf("------------------------------------------------------------------\n");
+    printf("\n");
+    printf("-> Escolha sua opção: \n");
 }
