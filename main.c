@@ -9,6 +9,7 @@
 
 // BIBLIOTECAS
 #include <stdio.h>
+#include <stdlib.h>
 //#include <windows.h>
 
 
@@ -34,6 +35,7 @@ int main(void) {
 
 // MENU_PRINCIPAL
 void menu_principal(void) {
+    system("clear||cls");
     printf("_____------------------------------------------------_____\n");
     printf("|   |              == SIG-Rent-a-Car ==              |   |\n");
     printf("|   |         Sistema de Locação de Veículos         |   |\n");
@@ -54,6 +56,7 @@ void menu_principal(void) {
 
 // MENU_SOBRE
 void menu_sobre(void) {
+    system("clear||cls");
     printf("_____--------------------------------------------------------_____\n");
     printf("|   |                  == SIG-Rent-a-Car ==                  |   |\n");
     printf("|   |             Sistema de Locação de Veículos             |   |\n");
@@ -82,6 +85,7 @@ void menu_sobre(void) {
 
 // MENU PESSOAS
 void menu_pessoas(void) {
+    system("clear||cls");
     printf("_____------------------------------------------------_____\n");
     printf("|   |              == SIG-Rent-a-Car ==              |   |\n");
     printf("|   |         Sistema de Locação de Veículos         |   |\n");
@@ -101,6 +105,7 @@ void menu_pessoas(void) {
 
 // MENU VEÍCULOS
 void menu_veiculos(void) {
+    system("clear||cls");
     printf("_____------------------------------------------------_____\n");
     printf("|   |              == SIG-Rent-a-Car ==              |   |\n");
     printf("|   |         Sistema de Locação de Veículos         |   |\n");
@@ -123,6 +128,7 @@ void menu_veiculos(void) {
 
 // MENU LOCAÇÕES
 void menu_locacoes(void) {
+    system("clear||cls");
     printf("_____------------------------------------------------_____\n");
     printf("|   |              == SIG-Rent-a-Car ==              |   |\n");
     printf("|   |         Sistema de Locação de Veículos         |   |\n");
