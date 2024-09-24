@@ -72,7 +72,7 @@ void menu_sobre(void) {
     printf("|                                                                |\n");
     printf("|                          Developed by:                         |\n");
     printf("|           Pedro Vitor (https://github.com/PVeeeeeee) and       |\n");
-    printf("|              Elder Bruno (https://github.com/veraxqy           |\n");
+    printf("|             Elder Bruno (https://github.com/veraxqy)           |\n");
     printf("|                                                                |\n");
     printf("|                       Universidade Federal do                  |\n");
     printf("|               Rio Grande do Norte (UFRN) \u00A9 2024                |\n");
