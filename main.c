@@ -66,7 +66,7 @@ void menu_sobre(void) {
     printf("|      do Rio Grande do Norte (UFRN). Seu objetivo é criarmos    |\n");
     printf("|    um Sistema para gestão de Locação de Veículos, utilizando   |\n");
     printf("|    o conhecimento adquirido durante o todo o 2° semestre do    |\n");
-    printf("|          curso, como forma de avaliação. \u00A9 2024           |\n");
+    printf("|          curso, como forma de avaliação. \u00A9 2024                |\n");
     printf("|                                                                |\n");
     printf("------------------------------------------------------------------\n");
     printf("|                                                                |\n");
@@ -75,7 +75,7 @@ void menu_sobre(void) {
     printf("|              Elder Bruno (https://github.com/veraxqy           |\n");
     printf("|                                                                |\n");
     printf("|                       Universidade Federal do                  |\n");
-    printf("|               Rio Grande do Norte (UFRN) \u00A9 2024           |\n");
+    printf("|               Rio Grande do Norte (UFRN) \u00A9 2024                |\n");
     printf("|                                                                |\n");
     printf("------------------------------------------------------------------\n");
 }
