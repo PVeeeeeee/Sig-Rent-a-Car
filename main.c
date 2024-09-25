@@ -16,11 +16,18 @@
 // ATIVANDO FUNÇÕES
 void menu_principal(void);
 void menu_sobre(void);
+
+    // PESSOAS
 void menu_pessoas(void);
 void menu_cadastrar_pessoa(void);
 void menu_checar_pessoa(void);
 void menu_alterar_pessoa(void);
+void menu_excluir_pessoa(void);
+
+    // VEÍCULOS
 void menu_veiculos(void);
+
+    // LOCAÇÕES
 void menu_locacoes(void);
 
 // FUNÇÃO MAIN
@@ -28,11 +35,15 @@ int main(void) {
     //SetConsoleOutputCP(CP_UTF8);
     menu_principal();
     menu_sobre();
+
     menu_pessoas();
     menu_cadastrar_pessoa();
     menu_checar_pessoa();
     menu_alterar_pessoa();
+    menu_excluir_pessoa();
+
     menu_veiculos();
+
     menu_locacoes();
     return 0;
 }
@@ -177,6 +188,21 @@ void menu_alterar_pessoa(void) {
     printf("|   |   Sistema de Locação de Veículos   |   |\n");
     printf("----------------------------------------------\n");
     printf("|   |           ALTERAR PESSOA           |   |\n");
+    printf("----------------------------------------------\n");
+    printf("|   | Digite o CPF: ");
+    scanf("%s", cpf);
+    printf("----------------------------------------------\n");
+}
+
+// MENU EXCLUIR PESSOA
+void menu_excluir_pessoa(void) {
+    system("clear||cls");
+    char cpf[12];
+    printf("_____------------------------------------_____\n");
+    printf("|   |        == SIG-Rent-a-Car ==        |   |\n");
+    printf("|   |   Sistema de Locação de Veículos   |   |\n");
+    printf("----------------------------------------------\n");
+    printf("|   |           EXCLUIR PESSOA           |   |\n");
     printf("----------------------------------------------\n");
     printf("|   | Digite o CPF: ");
     scanf("%s", cpf);
