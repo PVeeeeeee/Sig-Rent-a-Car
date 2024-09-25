@@ -19,6 +19,7 @@ void menu_sobre(void);
 void menu_pessoas(void);
 void menu_cadastrar_pessoa(void);
 void menu_checar_pessoa(void);
+void menu_alterar_pessoa(void);
 void menu_veiculos(void);
 void menu_locacoes(void);
 
@@ -30,6 +31,7 @@ int main(void) {
     menu_pessoas();
     menu_cadastrar_pessoa();
     menu_checar_pessoa();
+    menu_alterar_pessoa();
     menu_veiculos();
     menu_locacoes();
     return 0;
@@ -164,6 +166,21 @@ void menu_checar_pessoa(void) {
     scanf("%s", cpf);
     printf("----------------------------------------------\n");
 
+}
+
+// MENU ALTERAR PESSOA
+void menu_alterar_pessoa(void) {
+    system("clear||cls");
+    char cpf[12];
+    printf("_____------------------------------------_____\n");
+    printf("|   |        == SIG-Rent-a-Car ==        |   |\n");
+    printf("|   |   Sistema de Locação de Veículos   |   |\n");
+    printf("----------------------------------------------\n");
+    printf("|   |           ALTERAR PESSOA           |   |\n");
+    printf("----------------------------------------------\n");
+    printf("|   | Digite o CPF: ");
+    scanf("%s", cpf);
+    printf("----------------------------------------------\n");
 }
 
 // MENU VEÍCULOS
