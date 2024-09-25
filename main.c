@@ -53,6 +53,7 @@ int main(void) {
 // MENU_PRINCIPAL
 void menu_principal(void) {
     system("clear||cls");
+    int opcao;
     printf("_____------------------------------------------------_____\n");
     printf("|   |              == SIG-Rent-a-Car ==              |   |\n");
     printf("|   |         Sistema de Locação de Veículos         |   |\n");
@@ -68,7 +69,8 @@ void menu_principal(void) {
     printf("|                                                        |\n");
     printf("----------------------------------------------------------\n");
     printf("\n");
-    printf("-> Escolha sua opção: \n");
+    printf("-> Escolha sua opção: ");
+    scanf("%i", &opcao);
 }
 
 // MENU_SOBRE
@@ -103,6 +105,7 @@ void menu_sobre(void) {
 // MENU PESSOAS
 void menu_pessoas(void) {
     system("clear||cls");
+    int opcao;
     printf("_____------------------------------------------------_____\n");
     printf("|   |              == SIG-Rent-a-Car ==              |   |\n");
     printf("|   |         Sistema de Locação de Veículos         |   |\n");
@@ -117,7 +120,8 @@ void menu_pessoas(void) {
     printf("|                                                        |\n");
     printf("----------------------------------------------------------\n");
     printf("\n");
-    printf("-> Escolha sua opção: \n");
+    printf("-> Escolha sua opção: ");
+    scanf("%i", &opcao);
 }
 
 // MENU CADASTRAR PESSOA
@@ -212,6 +216,7 @@ void menu_excluir_pessoa(void) {
 // MENU VEÍCULOS
 void menu_veiculos(void) {
     system("clear||cls");
+    int opcao;
     printf("_____------------------------------------------------_____\n");
     printf("|   |              == SIG-Rent-a-Car ==              |   |\n");
     printf("|   |         Sistema de Locação de Veículos         |   |\n");
@@ -229,12 +234,14 @@ void menu_veiculos(void) {
     printf("|                                                        |\n");
     printf("----------------------------------------------------------\n");
     printf("\n");
-    printf("-> Escolha sua opção: \n");
+    printf("-> Escolha sua opção: ");
+    scanf("%i", &opcao);
 }
 
 // MENU LOCAÇÕES
 void menu_locacoes(void) {
     system("clear||cls");
+    int opcao;
     printf("_____------------------------------------------------_____\n");
     printf("|   |              == SIG-Rent-a-Car ==              |   |\n");
     printf("|   |         Sistema de Locação de Veículos         |   |\n");
@@ -249,5 +256,6 @@ void menu_locacoes(void) {
     printf("|                                                        |\n");
     printf("----------------------------------------------------------\n");
     printf("\n");
-    printf("-> Escolha sua opção: \n");
+    printf("-> Escolha sua opção: ");
+    scanf("%i", &opcao);
 }
