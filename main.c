@@ -17,6 +17,7 @@
 void menu_principal(void);
 void menu_sobre(void);
 void menu_pessoas(void);
+void menu_cadastrar_pessoa(void);
 void menu_veiculos(void);
 void menu_locacoes(void);
 
@@ -26,6 +27,7 @@ int main(void) {
     menu_principal();
     menu_sobre();
     menu_pessoas();
+    menu_cadastrar_pessoa();
     menu_veiculos();
     menu_locacoes();
     return 0;
@@ -101,6 +103,49 @@ void menu_pessoas(void) {
     printf("----------------------------------------------------------\n");
     printf("\n");
     printf("-> Escolha sua opção: \n");
+}
+
+// MENU CADASTRAR PESSOA
+void menu_cadastrar_pessoa(void) {
+    system("clear||cls");
+
+    // VARIÁVEIS
+    char nome[50];
+    char cpf[12];
+    char data_nasc[9];
+    char telefone[12];
+    char email[25];
+    char fun[1];
+
+    printf("_____------------------------------------_____\n");
+    printf("|   |        == SIG-Rent-a-Car ==        |   |\n");
+    printf("|   |   Sistema de Locação de Veículos   |   |\n");
+    printf("----------------------------------------------\n");
+    printf("|   |          CADASTRAR PESSOA          |   |\n");
+    printf("---------------------------------------------\n");
+    printf("|   |\n");
+    printf("|   | Nome: \n");
+    printf("|   | ");
+    scanf("%s", nome);
+    printf("|   | CPF: \n");
+    printf("|   | ");
+    scanf("%s", cpf);
+    printf("|   | Dtd. Nascimento: \n");
+    printf("|   | ");
+    scanf("%s", data_nasc);
+    printf("|   | Telefone: \n");
+    printf("|   | ");
+    scanf("%s", telefone);
+    printf("|   | E-mail:  \n");
+    printf("|   | ");
+    scanf("%s", email);
+    printf("|   | Funcionário (S/N): \n");
+    printf("|   | ");
+    scanf("%s", fun);
+    printf("|   |\n");
+    printf("---------------------------\n");
+    printf("\n");
+    //printf("");
 }
 
 // MENU VEÍCULOS
