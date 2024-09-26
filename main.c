@@ -35,6 +35,7 @@ void menu_excluir_veiculo(void);
 void menu_locacoes(void);
 void menu_cadastrar_locacao(void);
 void menu_checar_locacao(void);
+void menu_alterar_locacao(void);
 
 // FUNÇÃO MAIN
 int main(void) {
@@ -57,6 +58,7 @@ int main(void) {
     menu_locacoes();
     menu_cadastrar_locacao();
     menu_checar_locacao();
+    menu_alterar_locacao();
 
     return 0;
 }
@@ -431,7 +433,7 @@ void menu_cadastrar_locacao(void) {
 // MENU CHECAR LOCAÇÃO
 void menu_checar_locacao(void) {
     system("clear||cls");
-    char id_lcoacao[11];
+    char id_locacao[11];
     printf("_____------------------------------------_____\n");
     printf("|   |        == SIG-Rent-a-Car ==        |   |\n");
     printf("|   |   Sistema de Locação de Veículos   |   |\n");
@@ -439,7 +441,23 @@ void menu_checar_locacao(void) {
     printf("|   |           CHECAR LOCAÇÃO           |   |\n");
     printf("----------------------------------------------\n");
     printf("|   | Digite o ID: ");
-    scanf("%10s", id_lcoacao);
+    scanf("%10s", id_locacao);
+    printf("----------------------------------------------\n");
+
+}
+
+// MENU ALTERAR LOCAÇÃO
+void menu_alterar_locacao(void) {
+    system("clear||cls");
+    char id_locacao[11];
+    printf("_____------------------------------------_____\n");
+    printf("|   |        == SIG-Rent-a-Car ==        |   |\n");
+    printf("|   |   Sistema de Locação de Veículos   |   |\n");
+    printf("----------------------------------------------\n");
+    printf("|   |          ALTERAR LOCAÇÃO           |   |\n");
+    printf("----------------------------------------------\n");
+    printf("|   | Digite o ID: ");
+    scanf("%10s", id_locacao);
     printf("----------------------------------------------\n");
 
 }
