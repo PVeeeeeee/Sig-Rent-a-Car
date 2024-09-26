@@ -33,6 +33,7 @@ void menu_excluir_veiculo(void);
 
     // LOCAÇÕES
 void menu_locacoes(void);
+void menu_cadastrar_locacao(void);
 
 // FUNÇÃO MAIN
 int main(void) {
@@ -53,6 +54,8 @@ int main(void) {
     menu_excluir_veiculo();
 
     menu_locacoes();
+    menu_cadastrar_locacao();
+
     return 0;
 }
 
@@ -369,4 +372,56 @@ void menu_locacoes(void) {
     printf("\n");
     printf("-> Escolha sua opção: ");
     scanf("%d", &opcao);
+}
+
+// MENU CADASTRAR LOCAÇÃO
+void menu_cadastrar_locacao(void) {
+    system("clear||cls");
+
+    // VARIÁVEIS
+    char id_locacao[11];
+    char cpf_cliente[12];
+    char cpf_vendedor[12];
+    char placa_veiculo[8];
+    char data_inic[9];
+    char data_final[9];
+    float valor_final;
+    char situacao[2];
+
+    // FORM
+    printf("_____------------------------------------_____\n");
+    printf("|   |        == SIG-Rent-a-Car ==        |   |\n");
+    printf("|   |   Sistema de Locação de Veículos   |   |\n");
+    printf("----------------------------------------------\n");
+    printf("|   |         CADASTRAR LOCAÇÃO          |   |\n");
+    printf("----------------------------------------------\n");
+    printf("|   |\n");
+    printf("|   | ID:  \n");
+    printf("|   | ");
+    scanf("%10s", id_locacao);
+    printf("|   | Cliente (CPF): \n");
+    printf("|   | ");
+    scanf("%11s", cpf_cliente);
+    printf("|   | Vendedor (CPF): \n");
+    printf("|   | ");
+    scanf("%11s", cpf_vendedor);
+    printf("|   | Placa do Veículo: \n");
+    printf("|   | ");
+    scanf("%7s", placa_veiculo);
+    printf("|   | Data Início: \n");
+    printf("|   | ");
+    scanf("%8s", data_inic);
+    printf("|   | Data Final: \n");
+    printf("|   | ");
+    scanf("%8s", data_final);
+    printf("|   | Valor Final: \n");
+    printf("|   | ");
+    scanf("%f", &valor_final);
+    printf("|   | Situação (F/A): \n");
+    printf("|   | ");
+    scanf("%1s", situacao);
+    printf("|   |\n");
+    printf("---------------------------------------\n");
+    printf("|   | Locação Cadastrada com Sucesso! ");
+    printf("\n");
 }
