@@ -34,6 +34,7 @@ void menu_excluir_veiculo(void);
     // LOCAÇÕES
 void menu_locacoes(void);
 void menu_cadastrar_locacao(void);
+void menu_checar_locacao(void);
 
 // FUNÇÃO MAIN
 int main(void) {
@@ -55,6 +56,7 @@ int main(void) {
 
     menu_locacoes();
     menu_cadastrar_locacao();
+    menu_checar_locacao();
 
     return 0;
 }
@@ -424,4 +426,20 @@ void menu_cadastrar_locacao(void) {
     printf("---------------------------------------\n");
     printf("|   | Locação Cadastrada com Sucesso! ");
     printf("\n");
+}
+
+// MENU CHECAR LOCAÇÃO
+void menu_checar_locacao(void) {
+    system("clear||cls");
+    char id_lcoacao[11];
+    printf("_____------------------------------------_____\n");
+    printf("|   |        == SIG-Rent-a-Car ==        |   |\n");
+    printf("|   |   Sistema de Locação de Veículos   |   |\n");
+    printf("----------------------------------------------\n");
+    printf("|   |           CHECAR LOCAÇÃO           |   |\n");
+    printf("----------------------------------------------\n");
+    printf("|   | Digite o ID: ");
+    scanf("%10s", id_lcoacao);
+    printf("----------------------------------------------\n");
+
 }
