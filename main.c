@@ -70,7 +70,7 @@ void menu_principal(void) {
     printf("----------------------------------------------------------\n");
     printf("\n");
     printf("-> Escolha sua opção: ");
-    scanf("%i", &opcao);
+    scanf("%d", &opcao);
 }
 
 // MENU_SOBRE
@@ -121,7 +121,7 @@ void menu_pessoas(void) {
     printf("----------------------------------------------------------\n");
     printf("\n");
     printf("-> Escolha sua opção: ");
-    scanf("%i", &opcao);
+    scanf("%d", &opcao);
 }
 
 // MENU CADASTRAR PESSOA
@@ -129,12 +129,12 @@ void menu_cadastrar_pessoa(void) {
     system("clear||cls");
 
     // VARIÁVEIS
-    char nome[50];
+    char nome[51];
     char cpf[12];
     char data_nasc[9];
     char telefone[12];
-    char email[25];
-    char fun[1];
+    char email[26];
+    char fun[2];
 
     printf("_____------------------------------------_____\n");
     printf("|   |        == SIG-Rent-a-Car ==        |   |\n");
@@ -145,26 +145,25 @@ void menu_cadastrar_pessoa(void) {
     printf("|   |\n");
     printf("|   | Nome: \n");
     printf("|   | ");
-    scanf("%s", nome);
+    scanf("%50s", nome);
     printf("|   | CPF: \n");
     printf("|   | ");
-    scanf("%s", cpf);
+    scanf("%11s", cpf);
     printf("|   | Dtd. Nascimento: \n");
     printf("|   | ");
-    scanf("%s", data_nasc);
+    scanf("%8s", data_nasc);
     printf("|   | Telefone: \n");
     printf("|   | ");
-    scanf("%s", telefone);
+    scanf("%11s", telefone);
     printf("|   | E-mail:  \n");
     printf("|   | ");
-    scanf("%s", email);
+    scanf("%25s", email);
     printf("|   | Funcionário (S/N): \n");
     printf("|   | ");
-    scanf("%s", fun);
+    scanf("%1s", fun);
     printf("|   |\n");
     printf("---------------------------\n");
     printf("\n");
-    //printf("");
 }
 
 // MENU CHECAR PESSOA
@@ -194,7 +193,7 @@ void menu_alterar_pessoa(void) {
     printf("|   |           ALTERAR PESSOA           |   |\n");
     printf("----------------------------------------------\n");
     printf("|   | Digite o CPF: ");
-    scanf("%s", cpf);
+    scanf("%11s", cpf);
     printf("----------------------------------------------\n");
 }
 
@@ -209,7 +208,7 @@ void menu_excluir_pessoa(void) {
     printf("|   |           EXCLUIR PESSOA           |   |\n");
     printf("----------------------------------------------\n");
     printf("|   | Digite o CPF: ");
-    scanf("%s", cpf);
+    scanf("%11s", cpf);
     printf("----------------------------------------------\n");
 }
 
@@ -235,7 +234,7 @@ void menu_veiculos(void) {
     printf("----------------------------------------------------------\n");
     printf("\n");
     printf("-> Escolha sua opção: ");
-    scanf("%i", &opcao);
+    scanf("%d", &opcao);
 }
 
 // MENU LOCAÇÕES
@@ -257,5 +256,5 @@ void menu_locacoes(void) {
     printf("----------------------------------------------------------\n");
     printf("\n");
     printf("-> Escolha sua opção: ");
-    scanf("%i", &opcao);
+    scanf("%d", &opcao);
 }
