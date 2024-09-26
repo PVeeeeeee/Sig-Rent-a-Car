@@ -26,6 +26,7 @@ void menu_excluir_pessoa(void);
 
     // VEÍCULOS
 void menu_veiculos(void);
+void menu_cadastrar_veiculo(void);
 
     // LOCAÇÕES
 void menu_locacoes(void);
@@ -43,6 +44,7 @@ int main(void) {
     menu_excluir_pessoa();
 
     menu_veiculos();
+    menu_cadastrar_veiculo();
 
     menu_locacoes();
     return 0;
@@ -136,6 +138,7 @@ void menu_cadastrar_pessoa(void) {
     char email[26];
     char fun[2];
 
+    // FORM
     printf("_____------------------------------------_____\n");
     printf("|   |        == SIG-Rent-a-Car ==        |   |\n");
     printf("|   |   Sistema de Locação de Veículos   |   |\n");
@@ -162,7 +165,8 @@ void menu_cadastrar_pessoa(void) {
     printf("|   | ");
     scanf("%1s", fun);
     printf("|   |\n");
-    printf("---------------------------\n");
+    printf("--------------------------------------\n");
+    printf("|   | Pessoa Cadastrada com Sucesso! ");
     printf("\n");
 }
 
@@ -177,7 +181,7 @@ void menu_checar_pessoa(void) {
     printf("|   |            CHECAR PESSOA           |   |\n");
     printf("----------------------------------------------\n");
     printf("|   | Digite o CPF: ");
-    scanf("%s", cpf);
+    scanf("%11s", cpf);
     printf("----------------------------------------------\n");
 
 }
@@ -235,6 +239,62 @@ void menu_veiculos(void) {
     printf("\n");
     printf("-> Escolha sua opção: ");
     scanf("%d", &opcao);
+}
+
+// MENU CADASTRAR VEÍCULO
+void menu_cadastrar_veiculo(void) {
+    system("clear||cls");
+
+    // VARIÁVEIS
+    char chassi[18];
+    char placa[8];
+    char marca[15];
+    char modelo[25];
+    char tipo[12];
+    char combustivel[15];
+    int ano;
+    int lugares;
+    float valor;
+
+    // FORM
+    printf("_____------------------------------------_____\n");
+    printf("|   |        == SIG-Rent-a-Car ==        |   |\n");
+    printf("|   |   Sistema de Locação de Veículos   |   |\n");
+    printf("----------------------------------------------\n");
+    printf("|   |         CADASTRAR VEÍCULO          |   |\n");
+    printf("----------------------------------------------\n");
+    printf("|   |\n");
+    printf("|   | Chassi:  \n");
+    printf("|   | ");
+    scanf("%17s", chassi);
+    printf("|   | Placa: \n");
+    printf("|   | ");
+    scanf("%7s", placa);
+    printf("|   | Marca: \n");
+    printf("|   | ");
+    scanf("%14s", marca);
+    printf("|   | Modelo: \n");
+    printf("|   | ");
+    scanf("%24s", modelo);
+    printf("|   | Tipo: \n");
+    printf("|   | ");
+    scanf("%11s", tipo);
+    printf("|   | Combustível: \n");
+    printf("|   | ");
+    scanf("%14s", combustivel);
+    printf("|   | Ano: \n");
+    printf("|   | ");
+    scanf("%d", &ano);
+    printf("|   | Lugares: \n");
+    printf("|   | ");
+    scanf("%d", &lugares);
+    printf("|   | Valor: \n");
+    printf("|   | ");
+    scanf("%f", &valor);
+    printf("|   |\n");
+    printf("---------------------------------------\n");
+    printf("|   | Veículo Cadastrado com Sucesso! ");
+    printf("\n");
 }
 
 // MENU LOCAÇÕES
