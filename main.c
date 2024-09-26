@@ -27,6 +27,7 @@ void menu_excluir_pessoa(void);
     // VEÍCULOS
 void menu_veiculos(void);
 void menu_cadastrar_veiculo(void);
+void menu_checar_veiculo(void);
 
     // LOCAÇÕES
 void menu_locacoes(void);
@@ -45,6 +46,7 @@ int main(void) {
 
     menu_veiculos();
     menu_cadastrar_veiculo();
+    menu_checar_veiculo();
 
     menu_locacoes();
     return 0;
@@ -295,6 +297,22 @@ void menu_cadastrar_veiculo(void) {
     printf("---------------------------------------\n");
     printf("|   | Veículo Cadastrado com Sucesso! ");
     printf("\n");
+}
+
+// MENU CHECAR VEÍCULO
+void menu_checar_veiculo(void) {
+    system("clear||cls");
+    char placa[8];
+    printf("_____------------------------------------_____\n");
+    printf("|   |        == SIG-Rent-a-Car ==        |   |\n");
+    printf("|   |   Sistema de Locação de Veículos   |   |\n");
+    printf("----------------------------------------------\n");
+    printf("|   |           CHECAR VEÍCULO           |   |\n");
+    printf("----------------------------------------------\n");
+    printf("|   | Digite a Placa: ");
+    scanf("%7s", placa);
+    printf("----------------------------------------------\n");
+
 }
 
 // MENU LOCAÇÕES
