@@ -357,8 +357,8 @@ void menu_checar_veiculo(void) {
         printf("----------------------------------------------\n");
         printf("|   | Digite a Placa: ");
         scanf("%7s", placa);
-        printf("|   | O que você deseja fazer? ");
-        printf("_____------------------------------------_____");
+        printf("|   | O que você deseja fazer?\n");
+        printf("_____------------------------------------_____\n");
         printf("|   | 1 - Alterar  2 - Excluir  0 - Sair |   |\n");
         printf("_____------------------------------------_____\n");
         scanf("%d", &opcao);
@@ -500,8 +500,8 @@ void menu_checar_locacao(void) {
         printf("----------------------------------------------\n");
         printf("|   | Digite o ID: ");
         scanf("%10s", id_locacao);
-        printf("|   | O que você deseja fazer? ");
-        printf("_____------------------------------------_____");
+        printf("|   | O que você deseja fazer?\n");
+        printf("_____------------------------------------_____\n");
         printf("|   | 1 - Alterar  2 - Excluir  0 - Sair |   |\n");
         printf("_____------------------------------------_____\n");
         scanf("%d", &opcao);
