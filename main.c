@@ -36,7 +36,7 @@ void menu_checar_locacao(void);
 void menu_alterar_locacao(void);
 void menu_excluir_locacao(void);
 
-// FUNÇÃO MAIN
+// FUNÇÃO MAIN - PRINCIPAL
 int main(void) {
     menu_principal();
     return 0;
