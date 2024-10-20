@@ -10,6 +10,7 @@
 // BIBLIOTECAS
 #include <stdio.h>
 #include <stdlib.h>
+#include "funcoes.h"
 
 // FUNÇÃO MAIN - PRINCIPAL
 int main(void) {
