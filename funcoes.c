@@ -68,6 +68,11 @@ void menu_sobre(void) {
     printf("|                                                                |\n");
     printf("------------------------------------------------------------------\n");
     printf("Tecle <ENTER> para prosseguir...");
+    
+    // Limpa o buffer de entrada
+    int ch;
+    while ((ch = getchar()) != '\n' && ch != EOF); 
+
     getchar();
 }
 
