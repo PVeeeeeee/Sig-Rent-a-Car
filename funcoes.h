@@ -12,14 +12,14 @@ void menu_alterar_pessoa(void);
 void menu_excluir_pessoa(void);
 
     // VEÍCULOS
-void menu_veiculos(void);
+int menu_veiculos(void);
 void menu_cadastrar_veiculo(void);
 void menu_checar_veiculo(void);
 void menu_alterar_veiculo(void);
 void menu_excluir_veiculo(void);
 
     // LOCAÇÕES
-void menu_locacoes(void);
+int menu_locacoes(void);
 void menu_cadastrar_locacao(void);
 void menu_checar_locacao(void);
 void menu_alterar_locacao(void);

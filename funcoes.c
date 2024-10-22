@@ -225,44 +225,30 @@ void menu_excluir_pessoa(void) {
 }
 
 // MENU VEÍCULOS
-void menu_veiculos(void) {
-    int opcao = -1;
-    while (opcao != 0) {
-        system("clear||cls");
-        printf("_____------------------------------------------------_____\n");
-        printf("|   |              == SIG-Rent-a-Car ==              |   |\n");
-        printf("|   |         Sistema de Locação de Veículos         |   |\n");
-        printf("----------------------------------------------------------\n");
-        printf("|   |                  VEÍCULOS                      |   |\n");
-        printf("----------------------------------------------------------\n");
-        printf("|                                                        |\n");
-        printf("|                 1 - Cadastrar Veículo                  |\n");
-        printf("|                 2 - Checar Veículo                     |\n");
-        printf("|                 3 - Relatório                          |\n");
-        printf("|                 4 - Marcas                             |\n");
-        printf("|                 5 - Tipos                              |\n");
-        printf("|                 6 - Combustíveis                       |\n");
-        printf("|                 0 - Menu Principal                     |\n");
-        printf("|                                                        |\n");
-        printf("----------------------------------------------------------\n");
-        printf("\n");
-        printf("-> Escolha sua opção: ");
-        scanf("%d", &opcao);
-
-        if (opcao == 1) {
-            menu_cadastrar_veiculo();
-        } else if (opcao == 2) {
-            menu_checar_veiculo();
-        } else if (opcao == 3) {
-            // menu_relatorio_veiculo();
-        } else if (opcao == 4) {
-            // menu_marcas();
-        } else if (opcao == 5) {
-            // menu_tipos();
-        } else if (opcao == 6) {
-            // menu_combustiveis();
-        }
-    }
+int menu_veiculos(void) {
+    int opc_veiculos;
+    system("clear||cls");
+    printf("_____------------------------------------------------_____\n");
+    printf("|   |              == SIG-Rent-a-Car ==              |   |\n");
+    printf("|   |         Sistema de Locação de Veículos         |   |\n");
+    printf("----------------------------------------------------------\n");
+    printf("|   |                  VEÍCULOS                      |   |\n");
+    printf("----------------------------------------------------------\n");
+    printf("|                                                        |\n");
+    printf("|                 1 - Cadastrar Veículo                  |\n");
+    printf("|                 2 - Checar Veículo                     |\n");
+    printf("|                 3 - Relatório                          |\n");
+    printf("|                 4 - Marcas                             |\n");
+    printf("|                 5 - Tipos                              |\n");
+    printf("|                 6 - Combustíveis                       |\n");
+    printf("|                 0 - Menu Principal                     |\n");
+    printf("|                                                        |\n");
+    printf("----------------------------------------------------------\n");
+    printf("\n");
+    printf("-> Escolha sua opção: ");
+    scanf("%d", &opc_veiculos);
+    getchar();
+    return opc_veiculos;
 }
 
 // MENU CADASTRAR VEÍCULO
@@ -381,35 +367,27 @@ void menu_excluir_veiculo(void) {
 }
 
 // MENU LOCAÇÕES
-void menu_locacoes(void) {
-    int opcao = -1;
-    while (opcao != 0) {
-        system("clear||cls");
-        printf("_____------------------------------------------------_____\n");
-        printf("|   |              == SIG-Rent-a-Car ==              |   |\n");
-        printf("|   |         Sistema de Locação de Veículos         |   |\n");
-        printf("----------------------------------------------------------\n");
-        printf("|   |                  LOCAÇÕES                      |   |\n");
-        printf("----------------------------------------------------------\n");
-        printf("|                                                        |\n");
-        printf("|                1 - Cadastrar Locação                   |\n");
-        printf("|                2 - Checar Locação                      |\n");
-        printf("|                3 - Relatório                           |\n");
-        printf("|                0 - Menu Principal                      |\n");
-        printf("|                                                        |\n");
-        printf("----------------------------------------------------------\n");
-        printf("\n");
-        printf("-> Escolha sua opção: ");
-        scanf("%d", &opcao);
-
-        if (opcao == 1) {
-            menu_cadastrar_locacao();
-        } else if (opcao == 2) {
-            menu_checar_locacao();
-        } else if (opcao == 3) {
-            // menu_relatorio_locacao();
-        }
-    }
+int menu_locacoes(void) {
+    int opc_locacoes;
+    system("clear||cls");
+    printf("_____------------------------------------------------_____\n");
+    printf("|   |              == SIG-Rent-a-Car ==              |   |\n");
+    printf("|   |         Sistema de Locação de Veículos         |   |\n");
+    printf("----------------------------------------------------------\n");
+    printf("|   |                  LOCAÇÕES                      |   |\n");
+    printf("----------------------------------------------------------\n");
+    printf("|                                                        |\n");
+    printf("|                1 - Cadastrar Locação                   |\n");
+    printf("|                2 - Checar Locação                      |\n");
+    printf("|                3 - Relatório                           |\n");
+    printf("|                0 - Menu Principal                      |\n");
+    printf("|                                                        |\n");
+    printf("----------------------------------------------------------\n");
+    printf("\n");
+    printf("-> Escolha sua opção: ");
+    scanf("%d", &opc_locacoes);
+    getchar();
+    return opc_locacoes;
 }
 
 // MENU CADASTRAR LOCAÇÃO

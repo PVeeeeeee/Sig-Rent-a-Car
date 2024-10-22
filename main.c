@@ -14,11 +14,14 @@
 
 // FUNÇÃO MAIN - PRINCIPAL
 int main(void) {
-    int opc_principal, opc_pessoas, opc_veiculos, opc_locacoes;
+
+    int opc_principal = -1, opc_pessoas = -1, opc_veiculos = -1, opc_locacoes = -1;
+
     while (opc_principal != 0) {
         opc_principal = menu_principal();
 
         if (opc_principal == 1) {
+            opc_pessoas = -1; 
             while (opc_pessoas != 0) {
                 opc_pessoas = menu_pessoas();
 
@@ -28,9 +31,35 @@ int main(void) {
                     menu_checar_pessoa();
                 }
             }
-            
+
+        } else if (opc_principal == 2) {
+            opc_veiculos = -1; 
+            while (opc_veiculos != 0) {
+                opc_veiculos = menu_veiculos();
+
+                if (opc_veiculos == 1) {
+                    menu_cadastrar_veiculo();
+                } else if (opc_veiculos == 2) {
+                    menu_checar_veiculo();
+                }
+            }
+
+        } else if (opc_principal == 3) {
+            opc_locacoes = -1; 
+            while (opc_locacoes != 0) {
+                opc_locacoes = menu_locacoes();
+
+                if (opc_locacoes == 1) {
+                    menu_cadastrar_locacao();
+                } else if (opc_locacoes == 2) {
+                    menu_checar_locacao();
+                }
+            }
+        
+        } else if (opc_principal == 4) {
+            menu_sobre();
         }
     }
-    
+
     return 0;
 }
