@@ -6,38 +6,28 @@
 // FUNÇÕES
 
 // MENU_PRINCIPAL
-void menu_principal(void) {
-    int opcao = -1;
-    while (opcao != 0) {
-        system("clear||cls");
-        printf("_____------------------------------------------------_____\n");
-        printf("|   |              == SIG-Rent-a-Car ==              |   |\n");
-        printf("|   |         Sistema de Locação de Veículos         |   |\n");
-        printf("----------------------------------------------------------\n");
-        printf("|   |                    OPÇÕES                      |   |\n");
-        printf("----------------------------------------------------------\n");
-        printf("|                                                        |\n");
-        printf("|                    1 - Pessoas                         |\n");
-        printf("|                    2 - Veículos                        |\n");
-        printf("|                    3 - Serviços                        |\n");
-        printf("|                    4 - Sobre                           |\n");
-        printf("|                    0 - Sair                            |\n");
-        printf("|                                                        |\n");
-        printf("----------------------------------------------------------\n");
-        printf("\n");
-        printf("-> Escolha sua opção: ");
-        scanf("%d", &opcao);
-
-        if (opcao == 1) {
-            menu_pessoas();
-        } else if (opcao == 2) {
-            menu_veiculos();
-        } else if (opcao == 3) {
-            menu_locacoes();
-        } else if (opcao == 4) {
-            menu_sobre();
-        }
-    }
+int menu_principal(void) {
+    int opc_principal;
+    system("clear||cls");
+    printf("_____------------------------------------------------_____\n");
+    printf("|   |              == SIG-Rent-a-Car ==              |   |\n");
+    printf("|   |         Sistema de Locação de Veículos         |   |\n");
+    printf("----------------------------------------------------------\n");
+    printf("|   |                    OPÇÕES                      |   |\n");
+    printf("----------------------------------------------------------\n");
+    printf("|                                                        |\n");
+    printf("|                    1 - Pessoas                         |\n");
+    printf("|                    2 - Veículos                        |\n");
+    printf("|                    3 - Locações                        |\n");
+    printf("|                    4 - Sobre                           |\n");
+    printf("|                    0 - Sair                            |\n");
+    printf("|                                                        |\n");
+    printf("----------------------------------------------------------\n");
+    printf("\n");
+    printf("-> Escolha sua opção: ");
+    scanf("%d", &opc_principal);
+    getchar();
+    return opc_principal;
 }
 
 // MENU_SOBRE
@@ -77,35 +67,27 @@ void menu_sobre(void) {
 }
 
 // MENU PESSOAS
-void menu_pessoas(void) {
-    int opcao = -1;
-    while (opcao != 0) {
-        system("clear||cls");
-        printf("_____------------------------------------------------_____\n");
-        printf("|   |              == SIG-Rent-a-Car ==              |   |\n");
-        printf("|   |         Sistema de Locação de Veículos         |   |\n");
-        printf("----------------------------------------------------------\n");
-        printf("|   |                   PESSOAS                      |   |\n");
-        printf("----------------------------------------------------------\n");
-        printf("|                                                        |\n");
-        printf("|                 1 - Cadastrar Pessoa                   |\n");
-        printf("|                 2 - Checar Pessoa                      |\n");
-        printf("|                 3 - Relatório                          |\n");
-        printf("|                 0 - Menu Principal                     |\n");
-        printf("|                                                        |\n");
-        printf("----------------------------------------------------------\n");
-        printf("\n");
-        printf("-> Escolha sua opção: ");
-        scanf("%d", &opcao);
-
-        if (opcao == 1) {
-            menu_cadastrar_pessoa();
-        } else if (opcao == 2) {
-            menu_checar_pessoa();
-        } else if (opcao == 3) {
-            // menu_relatorio_pessoa();
-        }
-    }
+int menu_pessoas(void) {
+    int opc_pessoas;
+    system("clear||cls");
+    printf("_____------------------------------------------------_____\n");
+    printf("|   |              == SIG-Rent-a-Car ==              |   |\n");
+    printf("|   |         Sistema de Locação de Veículos         |   |\n");
+    printf("----------------------------------------------------------\n");
+    printf("|   |                   PESSOAS                      |   |\n");
+    printf("----------------------------------------------------------\n");
+    printf("|                                                        |\n");
+    printf("|                 1 - Cadastrar Pessoa                   |\n");
+    printf("|                 2 - Checar Pessoa                      |\n");
+    printf("|                 3 - Relatório                          |\n");
+    printf("|                 0 - Menu Principal                     |\n");
+    printf("|                                                        |\n");
+    printf("----------------------------------------------------------\n");
+    printf("\n");
+    printf("-> Escolha sua opção: ");
+    scanf("%d", &opc_pessoas);
+    getchar();
+    return opc_pessoas;
 }
 
 // MENU CADASTRAR PESSOA
@@ -150,34 +132,42 @@ void menu_cadastrar_pessoa(void) {
     printf("--------------------------------------\n");
     printf("|   | Pessoa Cadastrada com Sucesso! ");
     printf("\n");
+    printf("Tecle <ENTER> para prosseguir...");
+    getchar();
 }
 
 // MENU CHECAR PESSOA
 void menu_checar_pessoa(void) {
     char cpf[12];
-    int opcao = -1;
-    while (opcao != 0) {
-        system("clear||cls");
-        printf("_____------------------------------------_____\n");
-        printf("|   |        == SIG-Rent-a-Car ==        |   |\n");
-        printf("|   |   Sistema de Locação de Veículos   |   |\n");
-        printf("----------------------------------------------\n");
-        printf("|   |            CHECAR PESSOA           |   |\n");
-        printf("----------------------------------------------\n");
-        printf("|   | Digite o CPF: ");
-        scanf("%11s", cpf);
-        printf("|   | O que você deseja fazer?\n");
-        printf("_____------------------------------------_____\n");
-        printf("|   | 1 - Alterar  2 - Excluir  0 - Sair |   |\n");
-        printf("_____------------------------------------_____\n");
-        scanf("%d", &opcao);
-        printf("----------------------------------------------\n");
+    int opc_check_pessoa;
+    system("clear||cls");
+    printf("_____------------------------------------_____\n");
+    printf("|   |        == SIG-Rent-a-Car ==        |   |\n");
+    printf("|   |   Sistema de Locação de Veículos   |   |\n");
+    printf("----------------------------------------------\n");
+    printf("|   |            CHECAR PESSOA           |   |\n");
+    printf("----------------------------------------------\n");
+    printf("|   | Digite o CPF: ");
+    scanf("%11s", cpf);
+    printf("|   | Nome: \n");
+    printf("|   | Idade: \n");
+    printf("|   | Telefone: \n");
+    printf("|   | E-mail: \n");
+    printf("----------------------------------------------\n");
+    printf("\n");
+    printf("|   | O que você deseja fazer?\n");
+    printf("_____------------------------------------_____\n");
+    printf("|   | 1 - Alterar  2 - Excluir  0 - Sair |   |\n");
+    printf("_____------------------------------------_____\n");
+    printf("\n");
+    printf("-> Escolha sua opção: ");
+    scanf("%d", &opc_check_pessoa);
+    printf("----------------------------------------------\n");
 
-        if (opcao == 1) {
-            menu_alterar_pessoa();
-        } else if (opcao == 2) {
-            menu_excluir_pessoa();
-        }
+    if (opc_check_pessoa == 1) {
+        menu_alterar_pessoa();
+    } else if (opc_check_pessoa == 2) {
+        menu_excluir_pessoa();
     }
 
 }
@@ -185,30 +175,52 @@ void menu_checar_pessoa(void) {
 // MENU ALTERAR PESSOA
 void menu_alterar_pessoa(void) {
     system("clear||cls");
-    char cpf[12];
+    int opc_alterar;
     printf("_____------------------------------------_____\n");
     printf("|   |        == SIG-Rent-a-Car ==        |   |\n");
     printf("|   |   Sistema de Locação de Veículos   |   |\n");
     printf("----------------------------------------------\n");
     printf("|   |           ALTERAR PESSOA           |   |\n");
     printf("----------------------------------------------\n");
-    printf("|   | Digite o CPF: ");
-    scanf("%11s", cpf);
+    printf("|   | Nome: \n");
+    printf("|   | Idade: \n");
+    printf("|   | Telefone: \n");
+    printf("|   | E-mail: \n");
+    printf("----------------------------------------------\n");
+    printf("\n");
+    printf("|   | O que você deseja alterar?:\n");
+    printf("_____------------------------------------_____\n");
+    printf("|   | 1 - Nome       2 - Dta. Nascimento |   |\n");
+    printf("----------------------------------------------\n");
+    printf("|   | 3 - Telefone   4 - E-mail          |   |\n");
+    printf("----------------------------------------------\n");
+    printf("|   | 5 - Função     0 - Sair            |   |\n");
+    printf("_____------------------------------------_____\n");
+    printf("\n");
+    printf("-> Escolha sua opção: ");
+    scanf("%d", &opc_alterar);
     printf("----------------------------------------------\n");
 }
 
 // MENU EXCLUIR PESSOA
 void menu_excluir_pessoa(void) {
     system("clear||cls");
-    char cpf[12];
+    char opc_excluir;
     printf("_____------------------------------------_____\n");
     printf("|   |        == SIG-Rent-a-Car ==        |   |\n");
     printf("|   |   Sistema de Locação de Veículos   |   |\n");
     printf("----------------------------------------------\n");
     printf("|   |           EXCLUIR PESSOA           |   |\n");
     printf("----------------------------------------------\n");
-    printf("|   | Digite o CPF: ");
-    scanf("%11s", cpf);
+    printf("|   | Nome: \n");
+    printf("|   | Idade: \n");
+    printf("|   | Telefone: \n");
+    printf("|   | E-mail: \n");
+    printf("----------------------------------------------\n");
+    printf("\n");
+    printf("|   | Você tem certeza que deseja excluir?(S/N): ");
+    scanf("%c", &opc_excluir);
+    getchar();
     printf("----------------------------------------------\n");
 }
 

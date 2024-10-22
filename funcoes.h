@@ -1,11 +1,11 @@
 // ASSINATURAS DAS FUNÇÕES
 
 // ATIVANDO FUNÇÕES
-void menu_principal(void);
+int menu_principal(void);
 void menu_sobre(void);
 
     // PESSOAS
-void menu_pessoas(void);
+int menu_pessoas(void);
 void menu_cadastrar_pessoa(void);
 void menu_checar_pessoa(void);
 void menu_alterar_pessoa(void);

@@ -14,6 +14,23 @@
 
 // FUNÇÃO MAIN - PRINCIPAL
 int main(void) {
-    menu_principal();
+    int opc_principal, opc_pessoas, opc_veiculos, opc_locacoes;
+    while (opc_principal != 0) {
+        opc_principal = menu_principal();
+
+        if (opc_principal == 1) {
+            while (opc_pessoas != 0) {
+                opc_pessoas = menu_pessoas();
+
+                if (opc_pessoas == 1) {
+                    menu_cadastrar_pessoa();
+                } else if (opc_pessoas == 2) {
+                    menu_checar_pessoa();
+                }
+            }
+            
+        }
+    }
+    
     return 0;
 }
