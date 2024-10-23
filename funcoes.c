@@ -175,7 +175,7 @@ void menu_checar_pessoa(void) {
 // MENU ALTERAR PESSOA
 void menu_alterar_pessoa(void) {
     system("clear||cls");
-    int opc_alterar;
+    int opc_altr_pessoa;
     printf("_____------------------------------------_____\n");
     printf("|   |        == SIG-Rent-a-Car ==        |   |\n");
     printf("|   |   Sistema de Locação de Veículos   |   |\n");
@@ -198,14 +198,14 @@ void menu_alterar_pessoa(void) {
     printf("_____------------------------------------_____\n");
     printf("\n");
     printf("-> Escolha sua opção: ");
-    scanf("%d", &opc_alterar);
+    scanf("%d", &opc_altr_pessoa);
     printf("----------------------------------------------\n");
 }
 
 // MENU EXCLUIR PESSOA
 void menu_excluir_pessoa(void) {
     system("clear||cls");
-    char opc_excluir;
+    char opc_exclr_pessoa;
     printf("_____------------------------------------_____\n");
     printf("|   |        == SIG-Rent-a-Car ==        |   |\n");
     printf("|   |   Sistema de Locação de Veículos   |   |\n");
@@ -219,7 +219,7 @@ void menu_excluir_pessoa(void) {
     printf("----------------------------------------------\n");
     printf("\n");
     printf("|   | Você tem certeza que deseja excluir?(S/N): ");
-    scanf("%c", &opc_excluir);
+    scanf("%c", &opc_exclr_pessoa);
     getchar();
     printf("----------------------------------------------\n");
 }
