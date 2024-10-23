@@ -10,6 +10,7 @@ void menu_cadastrar_pessoa(void);
 void menu_checar_pessoa(void);
 void menu_alterar_pessoa(void);
 void menu_excluir_pessoa(void);
+int menu_relatorio_pessoa(void);
 
     // VEÍCULOS
 int menu_veiculos(void);

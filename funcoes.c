@@ -169,7 +169,6 @@ void menu_checar_pessoa(void) {
     } else if (opc_check_pessoa == 2) {
         menu_excluir_pessoa();
     }
-
 }
 
 // MENU ALTERAR PESSOA
@@ -222,6 +221,31 @@ void menu_excluir_pessoa(void) {
     scanf("%c", &opc_exclr_pessoa);
     getchar();
     printf("----------------------------------------------\n");
+}
+
+// MENU RELATÓRIO PESSOA
+int menu_relatorio_pessoa(void) {
+    int opc_relt_pessoa;
+
+    system("clear||cls");
+    printf("_____--------------------------------------_____\n");
+    printf("|   |         == SIG-Rent-a-Car ==         |   |\n");
+    printf("|   |    Sistema de Locação de Veículos    |   |\n");
+    printf("------------------------------------------------\n");
+    printf("|   |         RELATÓRIO - PESSOAS          |   |\n");
+    printf("------------------------------------------------\n");
+    printf("|                                              |\n");
+    printf("|               1 - Clientes                   |\n");
+    printf("|               2 - Funcionários               |\n");
+    printf("|               3 - Geral                      |\n");
+    printf("|               0 - Menu Principal             |\n");
+    printf("|                                              |\n");
+    printf("------------------------------------------------\n");
+    printf("\n");
+    printf("-> Escolha sua opção: ");
+    scanf("%d", &opc_relt_pessoa);
+    getchar();
+    return opc_relt_pessoa;
 }
 
 // MENU VEÍCULOS
@@ -544,7 +568,7 @@ void menu_alterar_locacao(void) {
     printf("\n");
     printf("|   | O que você deseja alterar?:\n");
     printf("_____-----------------------------------_____\n");
-    printf("|   |  1 - Veículo     2 - Dtd. Inicio  |   |\n");
+    printf("|   |  1 - Veículo      2 - Dtd. Inicio |   |\n");
     printf("---------------------------------------------\n");
     printf("|   |  3 - Dtd. Final   4 - Situação    |   |\n");
     printf("---------------------------------------------\n");
