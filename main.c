@@ -37,7 +37,7 @@ int main(void) {
                         } else if (opc_relt_pessoas == 2) {
                             relatorio_funcionarios();
                         } else if (opc_relt_pessoas == 3) {
-                            //relatorio_geral_pessoas();
+                            relatorio_geral_pessoas();
                         }
                     }
                 }

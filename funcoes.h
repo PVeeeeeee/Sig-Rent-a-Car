@@ -13,6 +13,7 @@ void menu_excluir_pessoa(void);
 int menu_relatorio_pessoa(void);
 void relatorio_clientes(void);
 void relatorio_funcionarios(void);
+void relatorio_geral_pessoas(void);
 
     // VEÍCULOS
 int menu_veiculos(void);

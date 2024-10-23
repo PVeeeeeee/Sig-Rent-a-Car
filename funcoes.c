@@ -232,7 +232,7 @@ int menu_relatorio_pessoa(void) {
     printf("|   |         == SIG-Rent-a-Car ==         |   |\n");
     printf("|   |    Sistema de Locação de Veículos    |   |\n");
     printf("------------------------------------------------\n");
-    printf("|   |         RELATÓRIO - PESSOAS          |   |\n");
+    printf("|   |              RELATÓRIO               |   |\n");
     printf("------------------------------------------------\n");
     printf("|                                              |\n");
     printf("|               1 - Clientes                   |\n");
@@ -271,6 +271,19 @@ void relatorio_funcionarios(void) {
     printf("|   |       RELATÓRIO - FUNCIONÁRIOS       |   |\n");
     printf("------------------------------------------------\n");
     printf("|            ORDEM ALFABÉTICA [A-Z]            |\n");
+    printf("------------------------------------------------\n");
+}
+
+// RELATÓRIO PESSOAS GERAL
+void relatorio_geral_pessoas(void) {
+    system("clear||cls");
+    printf("_____--------------------------------------_____\n");
+    printf("|   |         == SIG-Rent-a-Car ==         |   |\n");
+    printf("|   |    Sistema de Locação de Veículos    |   |\n");
+    printf("------------------------------------------------\n");
+    printf("|   |          RELATÓRIO - PESSOAS         |   |\n");
+    printf("------------------------------------------------\n");
+    printf("|             ORDEM ALFABÉTICA [A-Z]           |\n");
     printf("------------------------------------------------\n");
 }
 
