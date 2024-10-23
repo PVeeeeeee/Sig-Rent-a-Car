@@ -57,7 +57,7 @@ void menu_sobre(void) {
     printf("|               Rio Grande do Norte (UFRN) \u00A9 2024                |\n");
     printf("|                                                                |\n");
     printf("------------------------------------------------------------------\n");
-    printf("Tecle <ENTER> para prosseguir...");
+    printf("Tecle <ENTER> para prosseguir...\n");
     
     // Limpa o buffer de entrada
     int ch;
