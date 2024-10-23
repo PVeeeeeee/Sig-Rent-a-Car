@@ -310,29 +310,38 @@ void menu_cadastrar_veiculo(void) {
 // MENU CHECAR VEÍCULO
 void menu_checar_veiculo(void) {
     char placa[8];
-    int opcao = -1;
-    while (opcao != 0) {
-        system("clear||cls");
-        printf("_____------------------------------------_____\n");
-        printf("|   |        == SIG-Rent-a-Car ==        |   |\n");
-        printf("|   |   Sistema de Locação de Veículos   |   |\n");
-        printf("----------------------------------------------\n");
-        printf("|   |           CHECAR VEÍCULO           |   |\n");
-        printf("----------------------------------------------\n");
-        printf("|   | Digite a Placa: ");
-        scanf("%7s", placa);
-        printf("|   | O que você deseja fazer?\n");
-        printf("_____------------------------------------_____\n");
-        printf("|   | 1 - Alterar  2 - Excluir  0 - Sair |   |\n");
-        printf("_____------------------------------------_____\n");
-        scanf("%d", &opcao);
-        printf("----------------------------------------------\n");
+    int opc_check_veiculo;
+    system("clear||cls");
+    printf("_____------------------------------------_____\n");
+    printf("|   |        == SIG-Rent-a-Car ==        |   |\n");
+    printf("|   |   Sistema de Locação de Veículos   |   |\n");
+    printf("----------------------------------------------\n");
+    printf("|   |           CHECAR VEÍCULO           |   |\n");
+    printf("----------------------------------------------\n");
+    printf("|   | Digite a Placa: ");
+    scanf("%7s", placa);
+    printf("|   | Chassi:  \n");
+    printf("|   | Marca: \n");
+    printf("|   | Modelo: \n");
+    printf("|   | Tipo: \n");
+    printf("|   | Combustível: \n");
+    printf("|   | Ano: \n");
+    printf("|   | Lugares: \n");
+    printf("|   | Valor: \n");
+    printf("----------------------------------------------\n");
+    printf("\n");
+    printf("|   | O que você deseja fazer?\n");
+    printf("_____------------------------------------_____\n");
+    printf("|   | 1 - Alterar  2 - Excluir  0 - Sair |   |\n");
+    printf("_____------------------------------------_____\n");
+    printf("-> Escolha sua opção: ");
+    scanf("%d", &opc_check_veiculo);
+    printf("----------------------------------------------\n");
 
-        if (opcao == 1) {
-            menu_alterar_veiculo();
-        } else if (opcao == 2) {
-            menu_excluir_veiculo();
-        }
+    if (opc_check_veiculo == 1) {
+        menu_alterar_veiculo();
+    } else if (opc_check_veiculo == 2) {
+        menu_excluir_veiculo();
     }
 }
 
