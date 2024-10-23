@@ -368,19 +368,19 @@ void menu_alterar_veiculo(void) {
     printf("|   | O que você deseja alterar?:\n");
     printf("_____--------------------------------_____\n");
     printf("|   |  1 - Chassi        2 - Marca   |   |\n");
-    printf("----------------------------------------------\n");
+    printf("------------------------------------------\n");
     printf("|   |  3 - Modelo        4 - Tipo    |   |\n");
-    printf("----------------------------------------------\n");
+    printf("------------------------------------------\n");
     printf("|   |  5 - Combustível   6 - Ano     |   |\n");
     printf("------------------------------------------\n");
     printf("|   |  7 - Lugares       8 - Valor   |   |\n");
     printf("------------------------------------------\n");
-    printf("|   |             0 - Sair           |   |\n");
+    printf("|   |            0 - Sair            |   |\n");
     printf("_____--------------------------------_____\n");
     printf("\n");
     printf("-> Escolha sua opção: ");
     scanf("%d", &opc_altr_veiculo);
-    printf("----------------------------------------------\n");
+    printf("------------------------------------------\n");
 }
 
 // MENU EXCLUIR VEÍCULO
