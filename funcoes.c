@@ -540,16 +540,26 @@ void menu_alterar_locacao(void) {
 
 // MENU EXCLUIR LOCAÇÃO
 void menu_excluir_locacao(void) {
+    char opc_exclr_locacao;
+
     system("clear||cls");
-    char id_locacao[11];
     printf("_____------------------------------------_____\n");
     printf("|   |        == SIG-Rent-a-Car ==        |   |\n");
     printf("|   |   Sistema de Locação de Veículos   |   |\n");
     printf("----------------------------------------------\n");
     printf("|   |          EXCLUIR LOCAÇÃO           |   |\n");
     printf("----------------------------------------------\n");
-    printf("|   | Digite o ID: ");
-    scanf("%10s", id_locacao);
+    printf("|   | Cliente (CPF): \n");
+    printf("|   | Funcionário (CPF): \n");
+    printf("|   | Placa do Veículo: \n");
+    printf("|   | Data Início: \n");
+    printf("|   | Data Final: \n");
+    printf("|   | Valor Final: \n");
+    printf("|   | Situação (F/A): \n");
     printf("----------------------------------------------\n");
-
+    printf("\n");
+    printf("|   | Você tem certeza que deseja excluir?(S/N): ");
+    scanf("%c", &opc_exclr_locacao);
+    getchar();
+    printf("----------------------------------------------\n");
 }
