@@ -261,6 +261,19 @@ void relatorio_clientes(void) {
     printf("------------------------------------------------\n");
 }
 
+// RELATÓRIO FUNCIONÁRIOS
+void relatorio_funcionarios(void) {
+    system("clear||cls");
+    printf("_____--------------------------------------_____\n");
+    printf("|   |         == SIG-Rent-a-Car ==         |   |\n");
+    printf("|   |    Sistema de Locação de Veículos    |   |\n");
+    printf("------------------------------------------------\n");
+    printf("|   |       RELATÓRIO - FUNCIONÁRIOS       |   |\n");
+    printf("------------------------------------------------\n");
+    printf("|            ORDEM ALFABÉTICA [A-Z]            |\n");
+    printf("------------------------------------------------\n");
+}
+
 // MENU VEÍCULOS
 int menu_veiculos(void) {
     int opc_veiculos;

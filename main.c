@@ -35,7 +35,7 @@ int main(void) {
                         if (opc_relt_pessoas == 1) {
                             relatorio_clientes();
                         } else if (opc_relt_pessoas == 2) {
-                            //relatorio_funcionarios();
+                            relatorio_funcionarios();
                         } else if (opc_relt_pessoas == 3) {
                             //relatorio_geral_pessoas();
                         }
