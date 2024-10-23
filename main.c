@@ -33,7 +33,7 @@ int main(void) {
                         opc_relt_pessoas = menu_relatorio_pessoa();
 
                         if (opc_relt_pessoas == 1) {
-                            //relatorio_clientes();
+                            relatorio_clientes();
                         } else if (opc_relt_pessoas == 2) {
                             //relatorio_funcionarios();
                         } else if (opc_relt_pessoas == 3) {
