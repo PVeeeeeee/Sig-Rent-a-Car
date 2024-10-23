@@ -132,8 +132,6 @@ void menu_cadastrar_pessoa(void) {
     printf("--------------------------------------\n");
     printf("|   | Pessoa Cadastrada com Sucesso! ");
     printf("\n");
-    printf("Tecle <ENTER> para prosseguir...");
-    getchar();
 }
 
 // MENU CHECAR PESSOA
