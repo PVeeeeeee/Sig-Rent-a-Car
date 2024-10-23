@@ -524,18 +524,36 @@ void menu_checar_locacao(void) {
 
 // MENU ALTERAR LOCAÇÃO
 void menu_alterar_locacao(void) {
+    char opc_altr_locacao;
+    
     system("clear||cls");
-    char id_locacao[11];
     printf("_____------------------------------------_____\n");
     printf("|   |        == SIG-Rent-a-Car ==        |   |\n");
     printf("|   |   Sistema de Locação de Veículos   |   |\n");
     printf("----------------------------------------------\n");
     printf("|   |          ALTERAR LOCAÇÃO           |   |\n");
     printf("----------------------------------------------\n");
-    printf("|   | Digite o ID: ");
-    scanf("%10s", id_locacao);
+    printf("|   | Cliente (CPF): \n");
+    printf("|   | Funcionário (CPF): \n");
+    printf("|   | Placa do Veículo: \n");
+    printf("|   | Data Início: \n");
+    printf("|   | Data Final: \n");
+    printf("|   | Valor Final: \n");
+    printf("|   | Situação (F/A): \n");
     printf("----------------------------------------------\n");
-
+    printf("\n");
+    printf("|   | O que você deseja alterar?:\n");
+    printf("_____-----------------------------------_____\n");
+    printf("|   |  1 - Veículo     2 - Dtd. Inicio  |   |\n");
+    printf("---------------------------------------------\n");
+    printf("|   |  3 - Dtd. Final   4 - Situação    |   |\n");
+    printf("---------------------------------------------\n");
+    printf("|   |              0 - Sair             |   |\n");
+    printf("_____-----------------------------------_____\n");
+    printf("\n");
+    printf("-> Escolha sua opção: ");
+    scanf("%d", &opc_altr_locacao);
+    printf("---------------------------------------------\n");
 }
 
 // MENU EXCLUIR LOCAÇÃO
