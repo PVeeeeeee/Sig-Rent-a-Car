@@ -386,15 +386,26 @@ void menu_alterar_veiculo(void) {
 // MENU EXCLUIR VEÍCULO
 void menu_excluir_veiculo(void) {
     system("clear||cls");
-    char placa[8];
+    char opc_exclr_veiculo;
     printf("_____------------------------------------_____\n");
     printf("|   |        == SIG-Rent-a-Car ==        |   |\n");
     printf("|   |   Sistema de Locação de Veículos   |   |\n");
     printf("----------------------------------------------\n");
     printf("|   |          EXCLUIR VEÍCULO           |   |\n");
     printf("----------------------------------------------\n");
-    printf("|   | Digite a Placa: ");
-    scanf("%7s", placa);
+    printf("|   | Chassi:  \n");
+    printf("|   | Marca: \n");
+    printf("|   | Modelo: \n");
+    printf("|   | Tipo: \n");
+    printf("|   | Combustível: \n");
+    printf("|   | Ano: \n");
+    printf("|   | Lugares: \n");
+    printf("|   | Valor: \n");
+    printf("----------------------------------------------\n");
+    printf("\n");
+    printf("|   | Você tem certeza que deseja excluir?(S/N): ");
+    scanf("%c", &opc_exclr_veiculo);
+    getchar();
     printf("----------------------------------------------\n");
 }
 
