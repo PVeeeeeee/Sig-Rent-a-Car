@@ -5,6 +5,12 @@
 
 // FUNÇÕES
 
+// LIMPA BUFFER
+void limpa_buffer(void) {
+    int ch;
+    while ((ch = getchar()) != '\n' && ch != EOF); 
+}
+
 // MENU_PRINCIPAL
 int menu_principal(void) {
     int opc_principal;
@@ -57,13 +63,8 @@ void menu_sobre(void) {
     printf("|               Rio Grande do Norte (UFRN) \u00A9 2024                |\n");
     printf("|                                                                |\n");
     printf("------------------------------------------------------------------\n");
-    printf("Tecle <ENTER> para prosseguir...\n");
-    
-    // Limpa o buffer de entrada
-    int ch;
-    while ((ch = getchar()) != '\n' && ch != EOF); 
-
-    getchar();
+    printf("Tecle <ENTER> para prosseguir...    ");
+    limpa_buffer();
 }
 
 // MENU PESSOAS
