@@ -348,15 +348,38 @@ void menu_checar_veiculo(void) {
 // MENU ALTERAR VEÍCULO
 void menu_alterar_veiculo(void) {
     system("clear||cls");
-    char placa[8];
+    int opc_altr_veiculo;
     printf("_____------------------------------------_____\n");
     printf("|   |        == SIG-Rent-a-Car ==        |   |\n");
     printf("|   |   Sistema de Locação de Veículos   |   |\n");
     printf("----------------------------------------------\n");
     printf("|   |          ALTERAR VEÍCULO           |   |\n");
     printf("----------------------------------------------\n");
-    printf("|   | Digite a Placa: ");
-    scanf("%7s", placa);
+    printf("|   | Chassi:  \n");
+    printf("|   | Marca: \n");
+    printf("|   | Modelo: \n");
+    printf("|   | Tipo: \n");
+    printf("|   | Combustível: \n");
+    printf("|   | Ano: \n");
+    printf("|   | Lugares: \n");
+    printf("|   | Valor: \n");
+    printf("----------------------------------------------\n");
+    printf("\n");
+    printf("|   | O que você deseja alterar?:\n");
+    printf("_____--------------------------------_____\n");
+    printf("|   |  1 - Chassi        2 - Marca   |   |\n");
+    printf("----------------------------------------------\n");
+    printf("|   |  3 - Modelo        4 - Tipo    |   |\n");
+    printf("----------------------------------------------\n");
+    printf("|   |  5 - Combustível   6 - Ano     |   |\n");
+    printf("------------------------------------------\n");
+    printf("|   |  7 - Lugares       8 - Valor   |   |\n");
+    printf("------------------------------------------\n");
+    printf("|   |             0 - Sair           |   |\n");
+    printf("_____--------------------------------_____\n");
+    printf("\n");
+    printf("-> Escolha sua opção: ");
+    scanf("%d", &opc_altr_veiculo);
     printf("----------------------------------------------\n");
 }
 
