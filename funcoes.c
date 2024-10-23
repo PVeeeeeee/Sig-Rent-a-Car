@@ -133,6 +133,8 @@ void menu_cadastrar_pessoa(void) {
     printf("--------------------------------------\n");
     printf("|   | Pessoa Cadastrada com Sucesso! ");
     printf("\n");
+    printf("Tecle <ENTER> para prosseguir...    ");
+    limpa_buffer();
 }
 
 // MENU CHECAR PESSOA
@@ -258,6 +260,8 @@ void relatorio_clientes(void) {
     printf("------------------------------------------------\n");
     printf("|            ORDEM ALFABÉTICA [A-Z]            |\n");
     printf("------------------------------------------------\n");
+    printf("Tecle <ENTER> para prosseguir...    ");
+    limpa_buffer();
 }
 
 // RELATÓRIO FUNCIONÁRIOS
@@ -271,6 +275,8 @@ void relatorio_funcionarios(void) {
     printf("------------------------------------------------\n");
     printf("|            ORDEM ALFABÉTICA [A-Z]            |\n");
     printf("------------------------------------------------\n");
+    printf("Tecle <ENTER> para prosseguir...    ");
+    limpa_buffer();
 }
 
 // RELATÓRIO PESSOAS GERAL
@@ -284,6 +290,8 @@ void relatorio_geral_pessoas(void) {
     printf("------------------------------------------------\n");
     printf("|             ORDEM ALFABÉTICA [A-Z]           |\n");
     printf("------------------------------------------------\n");
+    printf("Tecle <ENTER> para prosseguir...    ");
+    limpa_buffer();
 }
 
 // MENU VEÍCULOS
@@ -367,6 +375,8 @@ void menu_cadastrar_veiculo(void) {
     printf("---------------------------------------\n");
     printf("|   | Veículo Cadastrado com Sucesso! ");
     printf("\n");
+    printf("Tecle <ENTER> para prosseguir...    ");
+    limpa_buffer();
 }
 
 // MENU CHECAR VEÍCULO
@@ -545,6 +555,8 @@ void menu_cadastrar_locacao(void) {
     printf("---------------------------------------\n");
     printf("|   | Locação Cadastrada com Sucesso! ");
     printf("\n");
+    printf("Tecle <ENTER> para prosseguir...    ");
+    limpa_buffer();
 }
 
 // MENU CHECAR LOCAÇÃO
