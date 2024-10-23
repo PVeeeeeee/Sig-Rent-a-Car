@@ -440,7 +440,7 @@ void menu_cadastrar_locacao(void) {
     // VARIÁVEIS
     char id_locacao[11];
     char cpf_cliente[12];
-    char cpf_vendedor[12];
+    char cpf_funcionario[12];
     char placa_veiculo[8];
     char data_inic[9];
     char data_final[9];
@@ -461,9 +461,9 @@ void menu_cadastrar_locacao(void) {
     printf("|   | Cliente (CPF): \n");
     printf("|   | ");
     scanf("%11s", cpf_cliente);
-    printf("|   | Vendedor (CPF): \n");
+    printf("|   | Funcionário (CPF): \n");
     printf("|   | ");
-    scanf("%11s", cpf_vendedor);
+    scanf("%11s", cpf_funcionario);
     printf("|   | Placa do Veículo: \n");
     printf("|   | ");
     scanf("%7s", placa_veiculo);
@@ -488,29 +488,37 @@ void menu_cadastrar_locacao(void) {
 // MENU CHECAR LOCAÇÃO
 void menu_checar_locacao(void) {
     char id_locacao[11];
-    int opcao = -1;
-    while (opcao != 0) {
-        system("clear||cls");
-        printf("_____------------------------------------_____\n");
-        printf("|   |        == SIG-Rent-a-Car ==        |   |\n");
-        printf("|   |   Sistema de Locação de Veículos   |   |\n");
-        printf("----------------------------------------------\n");
-        printf("|   |           CHECAR LOCAÇÃO           |   |\n");
-        printf("----------------------------------------------\n");
-        printf("|   | Digite o ID: ");
-        scanf("%10s", id_locacao);
-        printf("|   | O que você deseja fazer?\n");
-        printf("_____------------------------------------_____\n");
-        printf("|   | 1 - Alterar  2 - Excluir  0 - Sair |   |\n");
-        printf("_____------------------------------------_____\n");
-        scanf("%d", &opcao);
-        printf("----------------------------------------------\n");
+    int opc_check_locacao;
+    system("clear||cls");
+    printf("_____------------------------------------_____\n");
+    printf("|   |        == SIG-Rent-a-Car ==        |   |\n");
+    printf("|   |   Sistema de Locação de Veículos   |   |\n");
+    printf("----------------------------------------------\n");
+    printf("|   |           CHECAR LOCAÇÃO           |   |\n");
+    printf("----------------------------------------------\n");
+    printf("|   | Digite o ID: ");
+    scanf("%10s", id_locacao);
+    printf("|   | Cliente (CPF): \n");
+    printf("|   | Funcionário (CPF): \n");
+    printf("|   | Placa do Veículo: \n");
+    printf("|   | Data Início: \n");
+    printf("|   | Data Final: \n");
+    printf("|   | Valor Final: \n");
+    printf("|   | Situação (F/A): \n");
+    printf("----------------------------------------------\n");
+    printf("\n");
+    printf("|   | O que você deseja fazer?\n");
+    printf("_____------------------------------------_____\n");
+    printf("|   | 1 - Alterar  2 - Excluir  0 - Sair |   |\n");
+    printf("_____------------------------------------_____\n");
+    printf("-> Escolha sua opção: ");
+    scanf("%d", &opc_check_locacao);
+    printf("----------------------------------------------\n");
 
-        if (opcao == 1) {
-            menu_alterar_locacao();
-        } else if (opcao == 2) {
-            menu_excluir_locacao();
-        }
+    if (opc_check_locacao == 1) {
+        menu_alterar_locacao();
+    } else if (opc_check_locacao == 2) {
+        menu_excluir_locacao();
     }
 }
 
