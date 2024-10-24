@@ -58,7 +58,7 @@ int main(void) {
                         if (opc_relt_veiculos == 1) {
                             relatorio_geral_veiculos();
                         } else if (opc_relt_veiculos == 2) {
-                            //relatorio_marca_veiculos();
+                            relatorio_marca_veiculos();
                         } else if (opc_relt_veiculos == 3) {
                             //relatorio_modelo_veiculos();
                         } else if (opc_relt_veiculos == 4) {
