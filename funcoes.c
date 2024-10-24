@@ -481,6 +481,39 @@ void menu_excluir_veiculo(void) {
     printf("----------------------------------------------\n");
 }
 
+// MENU RELATÓRIO VEÍCULO
+int menu_relatorio_veiculo(void) {
+    int opc_relt_veiculo;
+
+    system("clear||cls");
+    printf("_____--------------------------------------_____\n");
+    printf("|   |         == SIG-Rent-a-Car ==         |   |\n");
+    printf("|   |    Sistema de Locação de Veículos    |   |\n");
+    printf("------------------------------------------------\n");
+    printf("|   |              RELATÓRIO               |   |\n");
+    printf("------------------------------------------------\n");
+    printf("|     Os relatórios podem ser visualizados     |\n");
+    printf("|           por ordem destas opções:           |\n");
+    printf("------------------------------------------------\n");
+    printf("|                                              |\n");
+    printf("|         1 - Geral          2 - Marca         |\n");
+    printf("|                                              |\n");
+    printf("|         3 - Modelo         4 - Ano           |\n");
+    printf("|                                              |\n");
+    printf("|         5 - Combustível    6 - Tipo          |\n");
+    printf("|                                              |\n");
+    printf("|         7 - Lugares        8 - Valor         |\n");
+    printf("|                                              |\n");
+    printf("|         9 - Disponíveis    0 - Sair          |\n");
+    printf("|                                              |\n");
+    printf("------------------------------------------------\n");
+    printf("\n");
+    printf("-> Escolha sua opção: ");
+    scanf("%d", &opc_relt_veiculo);
+    getchar();
+    return opc_relt_veiculo;
+}
+
 // MENU LOCAÇÕES
 int menu_locacoes(void) {
     int opc_locacoes;

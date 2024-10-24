@@ -52,7 +52,7 @@ int main(void) {
                 } else if (opc_veiculos == 2) {
                     menu_checar_veiculo();
                 } else if (opc_veiculos == 3) {
-                    //menu_relatorio_veiculo();
+                    menu_relatorio_veiculo();
                 } else if (opc_veiculos == 4) {
                     //menu_marcas();
                 } else if (opc_veiculos == 5) {

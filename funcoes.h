@@ -21,6 +21,7 @@ void menu_cadastrar_veiculo(void);
 void menu_checar_veiculo(void);
 void menu_alterar_veiculo(void);
 void menu_excluir_veiculo(void);
+int menu_relatorio_veiculo(void);
 
     // LOCAÇÕES
 int menu_locacoes(void);
