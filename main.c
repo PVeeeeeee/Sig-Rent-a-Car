@@ -51,6 +51,14 @@ int main(void) {
                     menu_cadastrar_veiculo();
                 } else if (opc_veiculos == 2) {
                     menu_checar_veiculo();
+                } else if (opc_veiculos == 3) {
+                    //menu_relatorio_veiculo();
+                } else if (opc_veiculos == 4) {
+                    //menu_marcas();
+                } else if (opc_veiculos == 5) {
+                    //menu_tipos();
+                } else if (opc_veiculos == 6) {
+                    //menu_combustiveis();
                 }
             }
 
