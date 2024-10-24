@@ -490,7 +490,7 @@ int menu_relatorio_veiculo(void) {
     printf("|   |         == SIG-Rent-a-Car ==         |   |\n");
     printf("|   |    Sistema de Locação de Veículos    |   |\n");
     printf("------------------------------------------------\n");
-    printf("|   |              RELATÓRIO               |   |\n");
+    printf("|   |         RELATÓRIO - VEÍCULOS         |   |\n");
     printf("------------------------------------------------\n");
     printf("|     Os relatórios podem ser visualizados     |\n");
     printf("|           por ordem destas opções:           |\n");
@@ -512,6 +512,21 @@ int menu_relatorio_veiculo(void) {
     scanf("%d", &opc_relt_veiculo);
     getchar();
     return opc_relt_veiculo;
+}
+
+// RELATÓRIO VEÍCULO GERAL
+void relatorio_geral_veiculos(void) {
+    system("clear||cls");
+    printf("_____--------------------------------------_____\n");
+    printf("|   |         == SIG-Rent-a-Car ==         |   |\n");
+    printf("|   |    Sistema de Locação de Veículos    |   |\n");
+    printf("------------------------------------------------\n");
+    printf("|   |           VEÍCULOS - GERAL           |   |\n");
+    printf("------------------------------------------------\n");
+    printf("|             ORDEM ALFABÉTICA [A-Z]           |\n");
+    printf("------------------------------------------------\n");
+    printf("Tecle <ENTER> para prosseguir...    ");
+    limpa_buffer();
 }
 
 // MENU LOCAÇÕES

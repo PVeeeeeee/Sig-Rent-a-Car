@@ -56,7 +56,7 @@ int main(void) {
                         opc_relt_veiculos = menu_relatorio_veiculo();
 
                         if (opc_relt_veiculos == 1) {
-                            //relatorio_geral_veiculos();
+                            relatorio_geral_veiculos();
                         } else if (opc_relt_veiculos == 2) {
                             //relatorio_marca_veiculos();
                         } else if (opc_relt_veiculos == 3) {
