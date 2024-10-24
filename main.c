@@ -52,7 +52,29 @@ int main(void) {
                 } else if (opc_veiculos == 2) {
                     menu_checar_veiculo();
                 } else if (opc_veiculos == 3) {
-                    menu_relatorio_veiculo();
+                    while (opc_relt_veiculos != 0) {
+                        opc_relt_veiculos = menu_relatorio_veiculo();
+
+                        if (opc_relt_veiculos == 1) {
+                            //relatorio_geral_veiculos();
+                        } else if (opc_relt_veiculos == 2) {
+                            //relatorio_marca_veiculos();
+                        } else if (opc_relt_veiculos == 3) {
+                            //relatorio_modelo_veiculos();
+                        } else if (opc_relt_veiculos == 4) {
+                            //relatorio_ano_veiculos();
+                        } else if (opc_relt_veiculos == 5) {
+                            //relatorio_combustivel_veiculos();
+                        } else if (opc_relt_veiculos == 6) {
+                            //relatorio_tipo_veiculos();
+                        } else if (opc_relt_veiculos == 7) {
+                            //relatorio_lugares_veiculos();
+                        } else if (opc_relt_veiculos == 8) {
+                            //relatorio_valor_veiculos();
+                        } else if (opc_relt_veiculos == 9) {
+                            //relatorio_disponivel_veiculos();
+                        }
+                    }
                 } else if (opc_veiculos == 4) {
                     //menu_marcas();
                 } else if (opc_veiculos == 5) {

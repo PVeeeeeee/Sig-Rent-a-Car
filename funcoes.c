@@ -80,7 +80,7 @@ int menu_pessoas(void) {
     printf("|                                                        |\n");
     printf("|                 1 - Cadastrar Pessoa                   |\n");
     printf("|                 2 - Checar Pessoa                      |\n");
-    printf("|                 3 - Relatório                          |\n");
+    printf("|                 3 - Relatórios                         |\n");
     printf("|                 0 - Menu Principal                     |\n");
     printf("|                                                        |\n");
     printf("----------------------------------------------------------\n");
@@ -307,7 +307,7 @@ int menu_veiculos(void) {
     printf("|                                                        |\n");
     printf("|                 1 - Cadastrar Veículo                  |\n");
     printf("|                 2 - Checar Veículo                     |\n");
-    printf("|                 3 - Relatório                          |\n");
+    printf("|                 3 - Relatórios                         |\n");
     printf("|                 4 - Marcas                             |\n");
     printf("|                 5 - Tipos                              |\n");
     printf("|                 6 - Combustíveis                       |\n");
