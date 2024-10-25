@@ -124,6 +124,8 @@ int main(void) {
                     menu_cadastrar_locacao();
                 } else if (opc_locacoes == 2) {
                     menu_checar_locacao();
+                } else if (opc_locacoes == 3) {
+                    menu_relatorio_locacao();
                 }
             }
         

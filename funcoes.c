@@ -1274,3 +1274,32 @@ void menu_excluir_locacao(void) {
     getchar();
     printf("----------------------------------------------\n");
 }
+
+// MENU RELATÓRIO LOCAÇÃO
+int menu_relatorio_locacao(void) {
+    int opc_relt_locacao;
+
+    system("clear||cls");
+    printf("_____--------------------------------------_____\n");
+    printf("|   |         == SIG-Rent-a-Car ==         |   |\n");
+    printf("|   |    Sistema de Locação de Veículos    |   |\n");
+    printf("------------------------------------------------\n");
+    printf("|   |         RELATÓRIO - LOCAÇÕES         |   |\n");
+    printf("------------------------------------------------\n");
+    printf("|     Os relatórios podem ser visualizados     |\n");
+    printf("|           por ordem destas opções:           |\n");
+    printf("------------------------------------------------\n");
+    printf("|                                              |\n");
+    printf("|         1 - Geral          2 - Data          |\n");
+    printf("|                                              |\n");
+    printf("|         3 - Veículo        4 - Ano           |\n");
+    printf("|                                              |\n");
+    printf("|                   0 - Sair                   |\n");
+    printf("|                                              |\n");
+    printf("------------------------------------------------\n");
+    printf("\n");
+    printf("-> Escolha sua opção: ");
+    scanf("%d", &opc_relt_locacao);
+    getchar();
+    return opc_relt_locacao;
+}
