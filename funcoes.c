@@ -631,6 +631,23 @@ void relatorio_lugares_veiculos(void) {
     limpa_buffer();
 }
 
+// RELATÓRIO VEÍCULO VALOR
+void relatorio_valor_veiculos(void) {
+    float valor;
+
+    system("clear||cls");
+    printf("_____--------------------------------------_____\n");
+    printf("|   |         == SIG-Rent-a-Car ==         |   |\n");
+    printf("|   |    Sistema de Locação de Veículos    |   |\n");
+    printf("------------------------------------------------\n");
+    printf("|   |          VEÍCULOS - VALOR            |   |\n");
+    printf("------------------------------------------------\n");
+    printf("|   | Digite o Valor: ");
+    scanf("%f", valor);
+    printf("Tecle <ENTER> para prosseguir...    ");
+    limpa_buffer();
+}
+
 // MENU LOCAÇÕES
 int menu_locacoes(void) {
     int opc_locacoes;

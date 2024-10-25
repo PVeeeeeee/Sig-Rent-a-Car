@@ -29,6 +29,7 @@ void relatorio_ano_veiculos(void);
 void relatorio_combustivel_veiculos(void);
 void relatorio_tipo_veiculos(void);
 void relatorio_lugares_veiculos(void);
+void relatorio_valor_veiculos(void);
 
     // LOCAÇÕES
 int menu_locacoes(void);
