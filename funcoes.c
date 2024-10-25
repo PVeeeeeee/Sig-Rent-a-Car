@@ -941,6 +941,21 @@ void menu_excluir_tipo(void) {
     printf("----------------------------------------------\n");
 }
 
+// RELATÓRIO TIPO
+void menu_relatorio_tipo(void) {
+    system("clear||cls");
+    printf("_____--------------------------------------_____\n");
+    printf("|   |         == SIG-Rent-a-Car ==         |   |\n");
+    printf("|   |    Sistema de Locação de Veículos    |   |\n");
+    printf("------------------------------------------------\n");
+    printf("|   |           RELATÓRIO - TIPOS          |   |\n");
+    printf("------------------------------------------------\n");
+    printf("|             ORDEM ALFABÉTICA [A-Z]           |\n");
+    printf("------------------------------------------------\n");
+    printf("Tecle <ENTER> para prosseguir...    ");
+    limpa_buffer();
+}
+
 // MENU COMBUSTÍVEL
 int menu_combustiveis(void) {
     int opc_combustiveis;

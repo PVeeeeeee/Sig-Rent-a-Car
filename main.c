@@ -96,7 +96,7 @@ int main(void) {
                         } else if (opc_tipos == 2) {
                             menu_checar_tipo();
                         } else if (opc_tipos == 3) {
-                            //menu_relatorio_tipo();
+                            menu_relatorio_tipo();
                         }
                     }
                     

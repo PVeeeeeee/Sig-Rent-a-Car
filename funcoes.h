@@ -48,6 +48,7 @@ void menu_cadastrar_tipo(void);
 void menu_checar_tipo(void);
 void menu_alterar_tipo(void);
 void menu_excluir_tipo(void);
+void menu_relatorio_tipo(void);
 
     // COMBUSTÍVEIS
 int menu_combustiveis(void);
