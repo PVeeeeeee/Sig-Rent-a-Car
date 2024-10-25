@@ -80,7 +80,7 @@ int main(void) {
                 } else if (opc_veiculos == 5) {
                     menu_tipos();
                 } else if (opc_veiculos == 6) {
-                    //menu_combustiveis();
+                    menu_combustiveis();
                 }
             }
 

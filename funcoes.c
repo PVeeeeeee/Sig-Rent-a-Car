@@ -720,6 +720,31 @@ int menu_tipos(void) {
     return opc_tipos;
 }
 
+// MENU COMBUSTÍVEL
+int menu_combustiveis(void) {
+    int opc_combustiveis;
+
+    system("clear||cls");
+    printf("_____------------------------------------------------_____\n");
+    printf("|   |              == SIG-Rent-a-Car ==              |   |\n");
+    printf("|   |         Sistema de Locação de Veículos         |   |\n");
+    printf("----------------------------------------------------------\n");
+    printf("|   |                  COMBUSTÍVEIS                  |   |\n");
+    printf("----------------------------------------------------------\n");
+    printf("|                                                        |\n");
+    printf("|                1 - Cadastrar Combustível               |\n");
+    printf("|                2 - Checar Combustível                  |\n");
+    printf("|                3 - Relatório                           |\n");
+    printf("|                0 - Menu Principal                      |\n");
+    printf("|                                                        |\n");
+    printf("----------------------------------------------------------\n");
+    printf("\n");
+    printf("-> Escolha sua opção: ");
+    scanf("%d", &opc_combustiveis);
+    getchar();
+    return opc_combustiveis;
+}
+
 // MENU LOCAÇÕES
 int menu_locacoes(void) {
     int opc_locacoes;
