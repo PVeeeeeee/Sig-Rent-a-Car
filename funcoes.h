@@ -44,6 +44,7 @@ void menu_relatorio_marca(void);
 
     // TIPOS
 int menu_tipos(void);
+void menu_cadastrar_tipo(void);
 
     // COMBUSTÍVEIS
 int menu_combustiveis(void);

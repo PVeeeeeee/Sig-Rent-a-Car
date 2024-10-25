@@ -814,7 +814,6 @@ void menu_relatorio_marca(void) {
     limpa_buffer();
 }
 
-
 // MENU TIPOS
 int menu_tipos(void) {
     int opc_tipos;
@@ -838,6 +837,32 @@ int menu_tipos(void) {
     scanf("%d", &opc_tipos);
     getchar();
     return opc_tipos;
+}
+
+// MENU CADASTRAR TIPO
+void menu_cadastrar_tipo(void) {
+    // VARIÁVEIS
+    char nome[25];
+
+    // FORM
+    system("clear||cls");
+    printf("_____------------------------------------_____\n");
+    printf("|   |        == SIG-Rent-a-Car ==        |   |\n");
+    printf("|   |   Sistema de Locação de Veículos   |   |\n");
+    printf("----------------------------------------------\n");
+    printf("|   |           CADASTRAR TIPO           |   |\n");
+    printf("----------------------------------------------\n");
+    printf("|   |\n");
+    printf("|   | Nome:  \n");
+    printf("|   | ");
+    scanf("%24s", nome);
+    printf("|   |\n");
+    printf("---------------------------------------\n");
+    printf("|   | Tipo Cadastrado com Sucesso! ");
+    printf("\n");
+    printf("Tecle <ENTER> para prosseguir...    ");
+    limpa_buffer();
+    getchar();
 }
 
 // MENU COMBUSTÍVEL
