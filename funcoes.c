@@ -893,7 +893,7 @@ void menu_checar_tipo(void) {
     if (opc_check_tipo == 1) {
         menu_alterar_tipo();
     } else if (opc_check_tipo == 2) {
-        //menu_excluir_tipo();
+        menu_excluir_tipo();
     }
 }
 
@@ -919,6 +919,26 @@ void menu_alterar_tipo(void) {
     printf("-> Escolha sua opção: ");
     scanf("%d", &opc_altr_tipo);
     printf("---------------------------------------------\n");
+}
+
+// MENU EXCLUIR TIPO
+void menu_excluir_tipo(void) {
+    char opc_exclr_tipo;
+
+    system("clear||cls");
+    printf("_____------------------------------------_____\n");
+    printf("|   |        == SIG-Rent-a-Car ==        |   |\n");
+    printf("|   |   Sistema de Locação de Veículos   |   |\n");
+    printf("----------------------------------------------\n");
+    printf("|   |            EXCLUIR TIPO            |   |\n");
+    printf("----------------------------------------------\n");
+    printf("|   | Nome: \n");
+    printf("----------------------------------------------\n");
+    printf("\n");
+    printf("|   | Você tem certeza que deseja excluir?(S/N): ");
+    scanf("%c", &opc_exclr_tipo);
+    getchar();
+    printf("----------------------------------------------\n");
 }
 
 // MENU COMBUSTÍVEL
