@@ -749,10 +749,34 @@ void menu_checar_marca(void) {
     printf("----------------------------------------------\n");
 
     if (opc_check_marca == 1) {
-        //menu_alterar_locacao();
+        menu_alterar_marca();
     } else if (opc_check_marca == 2) {
         //menu_excluir_locacao();
     }
+}
+
+// MENU ALTERAR MARCA
+void menu_alterar_marca(void) {
+    int opc_altr_marca;
+    
+    system("clear||cls");
+    printf("_____------------------------------------_____\n");
+    printf("|   |        == SIG-Rent-a-Car ==        |   |\n");
+    printf("|   |   Sistema de Locação de Veículos   |   |\n");
+    printf("----------------------------------------------\n");
+    printf("|   |            ALTERAR MARCA           |   |\n");
+    printf("----------------------------------------------\n");
+    printf("|   | Nome: \n");
+    printf("----------------------------------------------\n");
+    printf("\n");
+    printf("|   | O que você deseja alterar?:\n");
+    printf("_____-----------------------------------_____\n");
+    printf("|   |      1 - Nome       0 - Sair      |   |\n");
+    printf("_____-----------------------------------_____\n");
+    printf("\n");
+    printf("-> Escolha sua opção: ");
+    scanf("%d", &opc_altr_marca);
+    printf("---------------------------------------------\n");
 }
 
 // MENU TIPOS
@@ -924,7 +948,7 @@ void menu_checar_locacao(void) {
 
 // MENU ALTERAR LOCAÇÃO
 void menu_alterar_locacao(void) {
-    char opc_altr_locacao;
+    int opc_altr_locacao;
     
     system("clear||cls");
     printf("_____------------------------------------_____\n");

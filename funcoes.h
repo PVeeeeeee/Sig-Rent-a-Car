@@ -21,6 +21,8 @@ void menu_cadastrar_veiculo(void);
 void menu_checar_veiculo(void);
 void menu_alterar_veiculo(void);
 void menu_excluir_veiculo(void);
+
+    // RELATÓRIOS VEÍCULOS
 int menu_relatorio_veiculo(void);
 void relatorio_geral_veiculos(void);
 void relatorio_marca_veiculos(void);
@@ -36,6 +38,7 @@ void relatorio_disponivel_veiculos(void);
 int menu_marcas(void);
 void menu_cadastrar_marca(void);
 void menu_checar_marca(void);
+void menu_alterar_marca(void);
 
     // TIPOS
 int menu_tipos(void);
