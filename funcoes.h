@@ -31,8 +31,15 @@ void relatorio_tipo_veiculos(void);
 void relatorio_lugares_veiculos(void);
 void relatorio_valor_veiculos(void);
 void relatorio_disponivel_veiculos(void);
+
+    // MARCAS
+void menu_cadastrar_marca(void);
 int menu_marcas(void);
+
+    // TIPOS
 int menu_tipos(void);
+
+    // COMBUSTÍVEIS
 int menu_combustiveis(void);
 
     // LOCAÇÕES

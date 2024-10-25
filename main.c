@@ -80,7 +80,7 @@ int main(void) {
                         opc_marcas = menu_marcas();
 
                         if (opc_marcas == 1) {
-                            //menu_cadastrar_marca();
+                            menu_cadastrar_marca();
                         } else if (opc_marcas == 2) {
                             //menu_checar_marca();
                         } else if (opc_marcas == 3) {
