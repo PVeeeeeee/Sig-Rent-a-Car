@@ -799,6 +799,22 @@ void menu_excluir_marca(void) {
     printf("----------------------------------------------\n");
 }
 
+// RELATÓRIO MARCA
+void menu_relatorio_marca(void) {
+    system("clear||cls");
+    printf("_____--------------------------------------_____\n");
+    printf("|   |         == SIG-Rent-a-Car ==         |   |\n");
+    printf("|   |    Sistema de Locação de Veículos    |   |\n");
+    printf("------------------------------------------------\n");
+    printf("|   |          RELATÓRIO - MARCAS          |   |\n");
+    printf("------------------------------------------------\n");
+    printf("|             ORDEM ALFABÉTICA [A-Z]           |\n");
+    printf("------------------------------------------------\n");
+    printf("Tecle <ENTER> para prosseguir...    ");
+    limpa_buffer();
+}
+
+
 // MENU TIPOS
 int menu_tipos(void) {
     int opc_tipos;

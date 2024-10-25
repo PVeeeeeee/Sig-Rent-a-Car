@@ -84,7 +84,7 @@ int main(void) {
                         } else if (opc_marcas == 2) {
                             menu_checar_marca();
                         } else if (opc_marcas == 3) {
-                            //menu_relatorio_marca();
+                            menu_relatorio_marca();
                         }
                     }
                 } else if (opc_veiculos == 5) {

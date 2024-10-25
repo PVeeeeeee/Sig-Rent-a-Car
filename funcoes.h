@@ -40,6 +40,7 @@ void menu_cadastrar_marca(void);
 void menu_checar_marca(void);
 void menu_alterar_marca(void);
 void menu_excluir_marca(void);
+void menu_relatorio_marca(void);
 
     // TIPOS
 int menu_tipos(void);
