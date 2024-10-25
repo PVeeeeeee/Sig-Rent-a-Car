@@ -53,6 +53,7 @@ void menu_relatorio_tipo(void);
     // COMBUSTÍVEIS
 int menu_combustiveis(void);
 void menu_cadastrar_combustivel(void);
+void menu_checar_combustivel(void);
 
     // LOCAÇÕES
 int menu_locacoes(void);

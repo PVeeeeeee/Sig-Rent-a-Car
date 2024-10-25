@@ -1007,6 +1007,38 @@ void menu_cadastrar_combustivel(void) {
     getchar();
 }
 
+// MENU CHECAR COMBUSTÍVEL
+void menu_checar_combustivel(void) {
+    char id_combustivel[11];
+    int opc_check_combustivel;
+
+    system("clear||cls");
+    printf("_____------------------------------------_____\n");
+    printf("|   |        == SIG-Rent-a-Car ==        |   |\n");
+    printf("|   |   Sistema de Locação de Veículos   |   |\n");
+    printf("----------------------------------------------\n");
+    printf("|   |         CHECAR COMBUSTÍVEL         |   |\n");
+    printf("----------------------------------------------\n");
+    printf("|   | Digite o ID: ");
+    scanf("%10s", id_combustivel);
+    printf("|   | Nome: \n");
+    printf("----------------------------------------------\n");
+    printf("\n");
+    printf("|   | O que você deseja fazer?\n");
+    printf("_____------------------------------------_____\n");
+    printf("|   | 1 - Alterar  2 - Excluir  0 - Sair |   |\n");
+    printf("_____------------------------------------_____\n");
+    printf("-> Escolha sua opção: ");
+    scanf("%d", &opc_check_combustivel);
+    printf("----------------------------------------------\n");
+
+    if (opc_check_combustivel == 1) {
+        //menu_alterar_combustivel();
+    } else if (opc_check_combustivel == 2) {
+        //menu_excluir_combustivel();
+    }
+}
+
 // MENU LOCAÇÕES
 int menu_locacoes(void) {
     int opc_locacoes;
