@@ -981,6 +981,32 @@ int menu_combustiveis(void) {
     return opc_combustiveis;
 }
 
+// MENU CADASTRAR COMBUSTÍVEL
+void menu_cadastrar_combustivel(void) {
+    // VARIÁVEIS
+    char nome[25];
+
+    // FORM
+    system("clear||cls");
+    printf("_____------------------------------------_____\n");
+    printf("|   |        == SIG-Rent-a-Car ==        |   |\n");
+    printf("|   |   Sistema de Locação de Veículos   |   |\n");
+    printf("----------------------------------------------\n");
+    printf("|   |        CADASTRAR COMBUSTÍVEL       |   |\n");
+    printf("----------------------------------------------\n");
+    printf("|   |\n");
+    printf("|   | Nome:  \n");
+    printf("|   | ");
+    scanf("%24s", nome);
+    printf("|   |\n");
+    printf("---------------------------------------\n");
+    printf("|   | Combustível Cadastrado com Sucesso! ");
+    printf("\n");
+    printf("Tecle <ENTER> para prosseguir...    ");
+    limpa_buffer();
+    getchar();
+}
+
 // MENU LOCAÇÕES
 int menu_locacoes(void) {
     int opc_locacoes;

@@ -105,7 +105,7 @@ int main(void) {
                         opc_combustiveis = menu_combustiveis();
 
                         if (opc_combustiveis == 1) {
-                            //menu_cadastrar_combustivel();
+                            menu_cadastrar_combustivel();
                         } else if (opc_combustiveis == 2) {
                             //menu_checar_combustivel();
                         } else if (opc_combustiveis == 3) {
