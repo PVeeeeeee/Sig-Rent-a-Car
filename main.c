@@ -72,7 +72,7 @@ int main(void) {
                         } else if (opc_relt_veiculos == 8) {
                             relatorio_valor_veiculos();
                         } else if (opc_relt_veiculos == 9) {
-                            //relatorio_disponivel_veiculos();
+                            relatorio_disponivel_veiculos();
                         }
                     }
                 } else if (opc_veiculos == 4) {
