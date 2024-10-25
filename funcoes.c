@@ -695,6 +695,31 @@ int menu_marcas(void) {
     return opc_marcas;
 }
 
+// MENU TIPOS
+int menu_tipos(void) {
+    int opc_tipos;
+
+    system("clear||cls");
+    printf("_____------------------------------------------------_____\n");
+    printf("|   |              == SIG-Rent-a-Car ==              |   |\n");
+    printf("|   |         Sistema de Locação de Veículos         |   |\n");
+    printf("----------------------------------------------------------\n");
+    printf("|   |                     TIPOS                      |   |\n");
+    printf("----------------------------------------------------------\n");
+    printf("|                                                        |\n");
+    printf("|                1 - Cadastrar Tipo                      |\n");
+    printf("|                2 - Checar Tipo                         |\n");
+    printf("|                3 - Relatório                           |\n");
+    printf("|                0 - Menu Principal                      |\n");
+    printf("|                                                        |\n");
+    printf("----------------------------------------------------------\n");
+    printf("\n");
+    printf("-> Escolha sua opção: ");
+    scanf("%d", &opc_tipos);
+    getchar();
+    return opc_tipos;
+}
+
 // MENU LOCAÇÕES
 int menu_locacoes(void) {
     int opc_locacoes;

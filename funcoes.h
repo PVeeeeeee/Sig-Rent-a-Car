@@ -32,6 +32,7 @@ void relatorio_lugares_veiculos(void);
 void relatorio_valor_veiculos(void);
 void relatorio_disponivel_veiculos(void);
 int menu_marcas(void);
+int menu_tipos(void);
 
     // LOCAÇÕES
 int menu_locacoes(void);
