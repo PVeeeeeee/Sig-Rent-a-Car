@@ -88,7 +88,18 @@ int main(void) {
                         }
                     }
                 } else if (opc_veiculos == 5) {
-                    menu_tipos();
+                    while (opc_tipos != 0) {
+                        opc_tipos = menu_tipos();
+
+                        if (opc_tipos == 1) {
+                            //menu_cadastrar_tipo();
+                        } else if (opc_tipos == 2) {
+                            //menu_checar_tipo();
+                        } else if (opc_tipos == 3) {
+                            //menu_relatorio_tipo();
+                        }
+                    }
+                    
                 } else if (opc_veiculos == 6) {
                     menu_combustiveis();
                 }
