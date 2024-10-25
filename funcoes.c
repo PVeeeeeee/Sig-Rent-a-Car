@@ -346,7 +346,7 @@ void menu_cadastrar_veiculo(void) {
     printf("|   |        == SIG-Rent-a-Car ==        |   |\n");
     printf("|   |   Sistema de Locação de Veículos   |   |\n");
     printf("----------------------------------------------\n");
-    printf("|   |         CADASTRAR VEÍCULO          |   |\n");
+    printf("|   |          CADASTRAR VEÍCULO         |   |\n");
     printf("----------------------------------------------\n");
     printf("|   |\n");
     printf("|   | Chassi:  \n");
