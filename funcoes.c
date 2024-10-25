@@ -1035,7 +1035,7 @@ void menu_checar_combustivel(void) {
     if (opc_check_combustivel == 1) {
         menu_alterar_combustivel();
     } else if (opc_check_combustivel == 2) {
-        //menu_excluir_combustivel();
+        menu_excluir_combustivel();
     }
 }
 
@@ -1061,6 +1061,26 @@ void menu_alterar_combustivel(void) {
     printf("-> Escolha sua opção: ");
     scanf("%d", &opc_altr_combustivel);
     printf("---------------------------------------------\n");
+}
+
+// MENU EXCLUIR COMBUSTÍVEL
+void menu_excluir_combustivel(void) {
+    char opc_exclr_combustivel;
+
+    system("clear||cls");
+    printf("_____------------------------------------_____\n");
+    printf("|   |        == SIG-Rent-a-Car ==        |   |\n");
+    printf("|   |   Sistema de Locação de Veículos   |   |\n");
+    printf("----------------------------------------------\n");
+    printf("|   |         EXCLUIR COMBUSTÍVEL        |   |\n");
+    printf("----------------------------------------------\n");
+    printf("|   | Nome: \n");
+    printf("----------------------------------------------\n");
+    printf("\n");
+    printf("|   | Você tem certeza que deseja excluir?(S/N): ");
+    scanf("%c", &opc_exclr_combustivel);
+    getchar();
+    printf("----------------------------------------------\n");
 }
 
 // MENU LOCAÇÕES
