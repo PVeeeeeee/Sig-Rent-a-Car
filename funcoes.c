@@ -614,6 +614,23 @@ void relatorio_tipo_veiculos(void) {
     limpa_buffer();
 }
 
+// RELATÓRIO VEÍCULO LUGARES
+void relatorio_lugares_veiculos(void) {
+    int lugares;
+
+    system("clear||cls");
+    printf("_____--------------------------------------_____\n");
+    printf("|   |         == SIG-Rent-a-Car ==         |   |\n");
+    printf("|   |    Sistema de Locação de Veículos    |   |\n");
+    printf("------------------------------------------------\n");
+    printf("|   |         VEÍCULOS - LUGARES           |   |\n");
+    printf("------------------------------------------------\n");
+    printf("|   | Digite quantos Lugares: ");
+    scanf("%d", &lugares);
+    printf("Tecle <ENTER> para prosseguir...    ");
+    limpa_buffer();
+}
+
 // MENU LOCAÇÕES
 int menu_locacoes(void) {
     int opc_locacoes;
