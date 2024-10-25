@@ -540,10 +540,25 @@ void relatorio_marca_veiculos(void) {
     printf("------------------------------------------------\n");
     printf("|   |           VEÍCULOS - MARCA           |   |\n");
     printf("------------------------------------------------\n");
-    printf("|             ORDEM ALFABÉTICA [A-Z]           |\n");
-    printf("------------------------------------------------\n");
     printf("|   | Digite a Marca: ");
     scanf("%14s", marca);
+    printf("Tecle <ENTER> para prosseguir...    ");
+    limpa_buffer();
+}
+
+// RELATÓRIO VEÍCULO MODELO
+void relatorio_modelo_veiculos(void) {
+    char modelo[25];
+
+    system("clear||cls");
+    printf("_____--------------------------------------_____\n");
+    printf("|   |         == SIG-Rent-a-Car ==         |   |\n");
+    printf("|   |    Sistema de Locação de Veículos    |   |\n");
+    printf("------------------------------------------------\n");
+    printf("|   |           VEÍCULOS - MODELO          |   |\n");
+    printf("------------------------------------------------\n");
+    printf("|   | Digite o Modelo: ");
+    scanf("%24s", modelo);
     printf("Tecle <ENTER> para prosseguir...    ");
     limpa_buffer();
 }
