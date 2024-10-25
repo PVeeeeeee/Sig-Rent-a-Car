@@ -751,7 +751,7 @@ void menu_checar_marca(void) {
     if (opc_check_marca == 1) {
         menu_alterar_marca();
     } else if (opc_check_marca == 2) {
-        //menu_excluir_locacao();
+        menu_excluir_marca();
     }
 }
 
@@ -777,6 +777,26 @@ void menu_alterar_marca(void) {
     printf("-> Escolha sua opção: ");
     scanf("%d", &opc_altr_marca);
     printf("---------------------------------------------\n");
+}
+
+// MENU EXCLUIR MARCA
+void menu_excluir_marca(void) {
+    char opc_exclr_marca;
+
+    system("clear||cls");
+    printf("_____------------------------------------_____\n");
+    printf("|   |        == SIG-Rent-a-Car ==        |   |\n");
+    printf("|   |   Sistema de Locação de Veículos   |   |\n");
+    printf("----------------------------------------------\n");
+    printf("|   |          EXCLUIR MARCA           |   |\n");
+    printf("----------------------------------------------\n");
+    printf("|   | Nome: \n");
+    printf("----------------------------------------------\n");
+    printf("\n");
+    printf("|   | Você tem certeza que deseja excluir?(S/N): ");
+    scanf("%c", &opc_exclr_marca);
+    getchar();
+    printf("----------------------------------------------\n");
 }
 
 // MENU TIPOS
@@ -982,7 +1002,7 @@ void menu_alterar_locacao(void) {
 
 // MENU EXCLUIR LOCAÇÃO
 void menu_excluir_locacao(void) {
-    char opc_exclr_locacao;
+    char opc_exclr_locacao[2];
 
     system("clear||cls");
     printf("_____------------------------------------_____\n");
