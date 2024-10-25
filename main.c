@@ -109,7 +109,7 @@ int main(void) {
                         } else if (opc_combustiveis == 2) {
                             menu_checar_combustivel();
                         } else if (opc_combustiveis == 3) {
-                            //menu_relatorio_combustivel();
+                            menu_relatorio_combustivel();
                         }
                     }
                     

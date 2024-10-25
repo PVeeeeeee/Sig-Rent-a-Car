@@ -56,6 +56,7 @@ void menu_cadastrar_combustivel(void);
 void menu_checar_combustivel(void);
 void menu_alterar_combustivel(void);
 void menu_excluir_combustivel(void);
+void menu_relatorio_combustivel(void);
 
     // LOCAÇÕES
 int menu_locacoes(void);
