@@ -76,7 +76,7 @@ int main(void) {
                         }
                     }
                 } else if (opc_veiculos == 4) {
-                    //menu_marcas();
+                    menu_marcas();
                 } else if (opc_veiculos == 5) {
                     //menu_tipos();
                 } else if (opc_veiculos == 6) {

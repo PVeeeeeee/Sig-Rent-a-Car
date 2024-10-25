@@ -670,6 +670,31 @@ void relatorio_disponivel_veiculos(void) {
     limpa_buffer();
 }
 
+// MENU MARCAS
+int menu_marcas(void) {
+    int opc_marcas;
+
+    system("clear||cls");
+    printf("_____------------------------------------------------_____\n");
+    printf("|   |              == SIG-Rent-a-Car ==              |   |\n");
+    printf("|   |         Sistema de Locação de Veículos         |   |\n");
+    printf("----------------------------------------------------------\n");
+    printf("|   |                     MARCAS                     |   |\n");
+    printf("----------------------------------------------------------\n");
+    printf("|                                                        |\n");
+    printf("|                1 - Cadastrar Marca                     |\n");
+    printf("|                2 - Checar Marca                        |\n");
+    printf("|                3 - Relatório                           |\n");
+    printf("|                0 - Menu Principal                      |\n");
+    printf("|                                                        |\n");
+    printf("----------------------------------------------------------\n");
+    printf("\n");
+    printf("-> Escolha sua opção: ");
+    scanf("%d", &opc_marcas);
+    getchar();
+    return opc_marcas;
+}
+
 // MENU LOCAÇÕES
 int menu_locacoes(void) {
     int opc_locacoes;
