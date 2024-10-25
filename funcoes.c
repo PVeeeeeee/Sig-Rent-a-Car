@@ -1301,3 +1301,18 @@ int menu_relatorio_locacao(void) {
     getchar();
     return opc_relt_locacao;
 }
+
+// RELATÓRIO LOCAÇÃO GERAL
+void relatorio_geral_locacoes() {
+    system("clear||cls");
+    printf("_____--------------------------------------_____\n");
+    printf("|   |         == SIG-Rent-a-Car ==         |   |\n");
+    printf("|   |    Sistema de Locação de Veículos    |   |\n");
+    printf("------------------------------------------------\n");
+    printf("|   |         RELATÓRIO - LOCAÇÕES         |   |\n");
+    printf("------------------------------------------------\n");
+    printf("|                   ORDEM ID                   |\n");
+    printf("------------------------------------------------\n");
+    printf("Tecle <ENTER> para prosseguir...    ");
+    limpa_buffer();
+}

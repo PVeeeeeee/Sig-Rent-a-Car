@@ -129,7 +129,7 @@ int main(void) {
                         opc_relt_locacoes = menu_relatorio_locacao();
 
                         if (opc_relt_locacoes == 1) {
-                            //relatorio_geral_locacoes();
+                            relatorio_geral_locacoes();
                         } else if (opc_relt_locacoes == 2) {
                             //relatorio_data_locacoes();
                         } else if (opc_relt_locacoes == 3) {

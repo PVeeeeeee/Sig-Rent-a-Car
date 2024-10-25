@@ -64,4 +64,7 @@ void menu_cadastrar_locacao(void);
 void menu_checar_locacao(void);
 void menu_alterar_locacao(void);
 void menu_excluir_locacao(void);
+
+    // RELATÓRIOS LOCAÇÕES
 int menu_relatorio_locacao(void);
+void relatorio_geral_locacoes(void);
