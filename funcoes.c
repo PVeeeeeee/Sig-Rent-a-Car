@@ -136,6 +136,7 @@ void menu_cadastrar_pessoa(void) {
     printf("\n");
     printf("Tecle <ENTER> para prosseguir...    ");
     limpa_buffer();
+    getchar();
 }
 
 // MENU CHECAR PESSOA
@@ -381,6 +382,7 @@ void menu_cadastrar_veiculo(void) {
     printf("\n");
     printf("Tecle <ENTER> para prosseguir...    ");
     limpa_buffer();
+    getchar();
 }
 
 // MENU CHECAR VEÍCULO
@@ -847,6 +849,7 @@ void menu_cadastrar_locacao(void) {
     printf("\n");
     printf("Tecle <ENTER> para prosseguir...    ");
     limpa_buffer();
+    getchar();
 }
 
 // MENU CHECAR LOCAÇÃO
