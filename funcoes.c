@@ -652,7 +652,7 @@ void relatorio_valor_veiculos(void) {
     printf("|   |          VEÍCULOS - VALOR            |   |\n");
     printf("------------------------------------------------\n");
     printf("|   | Digite o Valor: ");
-    scanf("%f", valor);
+    scanf("%f", &valor);
     printf("Tecle <ENTER> para prosseguir...    ");
     limpa_buffer();
 }
