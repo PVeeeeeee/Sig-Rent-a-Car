@@ -891,10 +891,34 @@ void menu_checar_tipo(void) {
     printf("----------------------------------------------\n");
 
     if (opc_check_tipo == 1) {
-        //menu_alterar_tipo();
+        menu_alterar_tipo();
     } else if (opc_check_tipo == 2) {
         //menu_excluir_tipo();
     }
+}
+
+// MENU ALTERAR TIPO
+void menu_alterar_tipo(void) {
+    int opc_altr_tipo;
+    
+    system("clear||cls");
+    printf("_____------------------------------------_____\n");
+    printf("|   |        == SIG-Rent-a-Car ==        |   |\n");
+    printf("|   |   Sistema de Locação de Veículos   |   |\n");
+    printf("----------------------------------------------\n");
+    printf("|   |            ALTERAR TIPO            |   |\n");
+    printf("----------------------------------------------\n");
+    printf("|   | Nome: \n");
+    printf("----------------------------------------------\n");
+    printf("\n");
+    printf("|   | O que você deseja alterar?:\n");
+    printf("_____-----------------------------------_____\n");
+    printf("|   |      1 - Nome       0 - Sair      |   |\n");
+    printf("_____-----------------------------------_____\n");
+    printf("\n");
+    printf("-> Escolha sua opção: ");
+    scanf("%d", &opc_altr_tipo);
+    printf("---------------------------------------------\n");
 }
 
 // MENU COMBUSTÍVEL
