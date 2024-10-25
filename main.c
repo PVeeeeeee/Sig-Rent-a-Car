@@ -15,7 +15,7 @@
 // FUNÇÃO MAIN - PRINCIPAL
 int main(void) {
 
-    int opc_principal = -1, opc_pessoas = -1, opc_veiculos = -1, opc_locacoes = -1, opc_relt_pessoas = -1, opc_relt_veiculos = -1, opc_relt_locacoes = -1;
+    int opc_principal = -1, opc_pessoas = -1, opc_veiculos = -1, opc_locacoes = -1, opc_relt_pessoas = -1, opc_relt_veiculos = -1, opc_relt_locacoes = -1, opc_marcas = -1, opc_tipos = -1, opc_combustiveis = -1;
 
     while (opc_principal != 0) {
         opc_principal = menu_principal();
@@ -76,7 +76,17 @@ int main(void) {
                         }
                     }
                 } else if (opc_veiculos == 4) {
-                    menu_marcas();
+                    while (opc_marcas != 0) {
+                        opc_marcas = menu_marcas();
+
+                        if (opc_marcas == 1) {
+                            //menu_cadastrar_marca();
+                        } else if (opc_marcas == 2) {
+                            //menu_checar_marca();
+                        } else if (opc_marcas == 3) {
+                            //menu_relatorio_marca();
+                        }
+                    }
                 } else if (opc_veiculos == 5) {
                     menu_tipos();
                 } else if (opc_veiculos == 6) {
