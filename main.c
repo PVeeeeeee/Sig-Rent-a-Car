@@ -66,7 +66,7 @@ int main(void) {
                         } else if (opc_relt_veiculos == 5) {
                             relatorio_combustivel_veiculos();
                         } else if (opc_relt_veiculos == 6) {
-                            //relatorio_tipo_veiculos();
+                            relatorio_tipo_veiculos();
                         } else if (opc_relt_veiculos == 7) {
                             //relatorio_lugares_veiculos();
                         } else if (opc_relt_veiculos == 8) {

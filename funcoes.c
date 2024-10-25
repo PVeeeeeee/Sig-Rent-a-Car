@@ -597,6 +597,23 @@ void relatorio_combustivel_veiculos(void) {
     limpa_buffer();
 }
 
+// RELATÓRIO VEÍCULO TIPO
+void relatorio_tipo_veiculos(void) {
+    char tipo[12];
+
+    system("clear||cls");
+    printf("_____--------------------------------------_____\n");
+    printf("|   |         == SIG-Rent-a-Car ==         |   |\n");
+    printf("|   |    Sistema de Locação de Veículos    |   |\n");
+    printf("------------------------------------------------\n");
+    printf("|   |           VEÍCULOS - TIPO            |   |\n");
+    printf("------------------------------------------------\n");
+    printf("|   | Digite o Tipo: ");
+    scanf("%11s", tipo);
+    printf("Tecle <ENTER> para prosseguir...    ");
+    limpa_buffer();
+}
+
 // MENU LOCAÇÕES
 int menu_locacoes(void) {
     int opc_locacoes;
