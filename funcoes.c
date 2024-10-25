@@ -14,6 +14,7 @@ void limpa_buffer(void) {
 // MENU_PRINCIPAL
 int menu_principal(void) {
     int opc_principal;
+
     system("clear||cls");
     printf("_____------------------------------------------------_____\n");
     printf("|   |              == SIG-Rent-a-Car ==              |   |\n");
@@ -70,6 +71,7 @@ void menu_sobre(void) {
 // MENU PESSOAS
 int menu_pessoas(void) {
     int opc_pessoas;
+
     system("clear||cls");
     printf("_____------------------------------------------------_____\n");
     printf("|   |              == SIG-Rent-a-Car ==              |   |\n");
@@ -93,8 +95,6 @@ int menu_pessoas(void) {
 
 // MENU CADASTRAR PESSOA
 void menu_cadastrar_pessoa(void) {
-    system("clear||cls");
-
     // VARIÁVEIS
     char nome[51];
     char cpf[12];
@@ -104,6 +104,7 @@ void menu_cadastrar_pessoa(void) {
     char fun[2];
 
     // FORM
+    system("clear||cls");
     printf("_____------------------------------------_____\n");
     printf("|   |        == SIG-Rent-a-Car ==        |   |\n");
     printf("|   |   Sistema de Locação de Veículos   |   |\n");
@@ -141,6 +142,7 @@ void menu_cadastrar_pessoa(void) {
 void menu_checar_pessoa(void) {
     char cpf[12];
     int opc_check_pessoa;
+
     system("clear||cls");
     printf("_____------------------------------------_____\n");
     printf("|   |        == SIG-Rent-a-Car ==        |   |\n");
@@ -174,8 +176,9 @@ void menu_checar_pessoa(void) {
 
 // MENU ALTERAR PESSOA
 void menu_alterar_pessoa(void) {
-    system("clear||cls");
     int opc_altr_pessoa;
+
+    system("clear||cls");
     printf("_____------------------------------------_____\n");
     printf("|   |        == SIG-Rent-a-Car ==        |   |\n");
     printf("|   |   Sistema de Locação de Veículos   |   |\n");
@@ -204,8 +207,9 @@ void menu_alterar_pessoa(void) {
 
 // MENU EXCLUIR PESSOA
 void menu_excluir_pessoa(void) {
-    system("clear||cls");
     char opc_exclr_pessoa;
+
+    system("clear||cls");
     printf("_____------------------------------------_____\n");
     printf("|   |        == SIG-Rent-a-Car ==        |   |\n");
     printf("|   |   Sistema de Locação de Veículos   |   |\n");
@@ -297,6 +301,7 @@ void relatorio_geral_pessoas(void) {
 // MENU VEÍCULOS
 int menu_veiculos(void) {
     int opc_veiculos;
+
     system("clear||cls");
     printf("_____------------------------------------------------_____\n");
     printf("|   |              == SIG-Rent-a-Car ==              |   |\n");
@@ -323,8 +328,6 @@ int menu_veiculos(void) {
 
 // MENU CADASTRAR VEÍCULO
 void menu_cadastrar_veiculo(void) {
-    system("clear||cls");
-
     // VARIÁVEIS
     char chassi[18];
     char placa[8];
@@ -337,6 +340,7 @@ void menu_cadastrar_veiculo(void) {
     float valor;
 
     // FORM
+    system("clear||cls");
     printf("_____------------------------------------_____\n");
     printf("|   |        == SIG-Rent-a-Car ==        |   |\n");
     printf("|   |   Sistema de Locação de Veículos   |   |\n");
@@ -383,6 +387,7 @@ void menu_cadastrar_veiculo(void) {
 void menu_checar_veiculo(void) {
     char placa[8];
     int opc_check_veiculo;
+
     system("clear||cls");
     printf("_____------------------------------------_____\n");
     printf("|   |        == SIG-Rent-a-Car ==        |   |\n");
@@ -419,8 +424,9 @@ void menu_checar_veiculo(void) {
 
 // MENU ALTERAR VEÍCULO
 void menu_alterar_veiculo(void) {
-    system("clear||cls");
     int opc_altr_veiculo;
+
+    system("clear||cls");
     printf("_____------------------------------------_____\n");
     printf("|   |        == SIG-Rent-a-Car ==        |   |\n");
     printf("|   |   Sistema de Locação de Veículos   |   |\n");
@@ -457,8 +463,9 @@ void menu_alterar_veiculo(void) {
 
 // MENU EXCLUIR VEÍCULO
 void menu_excluir_veiculo(void) {
-    system("clear||cls");
     char opc_exclr_veiculo;
+
+    system("clear||cls");
     printf("_____------------------------------------_____\n");
     printf("|   |        == SIG-Rent-a-Car ==        |   |\n");
     printf("|   |   Sistema de Locação de Veículos   |   |\n");
@@ -666,6 +673,7 @@ void relatorio_disponivel_veiculos(void) {
 // MENU LOCAÇÕES
 int menu_locacoes(void) {
     int opc_locacoes;
+
     system("clear||cls");
     printf("_____------------------------------------------------_____\n");
     printf("|   |              == SIG-Rent-a-Car ==              |   |\n");
@@ -689,8 +697,6 @@ int menu_locacoes(void) {
 
 // MENU CADASTRAR LOCAÇÃO
 void menu_cadastrar_locacao(void) {
-    system("clear||cls");
-
     // VARIÁVEIS
     char id_locacao[11];
     char cpf_cliente[12];
@@ -702,6 +708,7 @@ void menu_cadastrar_locacao(void) {
     char situacao[2];
 
     // FORM
+    system("clear||cls");
     printf("_____------------------------------------_____\n");
     printf("|   |        == SIG-Rent-a-Car ==        |   |\n");
     printf("|   |   Sistema de Locação de Veículos   |   |\n");
@@ -745,6 +752,7 @@ void menu_cadastrar_locacao(void) {
 void menu_checar_locacao(void) {
     char id_locacao[11];
     int opc_check_locacao;
+
     system("clear||cls");
     printf("_____------------------------------------_____\n");
     printf("|   |        == SIG-Rent-a-Car ==        |   |\n");
