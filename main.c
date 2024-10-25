@@ -125,7 +125,17 @@ int main(void) {
                 } else if (opc_locacoes == 2) {
                     menu_checar_locacao();
                 } else if (opc_locacoes == 3) {
-                    menu_relatorio_locacao();
+                    while (opc_relt_locacoes != 0) {
+                        opc_relt_locacoes = menu_relatorio_locacao();
+
+                        if (opc_relt_locacoes == 1) {
+                            //relatorio_geral_locacoes();
+                        } else if (opc_relt_locacoes == 2) {
+                            //relatorio_data_locacoes();
+                        } else if (opc_relt_locacoes == 3) {
+                            //relatorio_veiculo_locacoes();
+                        }
+                    }
                 }
             }
         

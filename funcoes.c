@@ -1292,9 +1292,7 @@ int menu_relatorio_locacao(void) {
     printf("|                                              |\n");
     printf("|         1 - Geral          2 - Data          |\n");
     printf("|                                              |\n");
-    printf("|         3 - Veículo        4 - Ano           |\n");
-    printf("|                                              |\n");
-    printf("|                   0 - Sair                   |\n");
+    printf("|         3 - Veículo        0 - Sair          |\n");
     printf("|                                              |\n");
     printf("------------------------------------------------\n");
     printf("\n");
