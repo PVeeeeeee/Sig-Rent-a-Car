@@ -563,6 +563,23 @@ void relatorio_modelo_veiculos(void) {
     limpa_buffer();
 }
 
+// RELATÓRIO VEÍCULO ANO
+void relatorio_ano_veiculos(void) {
+    int ano;
+
+    system("clear||cls");
+    printf("_____--------------------------------------_____\n");
+    printf("|   |         == SIG-Rent-a-Car ==         |   |\n");
+    printf("|   |    Sistema de Locação de Veículos    |   |\n");
+    printf("------------------------------------------------\n");
+    printf("|   |            VEÍCULOS - ANO            |   |\n");
+    printf("------------------------------------------------\n");
+    printf("|   | Digite o Ano: ");
+    scanf("%d", &ano);
+    printf("Tecle <ENTER> para prosseguir...    ");
+    limpa_buffer();
+}
+
 // MENU LOCAÇÕES
 int menu_locacoes(void) {
     int opc_locacoes;
