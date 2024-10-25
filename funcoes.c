@@ -723,6 +723,38 @@ void menu_cadastrar_marca(void) {
     getchar();
 }
 
+// MENU CHECAR MARCA
+void menu_checar_marca(void) {
+    char id_marca[11];
+    int opc_check_marca;
+
+    system("clear||cls");
+    printf("_____------------------------------------_____\n");
+    printf("|   |        == SIG-Rent-a-Car ==        |   |\n");
+    printf("|   |   Sistema de Locação de Veículos   |   |\n");
+    printf("----------------------------------------------\n");
+    printf("|   |            CHECAR MARCA            |   |\n");
+    printf("----------------------------------------------\n");
+    printf("|   | Digite o ID: ");
+    scanf("%10s", id_marca);
+    printf("|   | Nome: \n");
+    printf("----------------------------------------------\n");
+    printf("\n");
+    printf("|   | O que você deseja fazer?\n");
+    printf("_____------------------------------------_____\n");
+    printf("|   | 1 - Alterar  2 - Excluir  0 - Sair |   |\n");
+    printf("_____------------------------------------_____\n");
+    printf("-> Escolha sua opção: ");
+    scanf("%d", &opc_check_marca);
+    printf("----------------------------------------------\n");
+
+    if (opc_check_marca == 1) {
+        //menu_alterar_locacao();
+    } else if (opc_check_marca == 2) {
+        //menu_excluir_locacao();
+    }
+}
+
 // MENU TIPOS
 int menu_tipos(void) {
     int opc_tipos;

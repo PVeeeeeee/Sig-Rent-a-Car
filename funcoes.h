@@ -33,8 +33,9 @@ void relatorio_valor_veiculos(void);
 void relatorio_disponivel_veiculos(void);
 
     // MARCAS
-void menu_cadastrar_marca(void);
 int menu_marcas(void);
+void menu_cadastrar_marca(void);
+void menu_checar_marca(void);
 
     // TIPOS
 int menu_tipos(void);
