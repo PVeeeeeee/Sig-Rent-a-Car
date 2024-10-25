@@ -580,6 +580,23 @@ void relatorio_ano_veiculos(void) {
     limpa_buffer();
 }
 
+// RELATÓRIO VEÍCULO COMBUSTÍVEL
+void relatorio_combustivel_veiculos(void) {
+    char combustivel[15];
+
+    system("clear||cls");
+    printf("_____--------------------------------------_____\n");
+    printf("|   |         == SIG-Rent-a-Car ==         |   |\n");
+    printf("|   |    Sistema de Locação de Veículos    |   |\n");
+    printf("------------------------------------------------\n");
+    printf("|   |        VEÍCULOS - COMBUSTÍVEL        |   |\n");
+    printf("------------------------------------------------\n");
+    printf("|   | Digite o Combustível: ");
+    scanf("%14s", combustivel);
+    printf("Tecle <ENTER> para prosseguir...    ");
+    limpa_buffer();
+}
+
 // MENU LOCAÇÕES
 int menu_locacoes(void) {
     int opc_locacoes;
