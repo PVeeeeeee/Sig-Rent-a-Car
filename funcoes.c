@@ -865,6 +865,38 @@ void menu_cadastrar_tipo(void) {
     getchar();
 }
 
+// MENU CHECAR TIPO
+void menu_checar_tipo(void) {
+    char id_tipo[11];
+    int opc_check_tipo;
+
+    system("clear||cls");
+    printf("_____------------------------------------_____\n");
+    printf("|   |        == SIG-Rent-a-Car ==        |   |\n");
+    printf("|   |   Sistema de Locação de Veículos   |   |\n");
+    printf("----------------------------------------------\n");
+    printf("|   |             CHECAR TIPO            |   |\n");
+    printf("----------------------------------------------\n");
+    printf("|   | Digite o ID: ");
+    scanf("%10s", id_tipo);
+    printf("|   | Nome: \n");
+    printf("----------------------------------------------\n");
+    printf("\n");
+    printf("|   | O que você deseja fazer?\n");
+    printf("_____------------------------------------_____\n");
+    printf("|   | 1 - Alterar  2 - Excluir  0 - Sair |   |\n");
+    printf("_____------------------------------------_____\n");
+    printf("-> Escolha sua opção: ");
+    scanf("%d", &opc_check_tipo);
+    printf("----------------------------------------------\n");
+
+    if (opc_check_tipo == 1) {
+        //menu_alterar_tipo();
+    } else if (opc_check_tipo == 2) {
+        //menu_excluir_tipo();
+    }
+}
+
 // MENU COMBUSTÍVEL
 int menu_combustiveis(void) {
     int opc_combustiveis;

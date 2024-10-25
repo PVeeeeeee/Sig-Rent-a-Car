@@ -94,7 +94,7 @@ int main(void) {
                         if (opc_tipos == 1) {
                             menu_cadastrar_tipo();
                         } else if (opc_tipos == 2) {
-                            //menu_checar_tipo();
+                            menu_checar_tipo();
                         } else if (opc_tipos == 3) {
                             //menu_relatorio_tipo();
                         }
