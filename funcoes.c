@@ -1033,10 +1033,34 @@ void menu_checar_combustivel(void) {
     printf("----------------------------------------------\n");
 
     if (opc_check_combustivel == 1) {
-        //menu_alterar_combustivel();
+        menu_alterar_combustivel();
     } else if (opc_check_combustivel == 2) {
         //menu_excluir_combustivel();
     }
+}
+
+// MENU ALTERAR COMBUSTÍVEL
+void menu_alterar_combustivel(void) {
+    int opc_altr_combustivel;
+    
+    system("clear||cls");
+    printf("_____------------------------------------_____\n");
+    printf("|   |        == SIG-Rent-a-Car ==        |   |\n");
+    printf("|   |   Sistema de Locação de Veículos   |   |\n");
+    printf("----------------------------------------------\n");
+    printf("|   |         ALTERAR COMBUSTÍVEL        |   |\n");
+    printf("----------------------------------------------\n");
+    printf("|   | Nome: \n");
+    printf("----------------------------------------------\n");
+    printf("\n");
+    printf("|   | O que você deseja alterar?:\n");
+    printf("_____-----------------------------------_____\n");
+    printf("|   |      1 - Nome       0 - Sair      |   |\n");
+    printf("_____-----------------------------------_____\n");
+    printf("\n");
+    printf("-> Escolha sua opção: ");
+    scanf("%d", &opc_altr_combustivel);
+    printf("---------------------------------------------\n");
 }
 
 // MENU LOCAÇÕES
