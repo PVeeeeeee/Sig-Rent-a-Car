@@ -15,7 +15,7 @@
 // FUNÇÃO MAIN - PRINCIPAL
 int main(void) {
 
-    int opc_principal = -1, opc_pessoas = -1, opc_veiculos = -1, opc_locacoes = -1, opc_relt_pessoas = -1, opc_relt_veiculos = -1, opc_relt_locacoes = -1, opc_marcas = -1, opc_tipos = -1, opc_combustiveis = -1;
+    int opc_principal = -1, opc_pessoas = -1, opc_veiculos = -1, opc_locacoes = -1, opc_relt_pessoas = -1, opc_relt_veiculos = -1, opc_relt_locacoes = -1, opc_marcas = -1, opc_tipos = -1, opc_combustiveis = -1, opc_data_relatorio = -1;
 
     while (opc_principal != 0) {
         opc_principal = menu_principal();
@@ -99,7 +99,6 @@ int main(void) {
                             menu_relatorio_tipo();
                         }
                     }
-                    
                 } else if (opc_veiculos == 6) {
                     while (opc_combustiveis != 0) {
                         opc_combustiveis = menu_combustiveis();
@@ -112,10 +111,8 @@ int main(void) {
                             menu_relatorio_combustivel();
                         }
                     }
-                    
                 }
             }
-
         } else if (opc_principal == 3) {
             while (opc_locacoes != 0) {
                 opc_locacoes = menu_locacoes();
@@ -131,7 +128,17 @@ int main(void) {
                         if (opc_relt_locacoes == 1) {
                             relatorio_geral_locacoes();
                         } else if (opc_relt_locacoes == 2) {
-                            relatorio_data_locacoes();
+                            while (opc_data_relatorio != 0) {
+                                opc_data_relatorio = relatorio_data_locacoes();
+
+                                if (opc_data_relatorio == 1) {
+                                    //relatorio_locacoes_recentes();
+                                } else if (opc_data_relatorio == 2) {
+                                    //relatorio_locacoes_antigas();
+                                } else if (opc_data_relatorio == 3) {
+                                    //relatorio_locacoes_data();
+                                }
+                            }
                         } else if (opc_relt_locacoes == 3) {
                             //relatorio_veiculo_locacoes();
                         }
