@@ -1246,6 +1246,7 @@ void menu_alterar_locacao(void) {
     printf("\n");
     printf("-> Escolha sua opção: ");
     scanf("%d", &opc_altr_locacao);
+    getchar();
     printf("---------------------------------------------\n");
 }
 
