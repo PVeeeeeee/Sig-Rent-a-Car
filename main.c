@@ -132,7 +132,7 @@ int main(void) {
                                 opc_data_relatorio = relatorio_data_locacoes();
 
                                 if (opc_data_relatorio == 1) {
-                                    //relatorio_locacoes_recentes();
+                                    relatorio_locacoes_recentes();
                                 } else if (opc_data_relatorio == 2) {
                                     //relatorio_locacoes_antigas();
                                 } else if (opc_data_relatorio == 3) {

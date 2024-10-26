@@ -1343,3 +1343,18 @@ int relatorio_data_locacoes(void) {
     getchar();
     return opc_data_relt;
 }
+
+// RELATÓRIO LOCAÇÃO DATA RECENTE
+void relatorio_locacoes_recentes(void) {
+    system("clear||cls");
+    printf("_____--------------------------------------_____\n");
+    printf("|   |         == SIG-Rent-a-Car ==         |   |\n");
+    printf("|   |    Sistema de Locação de Veículos    |   |\n");
+    printf("------------------------------------------------\n");
+    printf("|   |         RELATÓRIO - LOCAÇÕES         |   |\n");
+    printf("------------------------------------------------\n");
+    printf("|             RECENTES -> ANTIGAS              |\n");
+    printf("------------------------------------------------\n");
+    printf("Tecle <ENTER> para prosseguir...    ");
+    limpa_buffer();
+}
