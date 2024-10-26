@@ -1358,3 +1358,18 @@ void relatorio_locacoes_recentes(void) {
     printf("Tecle <ENTER> para prosseguir...    ");
     limpa_buffer();
 }
+
+// RELATÓRIO LOCAÇÃO DATA ANTIGA
+void relatorio_locacoes_antigas(void) {
+    system("clear||cls");
+    printf("_____--------------------------------------_____\n");
+    printf("|   |         == SIG-Rent-a-Car ==         |   |\n");
+    printf("|   |    Sistema de Locação de Veículos    |   |\n");
+    printf("------------------------------------------------\n");
+    printf("|   |         RELATÓRIO - LOCAÇÕES         |   |\n");
+    printf("------------------------------------------------\n");
+    printf("|             ANTIGAS -> RECENTES              |\n");
+    printf("------------------------------------------------\n");
+    printf("Tecle <ENTER> para prosseguir...    ");
+    limpa_buffer();
+}

@@ -70,3 +70,4 @@ int menu_relatorio_locacao(void);
 void relatorio_geral_locacoes(void);
 int relatorio_data_locacoes(void);
 void relatorio_locacoes_recentes(void);
+void relatorio_locacoes_antigas(void);
