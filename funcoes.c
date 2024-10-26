@@ -1373,3 +1373,21 @@ void relatorio_locacoes_antigas(void) {
     printf("Tecle <ENTER> para prosseguir...    ");
     limpa_buffer();
 }
+
+// RELATÓRIO LOCAÇÕES DATA ESPECÍFICA
+void relatorio_locacoes_data(void) {
+    char data[9];
+
+    system("clear||cls");
+    printf("_____--------------------------------------_____\n");
+    printf("|   |         == SIG-Rent-a-Car ==         |   |\n");
+    printf("|   |    Sistema de Locação de Veículos    |   |\n");
+    printf("------------------------------------------------\n");
+    printf("|   |         RELATÓRIO - LOCAÇÕES         |   |\n");
+    printf("------------------------------------------------\n");
+    printf("|   | Digite a Data: ");
+    scanf("%c", data);
+    printf("Tecle <ENTER> para prosseguir...    ");
+    limpa_buffer();
+    getchar();
+}

@@ -71,3 +71,4 @@ void relatorio_geral_locacoes(void);
 int relatorio_data_locacoes(void);
 void relatorio_locacoes_recentes(void);
 void relatorio_locacoes_antigas(void);
+void relatorio_locacoes_data(void);

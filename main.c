@@ -136,7 +136,7 @@ int main(void) {
                                 } else if (opc_data_relatorio == 2) {
                                     relatorio_locacoes_antigas();
                                 } else if (opc_data_relatorio == 3) {
-                                    //relatorio_locacoes_data();
+                                    relatorio_locacoes_data();
                                 }
                             }
                         } else if (opc_relt_locacoes == 3) {
