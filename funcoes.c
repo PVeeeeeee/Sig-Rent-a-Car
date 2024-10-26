@@ -1391,3 +1391,21 @@ void relatorio_locacoes_data(void) {
     limpa_buffer();
     getchar();
 }
+
+// RELATÓRIO LOCAÇÕES VEÍCULO
+void relatorio_veiculo_locacoes(void) {
+    char placa[8];
+
+    system("clear||cls");
+    printf("_____--------------------------------------_____\n");
+    printf("|   |         == SIG-Rent-a-Car ==         |   |\n");
+    printf("|   |    Sistema de Locação de Veículos    |   |\n");
+    printf("------------------------------------------------\n");
+    printf("|   |         RELATÓRIO - LOCAÇÕES         |   |\n");
+    printf("------------------------------------------------\n");
+    printf("|   | Digite a Placa: ");
+    scanf("%c", placa);
+    printf("Tecle <ENTER> para prosseguir...    ");
+    limpa_buffer();
+    getchar();
+}

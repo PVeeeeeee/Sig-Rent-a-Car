@@ -140,7 +140,7 @@ int main(void) {
                                 }
                             }
                         } else if (opc_relt_locacoes == 3) {
-                            //relatorio_veiculo_locacoes();
+                            relatorio_veiculo_locacoes();
                         }
                     }
                 }
