@@ -131,7 +131,7 @@ int main(void) {
                         if (opc_relt_locacoes == 1) {
                             relatorio_geral_locacoes();
                         } else if (opc_relt_locacoes == 2) {
-                            //relatorio_data_locacoes();
+                            relatorio_data_locacoes();
                         } else if (opc_relt_locacoes == 3) {
                             //relatorio_veiculo_locacoes();
                         }

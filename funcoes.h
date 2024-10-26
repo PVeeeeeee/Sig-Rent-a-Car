@@ -68,3 +68,4 @@ void menu_excluir_locacao(void);
     // RELATÓRIOS LOCAÇÕES
 int menu_relatorio_locacao(void);
 void relatorio_geral_locacoes(void);
+int relatorio_data_locacoes(void);

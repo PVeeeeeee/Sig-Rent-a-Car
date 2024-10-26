@@ -1316,3 +1316,30 @@ void relatorio_geral_locacoes() {
     printf("Tecle <ENTER> para prosseguir...    ");
     limpa_buffer();
 }
+
+// RELATÓRIO LOCAÇÃO DATA
+int relatorio_data_locacoes(void) {
+    int opc_data_relt;
+
+    system("clear||cls");
+    printf("_____--------------------------------------_____\n");
+    printf("|   |         == SIG-Rent-a-Car ==         |   |\n");
+    printf("|   |    Sistema de Locação de Veículos    |   |\n");
+    printf("------------------------------------------------\n");
+    printf("|   |           RELATÓRIO - DATA           |   |\n");
+    printf("------------------------------------------------\n");
+    printf("|     Os relatórios podem ser visualizados     |\n");
+    printf("|           por ordem destas opções:           |\n");
+    printf("------------------------------------------------\n");
+    printf("|                                              |\n");
+    printf("|      1 - Recentes           2 - Antigas      |\n");
+    printf("|                                              |\n");
+    printf("|      3 - Data Específica    0 - Sair         |\n");
+    printf("|                                              |\n");
+    printf("------------------------------------------------\n");
+    printf("\n");
+    printf("-> Escolha sua opção: ");
+    scanf("%d", &opc_data_relt);
+    getchar();
+    return opc_data_relt;
+}
