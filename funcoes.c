@@ -336,6 +336,8 @@ void menu_cadastrar_veiculo(void) {
     char modelo[25];
     char tipo[12];
     char combustivel[15];
+    char disponivel[2];
+    char cor[15];
     int ano;
     int lugares;
     float valor;
@@ -361,6 +363,9 @@ void menu_cadastrar_veiculo(void) {
     printf("|   | Modelo: \n");
     printf("|   | ");
     scanf("%24s", modelo);
+    printf("|   | Cor: \n");
+    printf("|   | ");
+    scanf("%14s", cor);
     printf("|   | Tipo: \n");
     printf("|   | ");
     scanf("%11s", tipo);
@@ -402,6 +407,7 @@ void menu_checar_veiculo(void) {
     printf("|   | Chassi:  \n");
     printf("|   | Marca: \n");
     printf("|   | Modelo: \n");
+    printf("|   | Cor: \n");
     printf("|   | Tipo: \n");
     printf("|   | Combustível: \n");
     printf("|   | Ano: \n");
@@ -438,6 +444,7 @@ void menu_alterar_veiculo(void) {
     printf("|   | Chassi:  \n");
     printf("|   | Marca: \n");
     printf("|   | Modelo: \n");
+    printf("|   | Cor: \n");
     printf("|   | Tipo: \n");
     printf("|   | Combustível: \n");
     printf("|   | Ano: \n");
@@ -477,6 +484,7 @@ void menu_excluir_veiculo(void) {
     printf("|   | Chassi:  \n");
     printf("|   | Marca: \n");
     printf("|   | Modelo: \n");
+    printf("|   | Cor: \n");
     printf("|   | Tipo: \n");
     printf("|   | Combustível: \n");
     printf("|   | Ano: \n");
