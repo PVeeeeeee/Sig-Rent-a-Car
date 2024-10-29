@@ -244,7 +244,7 @@ int menu_relatorio_pessoa(void) {
     printf("|               1 - Clientes                   |\n");
     printf("|               2 - Funcionários               |\n");
     printf("|               3 - Geral                      |\n");
-    printf("|               0 - Menu Principal             |\n");
+    printf("|               0 - Voltar                     |\n");
     printf("|                                              |\n");
     printf("------------------------------------------------\n");
     printf("\n");
@@ -513,7 +513,7 @@ int menu_relatorio_veiculo(void) {
     printf("|                                              |\n");
     printf("|         7 - Lugares        8 - Valor         |\n");
     printf("|                                              |\n");
-    printf("|         9 - Disponíveis    0 - Sair          |\n");
+    printf("|         9 - Disponíveis    0 - Voltar        |\n");
     printf("|                                              |\n");
     printf("------------------------------------------------\n");
     printf("\n");
@@ -687,7 +687,7 @@ int menu_marcas(void) {
     printf("|                1 - Cadastrar Marca                     |\n");
     printf("|                2 - Checar Marca                        |\n");
     printf("|                3 - Relatório                           |\n");
-    printf("|                0 - Menu Principal                      |\n");
+    printf("|                0 - Voltar                              |\n");
     printf("|                                                        |\n");
     printf("----------------------------------------------------------\n");
     printf("\n");
@@ -829,7 +829,7 @@ int menu_tipos(void) {
     printf("|                1 - Cadastrar Tipo                      |\n");
     printf("|                2 - Checar Tipo                         |\n");
     printf("|                3 - Relatório                           |\n");
-    printf("|                0 - Menu Principal                      |\n");
+    printf("|                0 - Voltar                              |\n");
     printf("|                                                        |\n");
     printf("----------------------------------------------------------\n");
     printf("\n");
@@ -971,7 +971,7 @@ int menu_combustiveis(void) {
     printf("|                1 - Cadastrar Combustível               |\n");
     printf("|                2 - Checar Combustível                  |\n");
     printf("|                3 - Relatório                           |\n");
-    printf("|                0 - Menu Principal                      |\n");
+    printf("|                0 - Voltar                              |\n");
     printf("|                                                        |\n");
     printf("----------------------------------------------------------\n");
     printf("\n");
@@ -1293,7 +1293,7 @@ int menu_relatorio_locacao(void) {
     printf("|                                              |\n");
     printf("|         1 - Geral          2 - Data          |\n");
     printf("|                                              |\n");
-    printf("|         3 - Veículo        0 - Sair          |\n");
+    printf("|         3 - Veículo        0 - Voltar        |\n");
     printf("|                                              |\n");
     printf("------------------------------------------------\n");
     printf("\n");
@@ -1335,7 +1335,7 @@ int relatorio_data_locacoes(void) {
     printf("|                                              |\n");
     printf("|      1 - Recentes           2 - Antigas      |\n");
     printf("|                                              |\n");
-    printf("|      3 - Data Específica    0 - Sair         |\n");
+    printf("|      3 - Data Específica    0 - Voltar       |\n");
     printf("|                                              |\n");
     printf("------------------------------------------------\n");
     printf("\n");
