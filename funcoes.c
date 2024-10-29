@@ -1126,7 +1126,6 @@ int menu_locacoes(void) {
 // MENU CADASTRAR LOCAÇÃO
 void menu_cadastrar_locacao(void) {
     // VARIÁVEIS
-    char id_locacao[11];
     char cpf_cliente[12];
     char cpf_funcionario[12];
     char placa_veiculo[8];
@@ -1144,9 +1143,6 @@ void menu_cadastrar_locacao(void) {
     printf("|   |         CADASTRAR LOCAÇÃO          |   |\n");
     printf("----------------------------------------------\n");
     printf("|   |\n");
-    printf("|   | ID:  \n");
-    printf("|   | ");
-    scanf("%10s", id_locacao);
     printf("|   | Cliente (CPF): \n");
     printf("|   | ");
     scanf("%11s", cpf_cliente);
