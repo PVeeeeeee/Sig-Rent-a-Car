@@ -21,6 +21,7 @@ int main(void) {
         opc_principal = menu_principal();
 
         if (opc_principal == 1) {
+            opc_pessoas = -1;
             while (opc_pessoas != 0) {
                 opc_pessoas = menu_pessoas();
 
@@ -29,6 +30,7 @@ int main(void) {
                 } else if (opc_pessoas == 2) {
                     menu_checar_pessoa();
                 } else if (opc_pessoas == 3) {
+                    opc_relt_pessoas = -1; 
                     while (opc_relt_pessoas != 0) {
                         opc_relt_pessoas = menu_relatorio_pessoa();
 
@@ -44,6 +46,7 @@ int main(void) {
             }
 
         } else if (opc_principal == 2) {
+            opc_veiculos = -1; 
             while (opc_veiculos != 0) {
                 opc_veiculos = menu_veiculos();
 
@@ -52,6 +55,7 @@ int main(void) {
                 } else if (opc_veiculos == 2) {
                     menu_checar_veiculo();
                 } else if (opc_veiculos == 3) {
+                    opc_relt_veiculos = -1;
                     while (opc_relt_veiculos != 0) {
                         opc_relt_veiculos = menu_relatorio_veiculo();
 
@@ -76,6 +80,7 @@ int main(void) {
                         }
                     }
                 } else if (opc_veiculos == 4) {
+                    opc_marcas = -1; 
                     while (opc_marcas != 0) {
                         opc_marcas = menu_marcas();
 
@@ -88,6 +93,7 @@ int main(void) {
                         }
                     }
                 } else if (opc_veiculos == 5) {
+                    opc_tipos = -1;
                     while (opc_tipos != 0) {
                         opc_tipos = menu_tipos();
 
@@ -100,6 +106,7 @@ int main(void) {
                         }
                     }
                 } else if (opc_veiculos == 6) {
+                    opc_combustiveis = -1; 
                     while (opc_combustiveis != 0) {
                         opc_combustiveis = menu_combustiveis();
 
@@ -114,6 +121,7 @@ int main(void) {
                 }
             }
         } else if (opc_principal == 3) {
+            opc_locacoes = -1; 
             while (opc_locacoes != 0) {
                 opc_locacoes = menu_locacoes();
 
@@ -122,12 +130,14 @@ int main(void) {
                 } else if (opc_locacoes == 2) {
                     menu_checar_locacao();
                 } else if (opc_locacoes == 3) {
+                    opc_relt_locacoes = -1;
                     while (opc_relt_locacoes != 0) {
                         opc_relt_locacoes = menu_relatorio_locacao();
 
                         if (opc_relt_locacoes == 1) {
                             relatorio_geral_locacoes();
                         } else if (opc_relt_locacoes == 2) {
+                            opc_data_relatorio = -1;
                             while (opc_data_relatorio != 0) {
                                 opc_data_relatorio = relatorio_data_locacoes();
 
