@@ -4,7 +4,7 @@
 ///               Departamento de Computação e Tecnologia                   ///
 ///                  Disciplina DCT1106 -- Programação                      ///
 ///                Projeto Sistema de Locação de Veículos                   ///
-///               Developed by Pedro Vitor and Elder Bruno                  ///
+///               Developed by Pedro Vitor, Elder Bruno and Felipe Erik     ///
 ///////////////////////////////////////////////////////////////////////////////
 
 // BIBLIOTECAS
