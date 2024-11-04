@@ -31,9 +31,7 @@ int menu_principal(void) {
     printf("|                                                        |\n");
     printf("----------------------------------------------------------\n");
     printf("\n");
-    printf("-> Escolha sua opção: ");
-    scanf("%d", &opc_principal);
-    getchar();
+    opc_principal = validar_opcao(0, 4);
     return opc_principal;
 }
 
@@ -57,12 +55,11 @@ void menu_sobre(void) {
     printf("------------------------------------------------------------------\n");
     printf("|                                                                |\n");
     printf("|                          Developed by:                         |\n");
-    printf("|           Pedro Vitor (https://github.com/PVeeeeeee) ,         |\n");
-    printf("|           Elder Bruno (https://github.com/veraxqy) and         |\n");
-    printf("|           Felipe Erik ((https://github.com/zfelip)             |\n");
+    printf("|           Pedro Vitor (https://github.com/PVeeeeeee) and       |\n");
+    printf("|             Elder Bruno (https://github.com/veraxqy)           |\n");
     printf("|                                                                |\n");
     printf("|                       Universidade Federal do                  |\n");
-    printf("|               Rio Grande do Norte (UFRN) \u00A9 2024           |\n");
+    printf("|               Rio Grande do Norte (UFRN) \u00A9 2024                |\n");
     printf("|                                                                |\n");
     printf("------------------------------------------------------------------\n");
     printf("Tecle <ENTER> para prosseguir...    ");
@@ -88,9 +85,7 @@ int menu_pessoas(void) {
     printf("|                                                        |\n");
     printf("----------------------------------------------------------\n");
     printf("\n");
-    printf("-> Escolha sua opção: ");
-    scanf("%d", &opc_pessoas);
-    getchar();
+    opc_pessoas = validar_opcao(0, 3);
     return opc_pessoas;
 }
 
@@ -165,9 +160,7 @@ void menu_checar_pessoa(void) {
     printf("|   | 1 - Alterar  2 - Excluir  0 - Sair |   |\n");
     printf("_____------------------------------------_____\n");
     printf("\n");
-    printf("-> Escolha sua opção: ");
-    scanf("%d", &opc_check_pessoa);
-    printf("----------------------------------------------\n");
+    opc_check_pessoa = validar_opcao(0, 2);
 
     if (opc_check_pessoa == 1) {
         menu_alterar_pessoa();
@@ -202,9 +195,9 @@ void menu_alterar_pessoa(void) {
     printf("|   | 5 - Função     0 - Sair            |   |\n");
     printf("_____------------------------------------_____\n");
     printf("\n");
-    printf("-> Escolha sua opção: ");
-    scanf("%d", &opc_altr_pessoa);
     printf("----------------------------------------------\n");
+    opc_altr_pessoa = validar_opcao(0, 5);
+    // fazer demais menus
 }
 
 // MENU EXCLUIR PESSOA
@@ -249,15 +242,15 @@ int menu_relatorio_pessoa(void) {
     printf("|                                              |\n");
     printf("------------------------------------------------\n");
     printf("\n");
-    printf("-> Escolha sua opção: ");
-    scanf("%d", &opc_relt_pessoa);
-    getchar();
+    opc_relt_pessoa = validar_opcao(0, 3);
     return opc_relt_pessoa;
 }
+    
 
 // RELATÓRIO CLIENTES
 void relatorio_clientes(void) {
     system("clear||cls");
+    limpa_buffer();
     printf("_____--------------------------------------_____\n");
     printf("|   |         == SIG-Rent-a-Car ==         |   |\n");
     printf("|   |    Sistema de Locação de Veículos    |   |\n");
@@ -273,6 +266,7 @@ void relatorio_clientes(void) {
 // RELATÓRIO FUNCIONÁRIOS
 void relatorio_funcionarios(void) {
     system("clear||cls");
+    limpa_buffer();
     printf("_____--------------------------------------_____\n");
     printf("|   |         == SIG-Rent-a-Car ==         |   |\n");
     printf("|   |    Sistema de Locação de Veículos    |   |\n");
@@ -288,6 +282,7 @@ void relatorio_funcionarios(void) {
 // RELATÓRIO PESSOAS GERAL
 void relatorio_geral_pessoas(void) {
     system("clear||cls");
+    limpa_buffer();
     printf("_____--------------------------------------_____\n");
     printf("|   |         == SIG-Rent-a-Car ==         |   |\n");
     printf("|   |    Sistema de Locação de Veículos    |   |\n");
@@ -322,9 +317,7 @@ int menu_veiculos(void) {
     printf("|                                                        |\n");
     printf("----------------------------------------------------------\n");
     printf("\n");
-    printf("-> Escolha sua opção: ");
-    scanf("%d", &opc_veiculos);
-    getchar();
+    opc_veiculos = validar_opcao(0, 6);
     return opc_veiculos;
 }
 
@@ -420,10 +413,8 @@ void menu_checar_veiculo(void) {
     printf("_____------------------------------------_____\n");
     printf("|   | 1 - Alterar  2 - Excluir  0 - Sair |   |\n");
     printf("_____------------------------------------_____\n");
-    printf("-> Escolha sua opção: ");
-    scanf("%d", &opc_check_veiculo);
     printf("----------------------------------------------\n");
-
+    opc_check_veiculo = validar_opcao(0, 2);
     if (opc_check_veiculo == 1) {
         menu_alterar_veiculo();
     } else if (opc_check_veiculo == 2) {
@@ -466,9 +457,10 @@ void menu_alterar_veiculo(void) {
     printf("|   |            0 - Sair            |   |\n");
     printf("_____--------------------------------_____\n");
     printf("\n");
-    printf("-> Escolha sua opção: ");
-    scanf("%d", &opc_altr_veiculo);
     printf("------------------------------------------\n");
+    opc_altr_veiculo = validar_opcao(0, 8);
+    // fazer demais menus
+   
 }
 
 // MENU EXCLUIR VEÍCULO
@@ -526,15 +518,14 @@ int menu_relatorio_veiculo(void) {
     printf("|                                              |\n");
     printf("------------------------------------------------\n");
     printf("\n");
-    printf("-> Escolha sua opção: ");
-    scanf("%d", &opc_relt_veiculo);
-    getchar();
+    opc_relt_veiculo = validar_opcao(0, 9);
     return opc_relt_veiculo;
 }
 
 // RELATÓRIO VEÍCULO GERAL
 void relatorio_geral_veiculos(void) {
     system("clear||cls");
+    limpa_buffer();
     printf("_____--------------------------------------_____\n");
     printf("|   |         == SIG-Rent-a-Car ==         |   |\n");
     printf("|   |    Sistema de Locação de Veículos    |   |\n");
@@ -552,6 +543,7 @@ void relatorio_marca_veiculos(void) {
     char marca[15];
 
     system("clear||cls");
+    limpa_buffer();
     printf("_____--------------------------------------_____\n");
     printf("|   |         == SIG-Rent-a-Car ==         |   |\n");
     printf("|   |    Sistema de Locação de Veículos    |   |\n");
@@ -569,6 +561,7 @@ void relatorio_modelo_veiculos(void) {
     char modelo[25];
 
     system("clear||cls");
+    limpa_buffer();
     printf("_____--------------------------------------_____\n");
     printf("|   |         == SIG-Rent-a-Car ==         |   |\n");
     printf("|   |    Sistema de Locação de Veículos    |   |\n");
@@ -586,6 +579,7 @@ void relatorio_ano_veiculos(void) {
     int ano;
 
     system("clear||cls");
+    limpa_buffer();
     printf("_____--------------------------------------_____\n");
     printf("|   |         == SIG-Rent-a-Car ==         |   |\n");
     printf("|   |    Sistema de Locação de Veículos    |   |\n");
@@ -603,6 +597,7 @@ void relatorio_combustivel_veiculos(void) {
     char combustivel[15];
 
     system("clear||cls");
+    limpa_buffer();
     printf("_____--------------------------------------_____\n");
     printf("|   |         == SIG-Rent-a-Car ==         |   |\n");
     printf("|   |    Sistema de Locação de Veículos    |   |\n");
@@ -620,6 +615,7 @@ void relatorio_tipo_veiculos(void) {
     char tipo[12];
 
     system("clear||cls");
+    limpa_buffer();
     printf("_____--------------------------------------_____\n");
     printf("|   |         == SIG-Rent-a-Car ==         |   |\n");
     printf("|   |    Sistema de Locação de Veículos    |   |\n");
@@ -637,6 +633,7 @@ void relatorio_lugares_veiculos(void) {
     int lugares;
 
     system("clear||cls");
+    limpa_buffer();
     printf("_____--------------------------------------_____\n");
     printf("|   |         == SIG-Rent-a-Car ==         |   |\n");
     printf("|   |    Sistema de Locação de Veículos    |   |\n");
@@ -654,6 +651,7 @@ void relatorio_valor_veiculos(void) {
     float valor;
 
     system("clear||cls");
+    limpa_buffer();
     printf("_____--------------------------------------_____\n");
     printf("|   |         == SIG-Rent-a-Car ==         |   |\n");
     printf("|   |    Sistema de Locação de Veículos    |   |\n");
@@ -669,6 +667,7 @@ void relatorio_valor_veiculos(void) {
 // RELATÓRIO VEÍCULO DISPONIBILIDADE
 void relatorio_disponivel_veiculos(void) {
     system("clear||cls");
+    limpa_buffer();
     printf("_____--------------------------------------_____\n");
     printf("|   |         == SIG-Rent-a-Car ==         |   |\n");
     printf("|   |    Sistema de Locação de Veículos    |   |\n");
@@ -700,9 +699,7 @@ int menu_marcas(void) {
     printf("|                                                        |\n");
     printf("----------------------------------------------------------\n");
     printf("\n");
-    printf("-> Escolha sua opção: ");
-    scanf("%d", &opc_marcas);
-    getchar();
+    opc_marcas = validar_opcao(0, 3);
     return opc_marcas;
 }
 
@@ -753,8 +750,7 @@ void menu_checar_marca(void) {
     printf("_____------------------------------------_____\n");
     printf("|   | 1 - Alterar  2 - Excluir  0 - Sair |   |\n");
     printf("_____------------------------------------_____\n");
-    printf("-> Escolha sua opção: ");
-    scanf("%d", &opc_check_marca);
+    opc_check_marca = validar_opcao(0, 2);
     printf("----------------------------------------------\n");
 
     if (opc_check_marca == 1) {
@@ -777,11 +773,6 @@ void menu_alterar_marca(void) {
     printf("----------------------------------------------\n");
     printf("|   | Nome: \n");
     printf("----------------------------------------------\n");
-    printf("\n");
-    printf("|   | O que você deseja alterar?:\n");
-    printf("_____-----------------------------------_____\n");
-    printf("|   |      1 - Nome       0 - Sair      |   |\n");
-    printf("_____-----------------------------------_____\n");
     printf("\n");
     printf("-> Escolha sua opção: ");
     scanf("%d", &opc_altr_marca);
@@ -811,6 +802,7 @@ void menu_excluir_marca(void) {
 // RELATÓRIO MARCA
 void menu_relatorio_marca(void) {
     system("clear||cls");
+    limpa_buffer();
     printf("_____--------------------------------------_____\n");
     printf("|   |         == SIG-Rent-a-Car ==         |   |\n");
     printf("|   |    Sistema de Locação de Veículos    |   |\n");
@@ -842,9 +834,7 @@ int menu_tipos(void) {
     printf("|                                                        |\n");
     printf("----------------------------------------------------------\n");
     printf("\n");
-    printf("-> Escolha sua opção: ");
-    scanf("%d", &opc_tipos);
-    getchar();
+    opc_tipos = validar_opcao(0, 3);
     return opc_tipos;
 }
 
@@ -895,9 +885,9 @@ void menu_checar_tipo(void) {
     printf("_____------------------------------------_____\n");
     printf("|   | 1 - Alterar  2 - Excluir  0 - Sair |   |\n");
     printf("_____------------------------------------_____\n");
-    printf("-> Escolha sua opção: ");
-    scanf("%d", &opc_check_tipo);
     printf("----------------------------------------------\n");
+    opc_check_tipo = validar_opcao(0, 2);
+
 
     if (opc_check_tipo == 1) {
         menu_alterar_tipo();
@@ -920,12 +910,6 @@ void menu_alterar_tipo(void) {
     printf("|   | Nome: \n");
     printf("----------------------------------------------\n");
     printf("\n");
-    printf("|   | O que você deseja alterar?:\n");
-    printf("_____-----------------------------------_____\n");
-    printf("|   |      1 - Nome       0 - Sair      |   |\n");
-    printf("_____-----------------------------------_____\n");
-    printf("\n");
-    printf("-> Escolha sua opção: ");
     scanf("%d", &opc_altr_tipo);
     printf("---------------------------------------------\n");
 }
@@ -953,6 +937,7 @@ void menu_excluir_tipo(void) {
 // RELATÓRIO TIPO
 void menu_relatorio_tipo(void) {
     system("clear||cls");
+    limpa_buffer();
     printf("_____--------------------------------------_____\n");
     printf("|   |         == SIG-Rent-a-Car ==         |   |\n");
     printf("|   |    Sistema de Locação de Veículos    |   |\n");
@@ -984,9 +969,7 @@ int menu_combustiveis(void) {
     printf("|                                                        |\n");
     printf("----------------------------------------------------------\n");
     printf("\n");
-    printf("-> Escolha sua opção: ");
-    scanf("%d", &opc_combustiveis);
-    getchar();
+    opc_combustiveis = validar_opcao(0, 3);
     return opc_combustiveis;
 }
 
@@ -1037,9 +1020,8 @@ void menu_checar_combustivel(void) {
     printf("_____------------------------------------_____\n");
     printf("|   | 1 - Alterar  2 - Excluir  0 - Sair |   |\n");
     printf("_____------------------------------------_____\n");
-    printf("-> Escolha sua opção: ");
-    scanf("%d", &opc_check_combustivel);
     printf("----------------------------------------------\n");
+    opc_check_combustivel = validar_opcao(0, 2);
 
     if (opc_check_combustivel == 1) {
         menu_alterar_combustivel();
@@ -1062,12 +1044,6 @@ void menu_alterar_combustivel(void) {
     printf("|   | Nome: \n");
     printf("----------------------------------------------\n");
     printf("\n");
-    printf("|   | O que você deseja alterar?:\n");
-    printf("_____-----------------------------------_____\n");
-    printf("|   |      1 - Nome       0 - Sair      |   |\n");
-    printf("_____-----------------------------------_____\n");
-    printf("\n");
-    printf("-> Escolha sua opção: ");
     scanf("%d", &opc_altr_combustivel);
     printf("---------------------------------------------\n");
 }
@@ -1095,6 +1071,7 @@ void menu_excluir_combustivel(void) {
 // RELATÓRIO COMBUSTÍVEL
 void menu_relatorio_combustivel(void) {
     system("clear||cls");
+    limpa_buffer();
     printf("_____--------------------------------------_____\n");
     printf("|   |         == SIG-Rent-a-Car ==         |   |\n");
     printf("|   |    Sistema de Locação de Veículos    |   |\n");
@@ -1126,9 +1103,7 @@ int menu_locacoes(void) {
     printf("|                                                        |\n");
     printf("----------------------------------------------------------\n");
     printf("\n");
-    printf("-> Escolha sua opção: ");
-    scanf("%d", &opc_locacoes);
-    getchar();
+    opc_locacoes = validar_opcao(0, 3);
     return opc_locacoes;
 }
 
@@ -1209,9 +1184,8 @@ void menu_checar_locacao(void) {
     printf("_____------------------------------------_____\n");
     printf("|   | 1 - Alterar  2 - Excluir  0 - Sair |   |\n");
     printf("_____------------------------------------_____\n");
-    printf("-> Escolha sua opção: ");
-    scanf("%d", &opc_check_locacao);
     printf("----------------------------------------------\n");
+    opc_check_locacao = validar_opcao(0, 2);
 
     if (opc_check_locacao == 1) {
         menu_alterar_locacao();
@@ -1249,10 +1223,8 @@ void menu_alterar_locacao(void) {
     printf("|   |              0 - Sair             |   |\n");
     printf("_____-----------------------------------_____\n");
     printf("\n");
-    printf("-> Escolha sua opção: ");
-    scanf("%d", &opc_altr_locacao);
-    getchar();
     printf("---------------------------------------------\n");
+    opc_altr_locacao = validar_opcao(0, 4);
 }
 
 // MENU EXCLUIR LOCAÇÃO
@@ -1302,15 +1274,14 @@ int menu_relatorio_locacao(void) {
     printf("|                                              |\n");
     printf("------------------------------------------------\n");
     printf("\n");
-    printf("-> Escolha sua opção: ");
-    scanf("%d", &opc_relt_locacao);
-    getchar();
+    opc_relt_locacao = validar_opcao(0, 3);
     return opc_relt_locacao;
 }
 
 // RELATÓRIO LOCAÇÃO GERAL
 void relatorio_geral_locacoes() {
     system("clear||cls");
+    limpa_buffer();
     printf("_____--------------------------------------_____\n");
     printf("|   |         == SIG-Rent-a-Car ==         |   |\n");
     printf("|   |    Sistema de Locação de Veículos    |   |\n");
@@ -1328,6 +1299,7 @@ int relatorio_data_locacoes(void) {
     int opc_data_relt;
 
     system("clear||cls");
+    limpa_buffer();
     printf("_____--------------------------------------_____\n");
     printf("|   |         == SIG-Rent-a-Car ==         |   |\n");
     printf("|   |    Sistema de Locação de Veículos    |   |\n");
@@ -1344,15 +1316,14 @@ int relatorio_data_locacoes(void) {
     printf("|                                              |\n");
     printf("------------------------------------------------\n");
     printf("\n");
-    printf("-> Escolha sua opção: ");
-    scanf("%d", &opc_data_relt);
-    getchar();
+    opc_data_relt = validar_opcao(0, 3);
     return opc_data_relt;
 }
 
 // RELATÓRIO LOCAÇÃO DATA RECENTE
 void relatorio_locacoes_recentes(void) {
     system("clear||cls");
+    limpa_buffer();
     printf("_____--------------------------------------_____\n");
     printf("|   |         == SIG-Rent-a-Car ==         |   |\n");
     printf("|   |    Sistema de Locação de Veículos    |   |\n");
@@ -1368,6 +1339,7 @@ void relatorio_locacoes_recentes(void) {
 // RELATÓRIO LOCAÇÃO DATA ANTIGA
 void relatorio_locacoes_antigas(void) {
     system("clear||cls");
+    limpa_buffer();
     printf("_____--------------------------------------_____\n");
     printf("|   |         == SIG-Rent-a-Car ==         |   |\n");
     printf("|   |    Sistema de Locação de Veículos    |   |\n");
@@ -1385,6 +1357,7 @@ void relatorio_locacoes_data(void) {
     char data[9];
 
     system("clear||cls");
+    limpa_buffer();
     printf("_____--------------------------------------_____\n");
     printf("|   |         == SIG-Rent-a-Car ==         |   |\n");
     printf("|   |    Sistema de Locação de Veículos    |   |\n");
@@ -1403,6 +1376,7 @@ void relatorio_veiculo_locacoes(void) {
     char placa[8];
 
     system("clear||cls");
+    limpa_buffer();
     printf("_____--------------------------------------_____\n");
     printf("|   |         == SIG-Rent-a-Car ==         |   |\n");
     printf("|   |    Sistema de Locação de Veículos    |   |\n");
