@@ -1,0 +1,4 @@
+# Arquivos de build
+*.o
+programa
+build/
