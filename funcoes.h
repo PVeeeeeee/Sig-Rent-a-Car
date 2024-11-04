@@ -4,6 +4,9 @@
 int menu_principal(void);
 void menu_sobre(void);
 
+// Declarações de funções de validação
+int validar_opcao(int limite_inferior, int limite_superior);
+
     // PESSOAS
 int menu_pessoas(void);
 void menu_cadastrar_pessoa(void);
