@@ -3,6 +3,7 @@
 // ATIVANDO FUNÇÕES
 int menu_principal(void);
 void menu_sobre(void);
+void limpa_buffer(void);
 
 // Declarações de funções de validação
 int validar_opcao(int limite_inferior, int limite_superior);

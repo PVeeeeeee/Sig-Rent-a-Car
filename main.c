@@ -12,6 +12,7 @@
 #include <stdlib.h>
 #include "funcoes.h"
 
+
 // FUNÇÃO MAIN - PRINCIPAL
 int main(void) {
 
