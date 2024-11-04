@@ -38,6 +38,7 @@ int menu_principal(void) {
 // MENU_SOBRE
 void menu_sobre(void) {
     system("clear||cls");
+    limpa_buffer();
     printf("_____--------------------------------------------------------_____\n");
     printf("|   |                  == SIG-Rent-a-Car ==                  |   |\n");
     printf("|   |             Sistema de Locação de Veículos             |   |\n");
