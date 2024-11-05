@@ -88,7 +88,27 @@ int validar_telefone(const char *telefone) {
     return 1;
 }
 
-// Verifica se o e-mail é válido (simplificado)
+// Validação de Chassi feito pelo chatgpt
+int validar_chassi(const char *chassi) {
+    if (strlen(chassi) != 17) return 0;
+    for (int i = 0; i < 17; i++) {
+        if (!isalnum(chassi[i]) || (chassi[i] >= 'G' && chassi[i] <= 'Z')) {
+            return 0;
+        }
+    }
+    return 1;
+}
+
+// Validação de Placa feito pelo chatgpt
+int validar_placa(const char *placa) {
+    if (strlen(placa) != 7) return 0;
+    if (!isalpha(placa[0]) || !isalpha(placa[1]) || !isalpha(placa[2])) return 0; // Primeiros três devem ser letras
+    if (!isdigit(placa[3])) return 0;
+    if (!isalnum(placa[4]) || !isalnum(placa[5]) || !isalnum(placa[6])) return 0; // Últimos três devem ser alfanuméricos
+    return 1;
+}
+
+// Verifica se o e-mail é válido
 int validar_email(const char *email) {
     int len = strlen(email);
     if (len == 0 || len > 25) return 0;
@@ -97,4 +117,19 @@ int validar_email(const char *email) {
         if (email[i] == '@') has_at = 1;
     }
     return has_at;
+}
+
+int validar_texto(const char *texto, int max_len) {
+    if (strlen(texto) == 0 || strlen(texto) > max_len) return 0;
+    for (int i = 0; i < strlen(texto); i++) {
+        if (isdigit(texto[i])) return 0; 
+    }
+}
+
+int validar_inteiro(int valor, int min, int max) {
+    return valor >= min && valor <= max;
+}
+
+int validar_float(float valor, float min) {
+    return valor > min;
 }

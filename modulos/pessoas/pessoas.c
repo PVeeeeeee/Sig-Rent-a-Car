@@ -105,12 +105,12 @@ void menu_checar_pessoa(void) {
     int opc_check_pessoa;
 
      do {
-        cabecalho_cadastro_pessoa();
+        cabecalho_checar_pessoa();
         printf("|   | CPF: ");
         scanf("%11s", cpf);
     } while (!validar_cpf(cpf));
 
-    cabecalho_cadastro_pessoa();
+    cabecalho_checar_pessoa();
     printf("|   | CPF: \n");
     printf("|   | Nome: \n");
     printf("|   | Idade: \n");

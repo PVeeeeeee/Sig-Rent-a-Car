@@ -29,22 +29,8 @@ int menu_veiculos(void) {
     return opc_veiculos;
 }
 
-// MENU CADASTRAR VEÍCULO
-void menu_cadastrar_veiculo(void) {
-    // VARIÁVEIS
-    char chassi[18];
-    char placa[8];
-    char marca[15];
-    char modelo[25];
-    char tipo[12];
-    char combustivel[15];
-    char disponivel[2];
-    char cor[15];
-    int ano;
-    int lugares;
-    float valor;
 
-    // FORM
+void cabecalho_cadastrar_veiculo() {
     system("clear||cls");
     printf("_____------------------------------------_____\n");
     printf("|   |        == SIG-Rent-a-Car ==        |   |\n");
@@ -52,37 +38,81 @@ void menu_cadastrar_veiculo(void) {
     printf("----------------------------------------------\n");
     printf("|   |          CADASTRAR VEÍCULO         |   |\n");
     printf("----------------------------------------------\n");
-    printf("|   |\n");
-    printf("|   | Chassi:  \n");
-    printf("|   | ");
-    scanf("%17s", chassi);
-    printf("|   | Placa: \n");
-    printf("|   | ");
-    scanf("%7s", placa);
-    printf("|   | Marca: \n");
-    printf("|   | ");
-    scanf("%14s", marca);
-    printf("|   | Modelo: \n");
-    printf("|   | ");
-    scanf("%24s", modelo);
-    printf("|   | Cor: \n");
-    printf("|   | ");
-    scanf("%14s", cor);
-    printf("|   | Tipo: \n");
-    printf("|   | ");
-    scanf("%11s", tipo);
-    printf("|   | Combustível: \n");
-    printf("|   | ");
-    scanf("%14s", combustivel);
-    printf("|   | Ano: \n");
-    printf("|   | ");
-    scanf("%d", &ano);
-    printf("|   | Lugares: \n");
-    printf("|   | ");
-    scanf("%d", &lugares);
-    printf("|   | Valor: \n");
-    printf("|   | ");
-    scanf("%f", &valor);
+}
+
+// MENU CADASTRAR VEÍCULO
+void menu_cadastrar_veiculo(void) {
+    char chassi[18];
+    char placa[8];
+    char marca[15];
+    char modelo[25];
+    char tipo[12];
+    char combustivel[15];
+    char cor[15];
+    int ano;
+    int lugares;
+    float valor;
+
+    do {
+        cabecalho_cadastrar_veiculo();
+        printf("|   | Chassi (17 caracteres):  \n|   | ");
+        scanf("%17s", chassi);
+    } while (!validar_chassi(chassi));
+
+    do {
+        cabecalho_cadastrar_veiculo();
+        printf("|   | Placa (ABC1D23): \n|   | ");
+        scanf("%7s", placa);
+    } while (!validar_placa(placa));
+
+    do {
+        cabecalho_cadastrar_veiculo();
+        printf("|   | Marca: \n|   | ");
+        scanf("%14s", marca);
+    } while (!validar_texto(marca, 14));
+
+    do {
+        cabecalho_cadastrar_veiculo();
+        printf("|   | Modelo: \n|   | ");
+        scanf("%24s", modelo);
+    } while (!validar_texto(modelo, 24));
+
+    do {
+        cabecalho_cadastrar_veiculo();
+        printf("|   | Cor: \n|   | ");
+        scanf("%14s", cor);
+    } while (!validar_texto(cor, 14));
+
+    do {
+        cabecalho_cadastrar_veiculo();
+        printf("|   | Tipo: \n|   | ");
+        scanf("%11s", tipo);
+    } while (!validar_texto(tipo, 11));
+
+    do {
+        cabecalho_cadastrar_veiculo();
+        printf("|   | Combustível: \n|   | ");
+        scanf("%14s", combustivel);
+    } while (!validar_texto(combustivel, 14));
+
+    do {
+        cabecalho_cadastrar_veiculo();
+        printf("|   | Ano: \n|   | ");
+        scanf("%d", &ano);
+    } while (!validar_inteiro(ano, 1886, 2125));
+
+    do {
+        cabecalho_cadastrar_veiculo();
+        printf("|   | Lugares: \n|   | ");
+        scanf("%d", &lugares);
+    } while (!validar_inteiro(lugares, 1, 50));
+
+    do {
+        cabecalho_cadastrar_veiculo();
+        printf("|   | Valor: \n|   | ");
+        scanf("%f", &valor);
+    } while (!validar_float(valor, 0));
+
     printf("|   |\n");
     printf("---------------------------------------\n");
     printf("|   | Veículo Cadastrado com Sucesso! ");
@@ -92,20 +122,31 @@ void menu_cadastrar_veiculo(void) {
     getchar();
 }
 
-// MENU CHECAR VEÍCULO
-void menu_checar_veiculo(void) {
-    char placa[8];
-    int opc_check_veiculo;
+void cabecalho_checar_veiculo(void){
 
-    system("clear||cls");
+system("clear||cls");
     printf("_____------------------------------------_____\n");
     printf("|   |        == SIG-Rent-a-Car ==        |   |\n");
     printf("|   |   Sistema de Locação de Veículos   |   |\n");
     printf("----------------------------------------------\n");
     printf("|   |           CHECAR VEÍCULO           |   |\n");
     printf("----------------------------------------------\n");
-    printf("|   | Digite a Placa: ");
-    scanf("%7s", placa);
+
+}
+
+// MENU CHECAR VEÍCULO
+void menu_checar_veiculo(void) {
+    char placa[8];
+    int opc_check_veiculo;
+
+    do {
+        cabecalho_checar_veiculo();
+        printf("|   | Digite a Placa (ABC1D23): \n|   | ");
+        scanf("%7s", placa);
+    } while (!validar_placa(placa));
+
+    cabecalho_checar_veiculo();
+    printf("|   | Placa:  \n");
     printf("|   | Chassi:  \n");
     printf("|   | Marca: \n");
     printf("|   | Modelo: \n");
