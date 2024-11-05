@@ -28,65 +28,90 @@ int menu_pessoas(void) {
 }
 
 // MENU CADASTRAR PESSOA
-void menu_cadastrar_pessoa(void) {
-    // VARIÁVEIS
-    char nome[51];
-    char cpf[12];
-    char data_nasc[9];
-    char telefone[12];
-    char email[26];
-    char fun[2];
+void cabecalho_cadastro_pessoa(void){
 
-    // FORM
-    system("clear||cls");
+system("clear||cls");
     printf("_____------------------------------------_____\n");
     printf("|   |        == SIG-Rent-a-Car ==        |   |\n");
     printf("|   |   Sistema de Locação de Veículos   |   |\n");
     printf("----------------------------------------------\n");
     printf("|   |          CADASTRAR PESSOA          |   |\n");
     printf("----------------------------------------------\n");
-    printf("|   |\n");
-    printf("|   | Nome: \n");
+
+}
+
+void menu_cadastrar_pessoa(void) {
+    char nome[51], cpf[12], data_nasc[9], telefone[12], email[26], fun[2];
+    int funcao_pes;
+
+    do {
+        cabecalho_cadastro_pessoa();
+        printf("|   | Nome: ");
+        scanf("%50s", nome);
+    } while (!validar_nome(nome));
+
+    do {
+        cabecalho_cadastro_pessoa();
+        printf("|   | CPF: ");
+        scanf("%11s", cpf);
+    } while (!validar_cpf(cpf));
+
+    do {
+        cabecalho_cadastro_pessoa();
+        printf("|   | Dtd. Nascimento: ");
+        scanf("%8s", data_nasc);
+    } while (!validar_data(data_nasc));
+
+    do {
+        cabecalho_cadastro_pessoa();
+        printf("|   | Telefone: ");
+        scanf("%11s", telefone);
+    } while (!validar_telefone(telefone));
+
+    do {
+        cabecalho_cadastro_pessoa();
+        printf("|   | E-mail: ");
+        scanf("%25s", email);
+    } while (!validar_email(email));
+
+    cabecalho_cadastro_pessoa();
+    printf("|   | Qual função: 1- cliente 2- funcionario\n");
     printf("|   | ");
-    scanf("%50s", nome);
-    printf("|   | CPF: \n");
-    printf("|   | ");
-    scanf("%11s", cpf);
-    printf("|   | Dtd. Nascimento: \n");
-    printf("|   | ");
-    scanf("%8s", data_nasc);
-    printf("|   | Telefone: \n");
-    printf("|   | ");
-    scanf("%11s", telefone);
-    printf("|   | E-mail:  \n");
-    printf("|   | ");
-    scanf("%25s", email);
-    printf("|   | Funcionário (S/N): \n");
-    printf("|   | ");
-    scanf("%1s", fun);
-    printf("|   |\n");
-    printf("--------------------------------------\n");
-    printf("|   | Pessoa Cadastrada com Sucesso! ");
-    printf("\n");
-    printf("Tecle <ENTER> para prosseguir...    ");
+    funcao_pes = validar_opcao(1, 2);
+
+    printf("|   | Pessoa Cadastrada com Sucesso!\n");
+    printf("Tecle <ENTER> para prosseguir... ");
     limpa_buffer();
     getchar();
 }
 
-// MENU CHECAR PESSOA
-void menu_checar_pessoa(void) {
-    char cpf[12];
-    int opc_check_pessoa;
 
-    system("clear||cls");
+ void cabecalho_checar_pessoa(void){
+
+system("clear||cls");
     printf("_____------------------------------------_____\n");
     printf("|   |        == SIG-Rent-a-Car ==        |   |\n");
     printf("|   |   Sistema de Locação de Veículos   |   |\n");
     printf("----------------------------------------------\n");
     printf("|   |            CHECAR PESSOA           |   |\n");
     printf("----------------------------------------------\n");
-    printf("|   | Digite o CPF: ");
-    scanf("%11s", cpf);
+
+ }
+
+
+// MENU CHECAR PESSOA
+void menu_checar_pessoa(void) {
+    char cpf[12];
+    int opc_check_pessoa;
+
+     do {
+        cabecalho_cadastro_pessoa();
+        printf("|   | CPF: ");
+        scanf("%11s", cpf);
+    } while (!validar_cpf(cpf));
+
+    cabecalho_cadastro_pessoa();
+    printf("|   | CPF: \n");
     printf("|   | Nome: \n");
     printf("|   | Idade: \n");
     printf("|   | Telefone: \n");

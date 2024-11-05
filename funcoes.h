@@ -7,6 +7,11 @@ void limpa_buffer(void);
 
 // Declarações de funções de validação
 int validar_opcao(int limite_inferior, int limite_superior);
+int validar_nome(const char *nome);
+int validar_cpf(const char *cpf);
+int validar_data(const char *data);
+int validar_telefone(const char *telefone);
+int validar_email(const char *email);
 
     // PESSOAS
 int menu_pessoas(void);
