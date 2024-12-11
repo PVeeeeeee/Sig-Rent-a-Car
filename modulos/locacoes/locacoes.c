@@ -1,7 +1,9 @@
 // BIBLIOTECAS
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "../../funcoes.h"
+#include "locacoes.h"
 
 
 // MENU LOCAÇÕES
@@ -29,16 +31,8 @@ int menu_locacoes(void) {
 
 // MENU CADASTRAR LOCAÇÃO
 void menu_cadastrar_locacao(void) {
-    // VARIÁVEIS
-    char cpf_cliente[12];
-    char cpf_funcionario[12];
-    char placa_veiculo[8];
-    char data_inic[9];
-    char data_final[9];
-    float valor_final;
-    char situacao[2];
+    Locacao l; 
 
-    // FORM
     system("clear||cls");
     printf("_____------------------------------------_____\n");
     printf("|   |        == SIG-Rent-a-Car ==        |   |\n");
@@ -47,35 +41,37 @@ void menu_cadastrar_locacao(void) {
     printf("|   |         CADASTRAR LOCAÇÃO          |   |\n");
     printf("----------------------------------------------\n");
     printf("|   |\n");
-    printf("|   | Cliente (CPF): \n");
-    printf("|   | ");
-    scanf("%11s", cpf_cliente);
-    printf("|   | Funcionário (CPF): \n");
-    printf("|   | ");
-    scanf("%11s", cpf_funcionario);
-    printf("|   | Placa do Veículo: \n");
-    printf("|   | ");
-    scanf("%7s", placa_veiculo);
-    printf("|   | Data Início: \n");
-    printf("|   | ");
-    scanf("%8s", data_inic);
-    printf("|   | Data Final: \n");
-    printf("|   | ");
-    scanf("%8s", data_final);
-    printf("|   | Valor Final: \n");
-    printf("|   | ");
-    scanf("%f", &valor_final);
-    printf("|   | Situação (F/A): \n");
-    printf("|   | ");
-    scanf("%1s", situacao);
+
+    printf("|   | Cliente (CPF): ");
+    scanf("%11s", l.cpf_cliente);
+
+    printf("|   | Funcionário (CPF): ");
+    scanf("%11s", l.cpf_funcionario);
+
+    printf("|   | Placa do Veículo: ");
+    scanf("%7s", l.placa_veiculo);
+
+    printf("|   | Data Início (DD/MM/AAAA): ");
+    scanf("%10s", l.data_inic);
+
+    printf("|   | Data Final (DD/MM/AAAA): ");
+    scanf("%10s", l.data_final);
+
+    printf("|   | Valor Final: ");
+    scanf("%f", &l.valor_final);
+
+    printf("|   | Situação (F/A): ");
+    scanf("%1s", l.situacao);
+
     printf("|   |\n");
     printf("---------------------------------------\n");
-    printf("|   | Locação Cadastrada com Sucesso! ");
+    printf("|   | Locação Cadastrada com Sucesso!\n");
     printf("\n");
     printf("Tecle <ENTER> para prosseguir...    ");
     limpa_buffer();
     getchar();
 }
+
 
 // MENU CHECAR LOCAÇÃO
 void menu_checar_locacao(void) {

@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <ctype.h>
 #include <string.h>
+#include <stdbool.h>
 #include "funcoes.h"
 
 // LIMPA BUFFER
@@ -126,10 +127,23 @@ int validar_texto(const char *texto, int max_len) {
     }
 }
 
-int validar_inteiro(int valor, int min, int max) {
-    return valor >= min && valor <= max;
+
+// Função para validar se o valor é inteiro dentro do intervalo
+bool validar_inteiro(int *valor, int minimo, int maximo) {
+    if (*valor >= minimo && *valor <= maximo) {
+        limpa_buffer(); 
+        return true;
+    }
+    limpa_buffer(); 
+    return false;
 }
 
-int validar_float(float valor, float min) {
-    return valor > min;
+// Função para validar se o valor é float dentro do intervalo
+bool validar_float(float *valor, float minimo, float maximo) {
+    if (*valor >= minimo && *valor <= maximo) {
+        limpa_buffer(); 
+        return true;
+    }
+    limpa_buffer(); 
+    return false;
 }

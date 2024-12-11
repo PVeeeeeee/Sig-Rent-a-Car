@@ -1,4 +1,8 @@
+#include <stdbool.h>
+
 // ASSINATURAS DAS FUNÇÕES
+
+
 
 // ATIVANDO FUNÇÕES
 int menu_principal(void);
@@ -15,8 +19,8 @@ int validar_email(const char *email);
 int validar_chassi(const char *chassi);
 int validar_placa(const char *placa);
 int validar_texto(const char *texto, int max_len);
-int validar_inteiro(int valor, int min, int max);
-int validar_float(float valor, float min);
+bool validar_inteiro(int *valor, int minimo, int maximo);
+bool validar_float(float *valor, float minimo, float maximo);
 
     // PESSOAS
 int menu_pessoas(void);

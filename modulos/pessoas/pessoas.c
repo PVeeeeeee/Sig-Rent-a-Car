@@ -1,7 +1,9 @@
 // BIBLIOTECAS
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "../../funcoes.h"
+#include "pessoas.h"
 
 
 // MENU PESSOAS
@@ -40,44 +42,49 @@ system("clear||cls");
 
 }
 
+
 void menu_cadastrar_pessoa(void) {
-    char nome[51], cpf[12], data_nasc[9], telefone[12], email[26], fun[2];
-    int funcao_pes;
+    Pessoa p;
 
     do {
         cabecalho_cadastro_pessoa();
         printf("|   | Nome: ");
-        scanf("%50s", nome);
-    } while (!validar_nome(nome));
+        scanf("%50s", p.nome);
+    } while (!validar_nome(p.nome));
 
     do {
         cabecalho_cadastro_pessoa();
         printf("|   | CPF: ");
-        scanf("%11s", cpf);
-    } while (!validar_cpf(cpf));
+        scanf("%11s", p.cpf);
+    } while (!validar_cpf(p.cpf));
 
     do {
         cabecalho_cadastro_pessoa();
         printf("|   | Dtd. Nascimento: ");
-        scanf("%8s", data_nasc);
-    } while (!validar_data(data_nasc));
+        scanf("%10s", p.data_nasc);
+    } while (!validar_data(p.data_nasc));
 
     do {
         cabecalho_cadastro_pessoa();
         printf("|   | Telefone: ");
-        scanf("%11s", telefone);
-    } while (!validar_telefone(telefone));
+        scanf("%11s", p.telefone);
+    } while (!validar_telefone(p.telefone));
 
     do {
         cabecalho_cadastro_pessoa();
         printf("|   | E-mail: ");
-        scanf("%25s", email);
-    } while (!validar_email(email));
+        scanf("%25s", p.email);
+    } while (!validar_email(p.email));
 
     cabecalho_cadastro_pessoa();
     printf("|   | Qual função: 1- cliente 2- funcionario\n");
     printf("|   | ");
-    funcao_pes = validar_opcao(1, 2);
+    int funcao_pes = validar_opcao(1, 2);
+    if (funcao_pes == 1) {
+        strcpy(p.funcao, "Cliente");
+    } else {
+        strcpy(p.funcao, "Funcionário");
+    }
 
     printf("|   | Pessoa Cadastrada com Sucesso!\n");
     printf("Tecle <ENTER> para prosseguir... ");

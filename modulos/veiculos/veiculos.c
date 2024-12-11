@@ -1,7 +1,9 @@
 // BIBLIOTECAS
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "../../funcoes.h"
+#include "veiculos.h"
 
 // MENU VEÍCULOS
 int menu_veiculos(void) {
@@ -40,84 +42,93 @@ void cabecalho_cadastrar_veiculo() {
     printf("----------------------------------------------\n");
 }
 
+void exibir_veiculo(const Veiculo *v) {
+    printf("---------------------------------------\n");
+    printf("|   | Chassi: %s\n", v->chassi);
+    printf("|   | Placa: %s\n", v->placa);
+    printf("|   | Marca: %s\n", v->marca);
+    printf("|   | Modelo: %s\n", v->modelo);
+    printf("|   | Cor: %s\n", v->cor);
+    printf("|   | Tipo: %s\n", v->tipo);
+    printf("|   | Combustível: %s\n", v->combustivel);
+    printf("|   | Ano: %d\n", v->ano);
+    printf("|   | Lugares: %d\n", v->lugares);
+    printf("|   | Valor: R$ %.2f\n", v->valor);
+    printf("---------------------------------------\n");
+}
+
 // MENU CADASTRAR VEÍCULO
 void menu_cadastrar_veiculo(void) {
-    char chassi[18];
-    char placa[8];
-    char marca[15];
-    char modelo[25];
-    char tipo[12];
-    char combustivel[15];
-    char cor[15];
-    int ano;
-    int lugares;
-    float valor;
+    Veiculo v;
 
     do {
         cabecalho_cadastrar_veiculo();
         printf("|   | Chassi (17 caracteres):  \n|   | ");
-        scanf("%17s", chassi);
-    } while (!validar_chassi(chassi));
+        scanf("%17s", v.chassi);
+    } while (!validar_chassi(v.chassi));
 
     do {
         cabecalho_cadastrar_veiculo();
         printf("|   | Placa (ABC1D23): \n|   | ");
-        scanf("%7s", placa);
-    } while (!validar_placa(placa));
+        scanf("%7s", v.placa);
+    } while (!validar_placa(v.placa));
 
     do {
         cabecalho_cadastrar_veiculo();
         printf("|   | Marca: \n|   | ");
-        scanf("%14s", marca);
-    } while (!validar_texto(marca, 14));
+        scanf("%14s", v.marca);
+    } while (!validar_texto(v.marca, 14));
 
     do {
         cabecalho_cadastrar_veiculo();
         printf("|   | Modelo: \n|   | ");
-        scanf("%24s", modelo);
-    } while (!validar_texto(modelo, 24));
+        scanf("%24s", v.modelo);
+    } while (!validar_texto(v.modelo, 24));
 
     do {
         cabecalho_cadastrar_veiculo();
         printf("|   | Cor: \n|   | ");
-        scanf("%14s", cor);
-    } while (!validar_texto(cor, 14));
+        scanf("%14s", v.cor);
+    } while (!validar_texto(v.cor, 14));
 
     do {
         cabecalho_cadastrar_veiculo();
         printf("|   | Tipo: \n|   | ");
-        scanf("%11s", tipo);
-    } while (!validar_texto(tipo, 11));
+        scanf("%11s", v.tipo);
+    } while (!validar_texto(v.tipo, 11));
 
     do {
         cabecalho_cadastrar_veiculo();
         printf("|   | Combustível: \n|   | ");
-        scanf("%14s", combustivel);
-    } while (!validar_texto(combustivel, 14));
+        scanf("%14s", v.combustivel);
+    } while (!validar_texto(v.combustivel, 14));
 
     do {
         cabecalho_cadastrar_veiculo();
         printf("|   | Ano: \n|   | ");
-        scanf("%d", &ano);
-    } while (!validar_inteiro(ano, 1886, 2125));
+        scanf("%d", &v.ano);
+    } while (!validar_inteiro(&v.ano, 1886, 2125));
 
     do {
         cabecalho_cadastrar_veiculo();
         printf("|   | Lugares: \n|   | ");
-        scanf("%d", &lugares);
-    } while (!validar_inteiro(lugares, 1, 50));
+        scanf("%d", &v.lugares);
+    } while (!validar_inteiro(&v.lugares, 1, 50));
 
     do {
         cabecalho_cadastrar_veiculo();
         printf("|   | Valor: \n|   | ");
-        scanf("%f", &valor);
-    } while (!validar_float(valor, 0));
+        scanf("%f", &v.valor);
+    } while (!validar_float(&v.valor, 50, 5000));
 
+    // Exibição de confirmação
     printf("|   |\n");
     printf("---------------------------------------\n");
-    printf("|   | Veículo Cadastrado com Sucesso! ");
-    printf("\n");
-    printf("Tecle <ENTER> para prosseguir...    ");
+    printf("|   | Veículo Cadastrado com Sucesso!\n");
+    printf("|   | Dados Cadastrados:\n");
+    exibir_veiculo(&v);
+
+    printf("\nTecle <ENTER> para prosseguir...");
     limpa_buffer();
     getchar();
 }
