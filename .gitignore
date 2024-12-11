@@ -1,0 +1,12 @@
+*.exe
+
+build/
+bin/
+
+*.o
+*.obj
+*.tmp
+*.log
+*.swp
+.DS_Store
+Thumbs.db
