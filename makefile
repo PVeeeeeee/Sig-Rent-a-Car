@@ -10,7 +10,7 @@ OBJ_DIR = build
 EXEC = Sig-Rent-a-Car
 
 # Arquivos fonte
-SRC = modulos/menu/menu.c modulos/pessoas/pessoas.c modulos/veiculos/veiculos.c modulos/locacoes/locacoes.c main.c funcoes.c
+SRC = modulos/menu/menu.c modulos/pessoas/pessoas.c modulos/veiculos/veiculos.c modulos/locacoes/locacoes.c main.c funcoes/funcoes.c
 
 # Arquivos objeto
 OBJ = $(SRC:.c=.o)

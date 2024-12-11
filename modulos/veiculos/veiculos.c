@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "../../funcoes.h"
+#include "../../funcoes/funcoes.h"
 #include "veiculos.h"
 
 // MENU VEÍCULOS

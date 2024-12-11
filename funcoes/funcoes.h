@@ -1,5 +1,4 @@
 #include <stdbool.h>
-
 // ASSINATURAS DAS FUNÇÕES
 
 
