@@ -41,7 +41,7 @@ Projeto para avaliação da disciplina <b>DCT1106 | PROGRAMAÇÃO</b> do curso d
 2. Execute:
 
    ```bash
-   make
+   make run
    ```
 
 #### Sem Make (Manual):
@@ -52,19 +52,30 @@ Projeto para avaliação da disciplina <b>DCT1106 | PROGRAMAÇÃO</b> do curso d
    cd Sig-Rent-a-Car
    ```
 
-2. Compile com o GCC:
+2. Compile os arquivos do projeto:
 
    ```bash
-   gcc -o Sig-Rent-a-Car main.c modulos/menu/menu.c modulos/pessoas/pessoas.c modulos/veiculos/veiculos.c modulos/locacoes/locacoes.c funcoes.c
+   gcc -c modulos/menu/menu.c -o build/menu.o
+   gcc -c modulos/pessoas/pessoas.c -o build/pessoas.o
+   gcc -c modulos/veiculos/veiculos.c -o build/veiculos.o
+   gcc -c modulos/locacoes/locacoes.c -o build/locacoes.o
+   gcc -c main.c -o build/main.o
+   gcc -c funcoes/funcoes.c -o build/funcoes.o
+   ```
+
+3. Em seguida, vincule todos os arquivos .o para criar o executável:
+   
+   ```bash
+   gcc -o Sig-Rent-a-Car main.c modulos/menu/menu.c modulos/pessoas/pessoas.c modulos/veiculos/veiculos.c modulos/locacoes/locacoes.c funcoes/funcoes.c
    ```
 
 ### Executando o Programa
 
 Após a compilação, execute:
 
-```bash
-./Sig-Rent-a-Car
-```
+   ```bash
+   ./Sig-Rent-a-Car
+   ```
 
 
 ## ⚒️ Ferramentas
