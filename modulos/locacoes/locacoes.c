@@ -164,10 +164,13 @@ void menu_excluir_locacao(void) {
     printf("----------------------------------------------\n");
     printf("\n");
     printf("|   | Você tem certeza que deseja excluir?(S/N): ");
-    scanf("%c", &opc_exclr_locacao);
-    getchar();
+    
+    getchar(); 
+    scanf("%1s", opc_exclr_locacao);
+
     printf("----------------------------------------------\n");
 }
+
 
 // MENU RELATÓRIO LOCAÇÃO
 int menu_relatorio_locacao(void) {

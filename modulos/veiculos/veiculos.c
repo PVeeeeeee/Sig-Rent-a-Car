@@ -43,6 +43,7 @@ void cabecalho_cadastrar_veiculo() {
 }
 
 void exibir_veiculo(const Veiculo *v) {
+    cabecalho_cadastrar_veiculo();
     printf("---------------------------------------\n");
     printf("|   | Chassi: %s\n", v->chassi);
     printf("|   | Placa: %s\n", v->placa);
