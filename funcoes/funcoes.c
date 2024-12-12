@@ -120,13 +120,19 @@ int validar_email(const char *email) {
     return has_at;
 }
 
-int validar_texto(const char *texto, int max_len) {
-    if (strlen(texto) == 0 || strlen(texto) > max_len) return 0;
-    for (int i = 0; i < strlen(texto); i++) {
-        if (isdigit(texto[i])) return 0; 
-    }
-}
 
+
+int validar_texto(const char *texto, int max_len) {
+    if (strlen(texto) == 0 || strlen(texto) > max_len) 
+        return 0;
+    
+    for (int i = 0; i < strlen(texto); i++) {
+        if (isdigit(texto[i])) 
+            return 0; 
+    }
+    
+    return 1;
+}
 
 // Função para validar se o valor é inteiro dentro do intervalo
 bool validar_inteiro(int *valor, int minimo, int maximo) {

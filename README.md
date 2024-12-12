@@ -81,5 +81,6 @@ Após a compilação, execute:
 ## ⚒️ Ferramentas
 - C
 - VsCode
+- Make
 
   

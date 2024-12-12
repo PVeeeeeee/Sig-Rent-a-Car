@@ -5,6 +5,32 @@
 #include "../../funcoes/funcoes.h"
 #include "veiculos.h"
 
+// BANCO DE DADOS
+void salvar_veiculos(void *data, size_t size, const char *fileName) {
+    char caminho[50] = "modulos/veiculos/";
+    strcat(caminho, fileName);
+
+    FILE *file = fopen(caminho, "ab"); 
+    if (file == NULL) {
+        printf("Erro ao abrir o arquivo!\n");
+        return;
+    }
+    fwrite(data, size, 1, file);
+    fclose(file);
+}
+
+void carregar_veiculos(void *data, size_t size, const char *fileName) {
+    char caminho[50] = "modulos/veiculos/";
+    strcat(caminho, fileName);
+
+    FILE *file = fopen(caminho, "rb");
+    if (file == NULL) {
+        printf("Erro ao abrir o arquivo!\n");
+        return;
+    }
+    fclose(file);
+}
+
 // MENU VEÍCULOS
 int menu_veiculos(void) {
     int opc_veiculos;
@@ -122,7 +148,8 @@ void menu_cadastrar_veiculo(void) {
         scanf("%f", &v.valor);
     } while (!validar_float(&v.valor, 50, 5000));
 
-    // Exibição de confirmação
+    salvar_veiculos(&v, sizeof(Veiculo), "veiculos.dat");
+
     printf("|   |\n");
     printf("---------------------------------------\n");
     printf("|   | Veículo Cadastrado com Sucesso!\n");
@@ -133,6 +160,7 @@ void menu_cadastrar_veiculo(void) {
     limpa_buffer();
     getchar();
 }
+
 
 void cabecalho_checar_veiculo(void){
 
@@ -147,9 +175,11 @@ system("clear||cls");
 }
 
 // MENU CHECAR VEÍCULO
-void menu_checar_veiculo(void) {
+void menu_checar_veiculo() {
     char placa[8];
+    Veiculo veiculo;
     int opc_check_veiculo;
+    int veiculo_encontrado = 0;
 
     do {
         cabecalho_checar_veiculo();
@@ -157,31 +187,54 @@ void menu_checar_veiculo(void) {
         scanf("%7s", placa);
     } while (!validar_placa(placa));
 
-    cabecalho_checar_veiculo();
-    printf("|   | Placa:  \n");
-    printf("|   | Chassi:  \n");
-    printf("|   | Marca: \n");
-    printf("|   | Modelo: \n");
-    printf("|   | Cor: \n");
-    printf("|   | Tipo: \n");
-    printf("|   | Combustível: \n");
-    printf("|   | Ano: \n");
-    printf("|   | Lugares: \n");
-    printf("|   | Valor: \n");
-    printf("----------------------------------------------\n");
-    printf("\n");
-    printf("|   | O que você deseja fazer?\n");
-    printf("_____------------------------------------_____\n");
-    printf("|   | 1 - Alterar  2 - Excluir  0 - Sair |   |\n");
-    printf("_____------------------------------------_____\n");
-    printf("----------------------------------------------\n");
-    opc_check_veiculo = validar_opcao(0, 2);
-    if (opc_check_veiculo == 1) {
-        menu_alterar_veiculo();
-    } else if (opc_check_veiculo == 2) {
-        menu_excluir_veiculo();
+    FILE *arquivo = fopen("modulos/veiculos/veiculos.dat", "rb");  
+    if (arquivo == NULL) {
+        printf("Erro ao abrir o arquivo de veículos.\n");
+        return;
     }
+
+    while (fread(&veiculo, sizeof(Veiculo), 1, arquivo)) {
+        if (strcmp(veiculo.placa, placa) == 0) {
+            veiculo_encontrado = 1;
+            break;  
+        }
+    }
+
+    fclose(arquivo);
+
+    if (veiculo_encontrado) {
+        cabecalho_checar_veiculo();
+        printf("|   | Placa: %s\n", veiculo.placa);
+        printf("|   | Chassi: %s\n", veiculo.chassi);
+        printf("|   | Marca: %s\n", veiculo.marca);
+        printf("|   | Modelo: %s\n", veiculo.modelo);
+        printf("|   | Cor: %s\n", veiculo.cor);
+        printf("|   | Tipo: %s\n", veiculo.tipo);
+        printf("|   | Combustível: %s\n", veiculo.combustivel);
+        printf("|   | Ano: %d\n", veiculo.ano);
+        printf("|   | Lugares: %d\n", veiculo.lugares);
+        printf("|   | Valor: %.2f\n", veiculo.valor);
+        printf("----------------------------------------------\n");
+
+        printf("|   | O que você deseja fazer?\n");
+        printf("|   | 1 - Alterar  2 - Excluir  0 - Sair |   |\n");
+        printf("----------------------------------------------\n");
+
+        opc_check_veiculo = validar_opcao(0, 2);
+        if (opc_check_veiculo == 1) {
+            menu_alterar_veiculo();
+        } else if (opc_check_veiculo == 2) {
+            menu_excluir_veiculo();
+        }
+    } else {
+        printf("Veículo com a placa %s não encontrado.\n", placa);
+    }
+
+    printf("\nTecle <ENTER> para prosseguir...");
+    limpa_buffer();
+    getchar(); 
 }
+
 
 // MENU ALTERAR VEÍCULO
 void menu_alterar_veiculo(void) {
