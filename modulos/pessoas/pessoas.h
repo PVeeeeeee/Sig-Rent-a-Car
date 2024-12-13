@@ -14,8 +14,8 @@ typedef struct {
 int menu_pessoas(void);
 void menu_cadastrar_pessoa(void);
 void menu_checar_pessoa(void);
-void menu_alterar_pessoa(void);
-void menu_excluir_pessoa(void);
+void menu_alterar_pessoa(const char *cpf);
+void menu_excluir_pessoa(const char *cpf);
 void relatorio_clientes(void);
 void relatorio_funcionarios(void);
 void relatorio_geral_pessoas(void);

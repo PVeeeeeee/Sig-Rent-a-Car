@@ -134,7 +134,7 @@ void menu_cadastrar_veiculo(void) {
         cabecalho_cadastrar_veiculo();
         printf("|   | Ano: \n|   | ");
         scanf("%d", &v.ano);
-    } while (!validar_inteiro(&v.ano, 1886, 2125));
+    } while (!validar_inteiro(&v.ano, 1886, 2025));
 
     do {
         cabecalho_cadastrar_veiculo();

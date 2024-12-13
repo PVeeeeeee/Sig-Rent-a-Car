@@ -6,6 +6,43 @@
 #include "pessoas.h"
 
 
+//BANCO DE DADOS
+void salvar_pessoa(Pessoa *data, const char *fileName) {
+    char caminho[50] = "modulos/pessoas/";
+    strcat(caminho, fileName);
+
+    FILE *file = fopen(caminho, "ab");
+    if (file == NULL) {
+        printf("Erro ao abrir o arquivo para salvar!\n");
+        return;
+    }
+    fwrite(data, sizeof(Pessoa), 1, file);
+    fclose(file);
+}
+
+int carregar_pessoa(Pessoa *data, const char *fileName, const char *cpf) {
+    char caminho[50] = "modulos/pessoas/";
+    strcat(caminho, fileName);
+
+    FILE *file = fopen(caminho, "rb");
+    if (file == NULL) {
+        printf("Erro ao abrir o arquivo para carregar!\n");
+        return 0;
+    }
+
+    while (fread(data, sizeof(Pessoa), 1, file)) {
+        if (strcmp(data->cpf, cpf) == 0) {
+            fclose(file);
+            return 1;
+        }
+    }
+
+    fclose(file);
+    return 0;
+}
+
+
+
 // MENU PESSOAS
 int menu_pessoas(void) {
     int opc_pessoas;
@@ -49,35 +86,35 @@ void menu_cadastrar_pessoa(void) {
     do {
         cabecalho_cadastro_pessoa();
         printf("|   | Nome: ");
-        scanf("%50s", p.nome);
+        scanf(" %50[^\n]", p.nome);
     } while (!validar_nome(p.nome));
 
     do {
         cabecalho_cadastro_pessoa();
         printf("|   | CPF: ");
-        scanf("%11s", p.cpf);
+        scanf(" %11s", p.cpf);
     } while (!validar_cpf(p.cpf));
 
     do {
         cabecalho_cadastro_pessoa();
         printf("|   | Dtd. Nascimento: ");
-        scanf("%10s", p.data_nasc);
+        scanf(" %10s", p.data_nasc);
     } while (!validar_data(p.data_nasc));
 
     do {
         cabecalho_cadastro_pessoa();
         printf("|   | Telefone: ");
-        scanf("%11s", p.telefone);
+        scanf(" %11s", p.telefone);
     } while (!validar_telefone(p.telefone));
 
     do {
         cabecalho_cadastro_pessoa();
         printf("|   | E-mail: ");
-        scanf("%25s", p.email);
+        scanf(" %25s", p.email);
     } while (!validar_email(p.email));
 
     cabecalho_cadastro_pessoa();
-    printf("|   | Qual função: 1- cliente 2- funcionario\n");
+    printf("|   | Qual função: 1- cliente 2- funcionário\n");
     printf("|   | ");
     int funcao_pes = validar_opcao(1, 2);
     if (funcao_pes == 1) {
@@ -86,14 +123,15 @@ void menu_cadastrar_pessoa(void) {
         strcpy(p.funcao, "Funcionário");
     }
 
+    salvar_pessoa(&p, "pessoas.dat");
+
     printf("|   | Pessoa Cadastrada com Sucesso!\n");
     printf("Tecle <ENTER> para prosseguir... ");
     limpa_buffer();
     getchar();
 }
 
-
- void cabecalho_checar_pessoa(void){
+void cabecalho_checar_pessoa(void){
 
 system("clear||cls");
     printf("_____------------------------------------_____\n");
@@ -109,38 +147,48 @@ system("clear||cls");
 // MENU CHECAR PESSOA
 void menu_checar_pessoa(void) {
     char cpf[12];
-    int opc_check_pessoa;
+    Pessoa p;
 
-     do {
+    do {
         cabecalho_checar_pessoa();
         printf("|   | CPF: ");
-        scanf("%11s", cpf);
+        scanf(" %11s", cpf);
     } while (!validar_cpf(cpf));
 
-    cabecalho_checar_pessoa();
-    printf("|   | CPF: \n");
-    printf("|   | Nome: \n");
-    printf("|   | Idade: \n");
-    printf("|   | Telefone: \n");
-    printf("|   | E-mail: \n");
-    printf("----------------------------------------------\n");
-    printf("\n");
-    printf("|   | O que você deseja fazer?\n");
-    printf("_____------------------------------------_____\n");
-    printf("|   | 1 - Alterar  2 - Excluir  0 - Sair |   |\n");
-    printf("_____------------------------------------_____\n");
-    printf("\n");
-    opc_check_pessoa = validar_opcao(0, 2);
+    if (carregar_pessoa(&p, "pessoas.dat", cpf)) {
+        cabecalho_checar_pessoa();
+        printf("|   | CPF: %s\n", p.cpf);
+        printf("|   | Nome: %s\n", p.nome);
+        printf("|   | Data de Nascimento: %s\n", p.data_nasc);
+        printf("|   | Telefone: %s\n", p.telefone);
+        printf("|   | E-mail: %s\n", p.email);
+        printf("|   | Função: %s\n", p.funcao);
+        printf("----------------------------------------------\n");
+        printf("\n");
+        printf("|   | O que você deseja fazer?\n");
+        printf("_____------------------------------------_____\n");
+        printf("|   | 1 - Alterar  2 - Excluir  0 - Sair |   |\n");
+        printf("_____------------------------------------_____\n");
+        printf("\n");
 
-    if (opc_check_pessoa == 1) {
-        menu_alterar_pessoa();
-    } else if (opc_check_pessoa == 2) {
-        menu_excluir_pessoa();
+        int opc_check_pessoa = validar_opcao(0, 2);
+
+        if (opc_check_pessoa == 1) {
+            menu_alterar_pessoa(cpf);
+        } else if (opc_check_pessoa == 2) {
+            menu_excluir_pessoa(cpf);
+        }
+    } else {
+        printf("Pessoa com CPF %s não encontrada!\n", cpf);
+        printf("Tecle <ENTER> para prosseguir... ");
+        limpa_buffer();
+        getchar();
     }
 }
 
+
 // MENU ALTERAR PESSOA
-void menu_alterar_pessoa(void) {
+void menu_alterar_pessoa(const char *cpf) {
     int opc_altr_pessoa;
 
     system("clear||cls");
@@ -171,7 +219,7 @@ void menu_alterar_pessoa(void) {
 }
 
 // MENU EXCLUIR PESSOA
-void menu_excluir_pessoa(void) {
+void menu_excluir_pessoa(const char *cpf) {
     char opc_exclr_pessoa;
 
     system("clear||cls");
