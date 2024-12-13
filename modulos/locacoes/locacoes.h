@@ -1,4 +1,5 @@
 #ifndef LOCACOES_H
+#include <stdbool.h>
 #define LOCACOES_H
 
 typedef struct {
@@ -8,7 +9,7 @@ typedef struct {
     char data_inic[11];         
     char data_final[11];        
     float valor_final;         
-    char situacao[2];          
+    bool situacao;          
 } Locacao;
 
 int menu_locacoes(void);

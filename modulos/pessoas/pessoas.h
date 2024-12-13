@@ -7,7 +7,7 @@ typedef struct {
     char data_nasc[11];  
     char telefone[12];   
     char email[26];     
-    char funcao[10];   
+    int funcao;   
 } Pessoa;
 
 

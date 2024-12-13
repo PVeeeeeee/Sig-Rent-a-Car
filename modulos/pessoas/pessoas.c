@@ -68,7 +68,6 @@ int menu_pessoas(void) {
 
 // MENU CADASTRAR PESSOA
 void cabecalho_cadastro_pessoa(void){
-
 system("clear||cls");
     printf("_____------------------------------------_____\n");
     printf("|   |        == SIG-Rent-a-Car ==        |   |\n");
@@ -118,9 +117,9 @@ void menu_cadastrar_pessoa(void) {
     printf("|   | ");
     int funcao_pes = validar_opcao(1, 2);
     if (funcao_pes == 1) {
-        strcpy(p.funcao, "Cliente");
+        p.funcao = 0;
     } else {
-        strcpy(p.funcao, "Funcionário");
+        p.funcao = 1;
     }
 
     salvar_pessoa(&p, "pessoas.dat");
@@ -162,7 +161,13 @@ void menu_checar_pessoa(void) {
         printf("|   | Data de Nascimento: %s\n", p.data_nasc);
         printf("|   | Telefone: %s\n", p.telefone);
         printf("|   | E-mail: %s\n", p.email);
-        printf("|   | Função: %s\n", p.funcao);
+        
+        if (p.funcao == 0) {
+            printf("|   | Função: Cliente\n");
+        } else if (p.funcao == 1) {
+            printf("|   | Função: Funcionário\n");
+        }
+
         printf("----------------------------------------------\n");
         printf("\n");
         printf("|   | O que você deseja fazer?\n");

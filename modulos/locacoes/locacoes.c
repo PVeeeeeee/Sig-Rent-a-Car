@@ -2,8 +2,43 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
 #include "../../funcoes/funcoes.h"
 #include "locacoes.h"
+
+
+//BANCO DE DADOS
+void salvar_locacao(Locacao *locacao) {
+    char caminho[50] = "modulos/locacoes/locacoes.dat";
+
+    FILE *file = fopen(caminho, "ab");
+    if (file == NULL) {
+        printf("Erro ao abrir o arquivo de locações!\n");
+        return;
+    }
+    
+    fwrite(locacao, sizeof(Locacao), 1, file);
+    fclose(file);
+}
+
+int carregar_locacoes(Locacao *l, const char *caminho, const char *cpf_cliente) {
+    FILE *file = fopen(caminho, "rb");
+    if (file == NULL) {
+        printf("Erro ao abrir o arquivo de locações!\n");
+        return 0;
+    }
+
+    int encontrado = 0;
+    while (fread(l, sizeof(Locacao), 1, file)) {
+        if (strcmp(l->cpf_cliente, cpf_cliente) == 0) {
+            encontrado = 1;
+            break;
+        }
+    }
+
+    fclose(file);
+    return encontrado;
+}
 
 
 // MENU LOCAÇÕES
@@ -31,7 +66,7 @@ int menu_locacoes(void) {
 
 // MENU CADASTRAR LOCAÇÃO
 void menu_cadastrar_locacao(void) {
-    Locacao l; 
+    Locacao l;
 
     system("clear||cls");
     printf("_____------------------------------------_____\n");
@@ -40,13 +75,22 @@ void menu_cadastrar_locacao(void) {
     printf("----------------------------------------------\n");
     printf("|   |         CADASTRAR LOCAÇÃO          |   |\n");
     printf("----------------------------------------------\n");
-    printf("|   |\n");
 
     printf("|   | Cliente (CPF): ");
     scanf("%11s", l.cpf_cliente);
 
+    if (!validar_cliente(l.cpf_cliente)) {
+        printf("|   | Erro: CPF do cliente não encontrado ou inválido!\n");
+        return;
+    }
+
     printf("|   | Funcionário (CPF): ");
     scanf("%11s", l.cpf_funcionario);
+
+    if (!validar_funcionario(l.cpf_funcionario)) {
+        printf("|   | Erro: CPF do funcionário não encontrado ou inválido!\n");
+        return;
+    }
 
     printf("|   | Placa do Veículo: ");
     scanf("%7s", l.placa_veiculo);
@@ -60,23 +104,20 @@ void menu_cadastrar_locacao(void) {
     printf("|   | Valor Final: ");
     scanf("%f", &l.valor_final);
 
-    printf("|   | Situação (F/A): ");
-    scanf("%1s", l.situacao);
+    l.situacao = 1;
 
-    printf("|   |\n");
-    printf("---------------------------------------\n");
+    salvar_locacao(&l);
+
     printf("|   | Locação Cadastrada com Sucesso!\n");
-    printf("\n");
     printf("Tecle <ENTER> para prosseguir...    ");
     limpa_buffer();
     getchar();
 }
 
-
 // MENU CHECAR LOCAÇÃO
 void menu_checar_locacao(void) {
-    char id_locacao[11];
-    int opc_check_locacao;
+    char cpf_cliente[12];
+    Locacao l;
 
     system("clear||cls");
     printf("_____------------------------------------_____\n");
@@ -85,30 +126,40 @@ void menu_checar_locacao(void) {
     printf("----------------------------------------------\n");
     printf("|   |           CHECAR LOCAÇÃO           |   |\n");
     printf("----------------------------------------------\n");
-    printf("|   | Digite o ID: ");
-    scanf("%10s", id_locacao);
-    printf("|   | Cliente (CPF): \n");
-    printf("|   | Funcionário (CPF): \n");
-    printf("|   | Placa do Veículo: \n");
-    printf("|   | Data Início: \n");
-    printf("|   | Data Final: \n");
-    printf("|   | Valor Final: \n");
-    printf("|   | Situação (F/A): \n");
-    printf("----------------------------------------------\n");
-    printf("\n");
-    printf("|   | O que você deseja fazer?\n");
-    printf("_____------------------------------------_____\n");
-    printf("|   | 1 - Alterar  2 - Excluir  0 - Sair |   |\n");
-    printf("_____------------------------------------_____\n");
-    printf("----------------------------------------------\n");
-    opc_check_locacao = validar_opcao(0, 2);
+    do {
+        printf("|   | Digite o CPF do Cliente: ");
+        scanf(" %11s", cpf_cliente);
+    } while (!validar_cliente(cpf_cliente));
 
-    if (opc_check_locacao == 1) {
-        menu_alterar_locacao();
-    } else if (opc_check_locacao == 2) {
-        menu_excluir_locacao();
+    if (carregar_locacoes(&l, "modulos/locacoes/locacoes.dat", cpf_cliente)) {
+        system("clear||cls");
+        printf("_____------------------------------------_____\n");
+        printf("|   |        == SIG-Rent-a-Car ==        |   |\n");
+        printf("|   |   Sistema de Locação de Veículos   |   |\n");
+        printf("----------------------------------------------\n");
+        printf("|   |           CHECAR LOCAÇÃO           |   |\n");
+        printf("----------------------------------------------\n");
+        printf("|   | CPF Cliente: %s\n", l.cpf_cliente);
+        printf("|   | CPF Funcionário: %s\n", l.cpf_funcionario);
+        printf("|   | Placa do Veículo: %s\n", l.placa_veiculo);
+        printf("|   | Data Início: %s\n", l.data_inic);
+        printf("|   | Data Final: %s\n", l.data_final);
+        printf("|   | Valor Final: %.2f\n", l.valor_final);
+
+        if (l.situacao) {
+            printf("|   | Situação: Ativa\n");
+        } else {
+            printf("|   | Situação: Inativa\n");
+        }
+    } else {
+        printf("Nenhuma locação encontrada para o CPF fornecido.\n");
     }
+
+    printf("\nTecle <ENTER> para prosseguir... ");
+    limpa_buffer();
+    getchar();
 }
+
 
 // MENU ALTERAR LOCAÇÃO
 void menu_alterar_locacao(void) {
