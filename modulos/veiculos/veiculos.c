@@ -92,13 +92,13 @@ void menu_cadastrar_veiculo(void) {
         cabecalho_cadastrar_veiculo();
         printf("|   | Chassi (17 caracteres):  \n|   | ");
         scanf("%17s", v.chassi);
-    } while (!validar_chassi(v.chassi));
+    } while (!validar_chassi(v.chassi) || verificar_existencia_chassi(v.chassi));
 
     do {
         cabecalho_cadastrar_veiculo();
         printf("|   | Placa (ABC1D23): \n|   | ");
         scanf("%7s", v.placa);
-    } while (!validar_placa(v.placa));
+    } while (!validar_placa(v.placa) || verificar_existencia_placa(v.placa));
 
     do {
         cabecalho_cadastrar_veiculo();
@@ -147,6 +147,8 @@ void menu_cadastrar_veiculo(void) {
         printf("|   | Valor: \n|   | ");
         scanf("%f", &v.valor);
     } while (!validar_float(&v.valor, 50, 5000));
+
+    v.disponibilidade = 1;
 
     salvar_veiculos(&v, sizeof(Veiculo), "veiculos.dat");
 
@@ -204,6 +206,11 @@ void menu_checar_veiculo() {
 
     if (veiculo_encontrado) {
         cabecalho_checar_veiculo();
+        if (veiculo.disponibilidade == 1) {
+        printf("|   | Disponível\n");
+        } else {
+        printf("|   | Indisponível\n");
+        }
         printf("|   | Placa: %s\n", veiculo.placa);
         printf("|   | Chassi: %s\n", veiculo.chassi);
         printf("|   | Marca: %s\n", veiculo.marca);

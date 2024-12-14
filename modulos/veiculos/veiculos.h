@@ -12,9 +12,12 @@ typedef struct {
     int ano;
     int lugares;
     float valor;
+    bool disponibilidade;
 } Veiculo;
 
 // Declarações das funções do módulo veiculos.c
+void salvar_veiculos(void *data, size_t size, const char *fileName);
+void carregar_veiculos(void *data, size_t size, const char *fileName);
 int menu_veiculos(void);
 void exibir_veiculo(const Veiculo *v);
 void menu_cadastrar_veiculo(void);

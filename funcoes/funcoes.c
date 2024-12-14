@@ -196,3 +196,42 @@ int validar_funcionario(const char *cpf) {
     fclose(file);
     return 0;
 }
+
+
+int verificar_existencia_chassi(const char *chassi) {
+    FILE *arquivo = fopen("modulos/veiculos/veiculos.dat", "rb");
+    if (arquivo == NULL) {
+        printf("Erro ao abrir o arquivo de veículos.\n");
+        return 0;
+    }
+
+    Veiculo veiculo;
+    while (fread(&veiculo, sizeof(Veiculo), 1, arquivo)) {
+        if (strcmp(veiculo.chassi, chassi) == 0) {
+            fclose(arquivo);
+            return 1;
+        }
+    }
+
+    fclose(arquivo);
+    return 0; 
+}
+
+int verificar_existencia_placa(const char *placa) {
+    FILE *arquivo = fopen("modulos/veiculos/veiculos.dat", "rb");
+    if (arquivo == NULL) {
+        printf("Erro ao abrir o arquivo de veículos.\n");
+        return 0; 
+    }
+
+    Veiculo veiculo;
+    while (fread(&veiculo, sizeof(Veiculo), 1, arquivo)) {
+        if (strcmp(veiculo.placa, placa) == 0) {
+            fclose(arquivo);
+            return 1;
+        }
+    }
+
+    fclose(arquivo);
+    return 0;
+}
