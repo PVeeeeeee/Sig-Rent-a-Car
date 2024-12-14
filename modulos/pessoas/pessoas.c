@@ -123,6 +123,11 @@ void menu_cadastrar_pessoa(void) {
         printf("|   | CPF: ");
         scanf(" %11s", p.cpf);
 
+        while (!validar_cpf(p.cpf)) {
+            printf("|   | Por favor, insira um CPF válido: ");
+            scanf(" %11s", p.cpf);
+        }
+
         if (validar_cliente(p.cpf) && validar_funcionario(p.cpf)) {
             printf("|   | O CPF informado já está cadastrado como Cliente e Funcionário!\n");
             printf("|   | Não é possível criar um novo cadastro.\n");
@@ -153,15 +158,36 @@ void menu_cadastrar_pessoa(void) {
         printf("|   | Nome: ");
         scanf(" %49[^\n]", p.nome);
 
+        while (!validar_nome(p.nome)) {
+            printf("|   | Por favor, insira um Nome válido: ");
+            scanf(" %49[^\n]", p.nome);
+        }
+
         printf("|   | Data de Nascimento (ddmmaaaa): ");
         scanf(" %8s", p.data_nasc);
+
+        while (!validar_data(p.data_nasc)) {
+            printf("|   | Por favor, insira um Data válido: ");
+            scanf(" %8s", p.data_nasc);
+        }
 
         printf("|   | Telefone: ");
         scanf(" %14s", p.telefone);
 
+        while (!validar_telefone(p.telefone)) {
+            printf("|   | Por favor, insira um Telefone válido: ");
+            scanf(" %14s", p.telefone);
+        }
+
         printf("|   | E-mail: ");
         getchar();
         scanf(" %49[^\n]", p.email);
+
+        while (!validar_email(p.email)) {
+            printf("|   | Por favor, insira um E-mail válido: ");
+            getchar();
+            scanf(" %49[^\n]", p.email);
+        }
 
         if (opcao == 1) {
             p.funcao = 0;
@@ -175,7 +201,7 @@ void menu_cadastrar_pessoa(void) {
             salvar_pessoa(&p);
             printf("|   | Cliente e Funcionário cadastrados com sucesso!\n");
         }
-    } while (!validar_cpf(p.cpf));
+    } while (0);  
 
     printf("Tecle <ENTER> para prosseguir... ");
     limpa_buffer();
