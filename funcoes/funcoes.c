@@ -163,7 +163,6 @@ int validar_cliente(const char *cpf) {
 
     FILE *file = fopen(caminho, "rb");
     if (file == NULL) {
-        printf("Erro ao abrir o arquivo de pessoas!\n");
         return 0;
     }
 
@@ -173,6 +172,7 @@ int validar_cliente(const char *cpf) {
             return 1;
         }
     }
+
     fclose(file);
     return 0;
 }
@@ -183,7 +183,6 @@ int validar_funcionario(const char *cpf) {
 
     FILE *file = fopen(caminho, "rb");
     if (file == NULL) {
-        printf("Erro ao abrir o arquivo de pessoas!\n");
         return 0;
     }
 
@@ -193,6 +192,7 @@ int validar_funcionario(const char *cpf) {
             return 1;
         }
     }
+
     fclose(file);
     return 0;
 }

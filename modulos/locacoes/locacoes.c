@@ -142,8 +142,16 @@ void menu_checar_locacao(void) {
         printf("|   | CPF Cliente: %s\n", l.cpf_cliente);
         printf("|   | CPF Funcionário: %s\n", l.cpf_funcionario);
         printf("|   | Placa do Veículo: %s\n", l.placa_veiculo);
-        printf("|   | Data Início: %s\n", l.data_inic);
-        printf("|   | Data Final: %s\n", l.data_final);
+        printf("|   | Data Início: %c%c/%c%c/%c%c%c%c\n",
+        l.data_inic[0], l.data_inic[1],
+        l.data_inic[2], l.data_inic[3],
+        l.data_inic[4], l.data_inic[5], l.data_inic[6], l.data_inic[7]
+        );
+        printf("|   | Data Final: %c%c/%c%c/%c%c%c%c\n",
+        l.data_final[0], l.data_final[1],
+        l.data_final[2], l.data_final[3],
+        l.data_final[4], l.data_final[5], l.data_final[6], l.data_final[7]
+        );
         printf("|   | Valor Final: %.2f\n", l.valor_final);
 
         if (l.situacao) {

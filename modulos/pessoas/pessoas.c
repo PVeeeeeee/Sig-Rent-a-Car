@@ -7,16 +7,14 @@
 
 
 //BANCO DE DADOS
-void salvar_pessoa(Pessoa *data, const char *fileName) {
-    char caminho[50] = "modulos/pessoas/";
-    strcat(caminho, fileName);
-
-    FILE *file = fopen(caminho, "ab");
+void salvar_pessoa(Pessoa *pessoa) {
+    FILE *file = fopen("modulos/pessoas/pessoas.dat", "ab");
     if (file == NULL) {
-        printf("Erro ao abrir o arquivo para salvar!\n");
+        printf("Erro ao abrir o arquivo para salvar pessoa.\n");
         return;
     }
-    fwrite(data, sizeof(Pessoa), 1, file);
+
+    fwrite(pessoa, sizeof(Pessoa), 1, file);
     fclose(file);
 }
 
@@ -26,7 +24,7 @@ int carregar_pessoa(Pessoa *data, const char *fileName, const char *cpf) {
 
     FILE *file = fopen(caminho, "rb");
     if (file == NULL) {
-        printf("Erro ao abrir o arquivo para carregar!\n");
+        printf("Erro: O arquivo de pessoas não existe.\n");
         return 0;
     }
 
@@ -40,8 +38,6 @@ int carregar_pessoa(Pessoa *data, const char *fileName, const char *cpf) {
     fclose(file);
     return 0;
 }
-
-
 
 // MENU PESSOAS
 int menu_pessoas(void) {
@@ -66,6 +62,38 @@ int menu_pessoas(void) {
     return opc_pessoas;
 }
 
+
+int promover_cliente_funcionario(const char *cpf) {
+    Pessoa p;
+    Pessoa p_funcionario;
+    FILE *file = fopen("modulos/pessoas/pessoas.dat", "rb+");
+    if (file == NULL) {
+        printf("Erro ao abrir o arquivo de pessoas para promoção!\n");
+        return 0;
+    }
+
+    while (fread(&p, sizeof(Pessoa), 1, file)) {
+        if (strcmp(p.cpf, cpf) == 0 && p.funcao == 0) {
+            memcpy(&p_funcionario, &p, sizeof(Pessoa));
+            p_funcionario.funcao = 1;
+
+            fseek(file, -sizeof(Pessoa), SEEK_CUR);
+
+            fwrite(&p, sizeof(Pessoa), 1, file);
+            fclose(file);
+            
+            salvar_pessoa(&p_funcionario);
+            printf("Cliente com CPF %s promovido a Funcionário!\n", cpf);
+            return 1;
+        }
+    }
+
+    fclose(file);
+    printf("Cliente com CPF %s não encontrado ou já é Funcionário!\n", cpf);
+    return 0;
+}
+
+
 // MENU CADASTRAR PESSOA
 void cabecalho_cadastro_pessoa(void){
 system("clear||cls");
@@ -81,50 +109,74 @@ system("clear||cls");
 
 void menu_cadastrar_pessoa(void) {
     Pessoa p;
+    int opcao;
 
     do {
         cabecalho_cadastro_pessoa();
-        printf("|   | Nome: ");
-        scanf(" %50[^\n]", p.nome);
-    } while (!validar_nome(p.nome));
+        printf("|   | Deseja cadastrar como:\n");
+        printf("|   | 1 - Cliente\n");
+        printf("|   | 2 - Funcionário\n");
+        printf("|   | Escolha: ");
+        opcao = validar_opcao(1, 2);
 
-    do {
         cabecalho_cadastro_pessoa();
         printf("|   | CPF: ");
         scanf(" %11s", p.cpf);
+
+        if (validar_cliente(p.cpf) && validar_funcionario(p.cpf)) {
+            printf("|   | O CPF informado já está cadastrado como Cliente e Funcionário!\n");
+            printf("|   | Não é possível criar um novo cadastro.\n");
+            break;
+        }
+
+        if (validar_cliente(p.cpf)) {
+            printf("|   | O CPF informado já está cadastrado como Cliente.\n");
+            printf("|   | Deseja promover esse Cliente a Funcionário?\n");
+            printf("|   | 1 - Sim  |  0 - Não\n");
+            int promover = validar_opcao(0, 1);
+
+            if (promover == 1) {
+                promover_cliente_funcionario(p.cpf);
+                printf("|   | Cliente promovido a Funcionário com sucesso!\n");
+            } else {
+                printf("|   | Operação cancelada.\n");
+            }
+            break;
+        }
+
+        if (validar_funcionario(p.cpf)) {
+            printf("|   | O CPF informado já está cadastrado como Funcionário!\n");
+            printf("|   | Não é possível criar um novo cadastro.\n");
+            break;
+        }
+
+        printf("|   | Nome: ");
+        scanf(" %49[^\n]", p.nome);
+
+        printf("|   | Data de Nascimento (ddmmaaaa): ");
+        scanf(" %8s", p.data_nasc);
+
+        printf("|   | Telefone: ");
+        scanf(" %14s", p.telefone);
+
+        printf("|   | E-mail: ");
+        getchar();
+        scanf(" %49[^\n]", p.email);
+
+        if (opcao == 1) {
+            p.funcao = 0;
+            salvar_pessoa(&p);
+            printf("|   | Cliente cadastrado com sucesso!\n");
+        } else if (opcao == 2) {
+            p.funcao = 0;
+            salvar_pessoa(&p);
+
+            p.funcao = 1;
+            salvar_pessoa(&p);
+            printf("|   | Cliente e Funcionário cadastrados com sucesso!\n");
+        }
     } while (!validar_cpf(p.cpf));
 
-    do {
-        cabecalho_cadastro_pessoa();
-        printf("|   | Dtd. Nascimento: ");
-        scanf(" %10s", p.data_nasc);
-    } while (!validar_data(p.data_nasc));
-
-    do {
-        cabecalho_cadastro_pessoa();
-        printf("|   | Telefone: ");
-        scanf(" %11s", p.telefone);
-    } while (!validar_telefone(p.telefone));
-
-    do {
-        cabecalho_cadastro_pessoa();
-        printf("|   | E-mail: ");
-        scanf(" %25s", p.email);
-    } while (!validar_email(p.email));
-
-    cabecalho_cadastro_pessoa();
-    printf("|   | Qual função: 1- cliente 2- funcionário\n");
-    printf("|   | ");
-    int funcao_pes = validar_opcao(1, 2);
-    if (funcao_pes == 1) {
-        p.funcao = 0;
-    } else {
-        p.funcao = 1;
-    }
-
-    salvar_pessoa(&p, "pessoas.dat");
-
-    printf("|   | Pessoa Cadastrada com Sucesso!\n");
     printf("Tecle <ENTER> para prosseguir... ");
     limpa_buffer();
     getchar();
@@ -142,7 +194,6 @@ system("clear||cls");
 
  }
 
-
 // MENU CHECAR PESSOA
 void menu_checar_pessoa(void) {
     char cpf[12];
@@ -158,11 +209,17 @@ void menu_checar_pessoa(void) {
         cabecalho_checar_pessoa();
         printf("|   | CPF: %s\n", p.cpf);
         printf("|   | Nome: %s\n", p.nome);
-        printf("|   | Data de Nascimento: %s\n", p.data_nasc);
+        printf("|   | Data de Nascimento: %c%c/%c%c/%c%c%c%c\n",
+        p.data_nasc[0], p.data_nasc[1],
+        p.data_nasc[2], p.data_nasc[3],
+        p.data_nasc[4], p.data_nasc[5], p.data_nasc[6], p.data_nasc[7]
+        );
         printf("|   | Telefone: %s\n", p.telefone);
         printf("|   | E-mail: %s\n", p.email);
-        
-        if (p.funcao == 0) {
+
+        if (validar_funcionario(cpf) && p.funcao == 0) {
+            printf("|   | Função: Cliente e Funcionário\n");
+        } else if (p.funcao == 0) {
             printf("|   | Função: Cliente\n");
         } else if (p.funcao == 1) {
             printf("|   | Função: Funcionário\n");
@@ -220,7 +277,6 @@ void menu_alterar_pessoa(const char *cpf) {
     printf("\n");
     printf("----------------------------------------------\n");
     opc_altr_pessoa = validar_opcao(0, 5);
-    // fazer demais menus
 }
 
 // MENU EXCLUIR PESSOA
