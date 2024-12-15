@@ -3,7 +3,6 @@
 #include <string.h>
 #include <stdbool.h>
 #include "funcoes.h"
-#include <time.h>
 #include "../modulos/pessoas/pessoas.h"
 #include "../modulos/veiculos/veiculos.h"
 
