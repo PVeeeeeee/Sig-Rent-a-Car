@@ -84,6 +84,23 @@ void exibir_veiculo(const Veiculo *v) {
     printf("---------------------------------------\n");
 }
 
+const char* selecionar_opcao(const char *opcoes[], int tamanho, const char *titulo) {
+    int escolha;
+
+    do {
+        cabecalho_cadastrar_veiculo();
+        printf("\n===== %s =====\n", titulo);
+        for (int i = 0; i < tamanho; i++) {
+            printf("%d - %s\n", i + 1, opcoes[i]);
+        }
+        printf("Escolha uma opção (1-%d): ", tamanho);
+        scanf("%d", &escolha);
+    } while (escolha < 1 || escolha > tamanho);
+
+    return opcoes[escolha - 1];
+}
+
+
 // MENU CADASTRAR VEÍCULO
 void menu_cadastrar_veiculo(void) {
     Veiculo v;
@@ -100,11 +117,7 @@ void menu_cadastrar_veiculo(void) {
         scanf("%7s", v.placa);
     } while (!validar_placa(v.placa) || verificar_existencia_placa(v.placa));
 
-    do {
-        cabecalho_cadastrar_veiculo();
-        printf("|   | Marca: \n|   | ");
-        scanf("%14s", v.marca);
-    } while (!validar_texto(v.marca, 14));
+    strcpy(v.marca, selecionar_opcao(marcas, 5, "Selecione a Marca"));
 
     do {
         cabecalho_cadastrar_veiculo();
@@ -112,23 +125,9 @@ void menu_cadastrar_veiculo(void) {
         scanf("%24s", v.modelo);
     } while (!validar_texto(v.modelo, 24));
 
-    do {
-        cabecalho_cadastrar_veiculo();
-        printf("|   | Cor: \n|   | ");
-        scanf("%14s", v.cor);
-    } while (!validar_texto(v.cor, 14));
-
-    do {
-        cabecalho_cadastrar_veiculo();
-        printf("|   | Tipo: \n|   | ");
-        scanf("%11s", v.tipo);
-    } while (!validar_texto(v.tipo, 11));
-
-    do {
-        cabecalho_cadastrar_veiculo();
-        printf("|   | Combustível: \n|   | ");
-        scanf("%14s", v.combustivel);
-    } while (!validar_texto(v.combustivel, 14));
+    strcpy(v.tipo, selecionar_opcao(tipos, 5, "Selecione o Tipo"));
+    strcpy(v.cor, selecionar_opcao(cores, 5, "Selecione a Cor"));
+    strcpy(v.combustivel, selecionar_opcao(combustiveis, 5, "Selecione o Combustível"));
 
     do {
         cabecalho_cadastrar_veiculo();
@@ -232,7 +231,12 @@ void menu_checar_veiculo() {
             menu_alterar_veiculo();
         } else if (opc_check_veiculo == 2) {
             menu_excluir_veiculo();
+        } else if (opc_check_veiculo == 0)
+        {
+            limpa_buffer();
+            return;
         }
+        
     } else {
         printf("Veículo com a placa %s não encontrado.\n", placa);
     }

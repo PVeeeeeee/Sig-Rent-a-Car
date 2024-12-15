@@ -15,6 +15,11 @@ typedef struct {
     bool disponibilidade;
 } Veiculo;
 
+static const char *marcas[] = {"Toyota", "Honda", "Ford", "Chevrolet", "BMW"};
+static const char *tipos[] = {"Hatchback", "Sedan", "SUV", "Picape", "Conversível"};
+static const char *cores[] = {"Preto", "Branco", "Prata", "Vermelho", "Azul"};
+static const char *combustiveis[] = {"Gasolina", "Álcool", "Flex", "Diesel", "Elétrico"};
+
 // Declarações das funções do módulo veiculos.c
 void salvar_veiculos(void *data, size_t size, const char *fileName);
 void carregar_veiculos(void *data, size_t size, const char *fileName);
