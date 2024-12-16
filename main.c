@@ -43,6 +43,8 @@ int main(void) {
                             relatorio_geral_pessoas();
                         }
                     }
+                } else if (opc_pessoas == 4) {
+                    menu_recuperar_pessoa();
                 }
             }
 

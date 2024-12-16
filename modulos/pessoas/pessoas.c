@@ -29,7 +29,7 @@ int carregar_pessoa(Pessoa *data, const char *fileName, const char *cpf) {
     }
 
     while (fread(data, sizeof(Pessoa), 1, file)) {
-        if (strcmp(data->cpf, cpf) == 0) {
+        if (strcmp(data->cpf, cpf) == 0 && data->status == 1) {
             fclose(file);
             return 1;
         }
@@ -54,11 +54,12 @@ int menu_pessoas(void) {
     printf("|                 1 - Cadastrar Pessoa                   |\n");
     printf("|                 2 - Checar Pessoa                      |\n");
     printf("|                 3 - Relatórios                         |\n");
+    printf("|                 4 - Recuperar                          |\n");
     printf("|                 0 - Menu Principal                     |\n");
     printf("|                                                        |\n");
     printf("----------------------------------------------------------\n");
     printf("\n");
-    opc_pessoas = validar_opcao(0, 3);
+    opc_pessoas = validar_opcao(0, 4);
     return opc_pessoas;
 }
 
@@ -191,13 +192,16 @@ void menu_cadastrar_pessoa(void) {
 
         if (opcao == 1) {
             p.funcao = 0;
+            p.status = 1;
             salvar_pessoa(&p);
             printf("|   | Cliente cadastrado com sucesso!\n");
         } else if (opcao == 2) {
             p.funcao = 0;
+            p.status = 1;
             salvar_pessoa(&p);
 
             p.funcao = 1;
+            p.status = 1;
             salvar_pessoa(&p);
             printf("|   | Cliente e Funcionário cadastrados com sucesso!\n");
         }
@@ -249,6 +253,12 @@ void menu_checar_pessoa(void) {
             printf("|   | Função: Cliente\n");
         } else if (p.funcao == 1) {
             printf("|   | Função: Funcionário\n");
+        }
+
+        if (p.status == 1) {
+            printf("|   | Status: Ativo\n");
+        } else if (p.status == 0) {
+            printf("|   | Status: Excluído\n");
         }
 
         printf("----------------------------------------------\n");
@@ -305,10 +315,32 @@ void menu_alterar_pessoa(const char *cpf) {
     opc_altr_pessoa = validar_opcao(0, 5);
 }
 
-// MENU EXCLUIR PESSOA
+// MENU EXCLUIR PESSOA ----- feito e adaptado com ChatGPT
 void menu_excluir_pessoa(const char *cpf) {
-    char opc_exclr_pessoa;
+    Pessoa p;
+    int achou = 0;
 
+    FILE *file = fopen("modulos/pessoas/pessoas.dat", "rb");
+    if (file == NULL) {
+        printf("Erro ao abrir o arquivo de pessoas.\n");
+        return;
+    }
+
+    // Verifica se a pessoa existe no arquivo
+    while (fread(&p, sizeof(Pessoa), 1, file)) {
+        if (strcmp(p.cpf, cpf) == 0 && p.status == 1) {
+            achou = 1;
+            break;
+        }
+    }
+    fclose(file);
+
+    if (!achou) {
+        printf("CPF não encontrado ou já excluído.\n");
+        return;
+    }
+
+    char opc_exclr_pessoa[3];  // Aumentar espaço para evitar erro
     system("clear||cls");
     printf("_____------------------------------------_____\n");
     printf("|   |        == SIG-Rent-a-Car ==        |   |\n");
@@ -316,16 +348,50 @@ void menu_excluir_pessoa(const char *cpf) {
     printf("----------------------------------------------\n");
     printf("|   |           EXCLUIR PESSOA           |   |\n");
     printf("----------------------------------------------\n");
-    printf("|   | Nome: \n");
-    printf("|   | Idade: \n");
-    printf("|   | Telefone: \n");
-    printf("|   | E-mail: \n");
+    printf("|   | Nome: %s\n", p.nome);
+    printf("|   | Data de Nascimento: %s\n", p.data_nasc);
+    printf("|   | Telefone: %s\n", p.telefone);
+    printf("|   | E-mail: %s\n", p.email);
+    printf("|   | Status: %s\n", p.status == 1 ? "Ativo" : "Excluído");
     printf("----------------------------------------------\n");
-    printf("\n");
-    printf("|   | Você tem certeza que deseja excluir?(S/N): ");
-    scanf("%c", &opc_exclr_pessoa);
-    getchar();
-    printf("----------------------------------------------\n");
+    printf("|   | Você tem certeza que deseja excluir? (s/n): ");
+    limpa_buffer(); // Certifique-se de que o buffer está limpo
+    fgets(opc_exclr_pessoa, sizeof(opc_exclr_pessoa), stdin);
+    opc_exclr_pessoa[strcspn(opc_exclr_pessoa, "\n")] = '\0'; // Remove o '\n'
+
+    printf("Entrada recebida: '%s'\n", opc_exclr_pessoa);
+    if (strcmp(opc_exclr_pessoa, "s") == 0) {
+        printf("Chamada da função excluir_pessoa com CPF: %s\n", cpf);
+        excluir_pessoa(cpf);
+    } else {
+        printf("Exclusão cancelada.\n");
+    }
+    limpa_buffer();
+}
+
+
+int excluir_pessoa(const char *cpf) {
+    Pessoa p;
+    FILE *file = fopen("modulos/pessoas/pessoas.dat", "rb+");
+    if (file == NULL) {
+        printf("Erro ao abrir o arquivo para exclusão.\n");
+        return 0;
+    }
+
+    while (fread(&p, sizeof(Pessoa), 1, file)) {
+        if (strcmp(p.cpf, cpf) == 0 && p.status == 1) {
+            p.status = 0;
+            fseek(file, -sizeof(Pessoa), SEEK_CUR);
+            fwrite(&p, sizeof(Pessoa), 1, file);
+            fclose(file);
+            printf("Registro com CPF %s excluído.\n", cpf);
+            return 1;
+        }
+    }
+
+    fclose(file);
+    printf("CPF %s não encontrado ou já excluído.\n", cpf);
+    return 0;
 }
 
 // MENU RELATÓRIO PESSOA
@@ -398,4 +464,48 @@ void relatorio_geral_pessoas(void) {
     printf("------------------------------------------------\n");
     printf("Tecle <ENTER> para prosseguir...    ");
     limpa_buffer();
+}
+
+void menu_recuperar_pessoa(void) {
+    char cpf[15];
+
+    printf("Digite o CPF da pessoa para recuperação (somente números): ");
+    scanf("%s", cpf);
+
+    int resultado = recuperar_pessoa(cpf);
+
+    if (resultado == 1) {
+        printf("A recuperação foi realizada com sucesso.\n");
+    } else {
+        printf("Falha na recuperação do CPF %s.\n", cpf);
+    }
+
+    printf("Tecle <ENTER> para prosseguir... ");
+    limpa_buffer();
+    getchar();
+}
+
+
+int recuperar_pessoa(const char *cpf) {
+    Pessoa p;
+    FILE *file = fopen("modulos/pessoas/pessoas.dat", "rb+");
+    if (file == NULL) {
+        printf("Erro ao abrir o arquivo para recuperação.\n");
+        return 0;
+    }
+
+    while (fread(&p, sizeof(Pessoa), 1, file)) {
+        if (strcmp(p.cpf, cpf) == 0 && p.status == 0) {
+            p.status = 1; // Marca como ativo novamente
+            fseek(file, -sizeof(Pessoa), SEEK_CUR);
+            fwrite(&p, sizeof(Pessoa), 1, file);
+            fclose(file);
+            printf("Registro com CPF %s recuperado com sucesso.\n", cpf);
+            return 1;
+        }
+    }
+
+    fclose(file);
+    printf("CPF %s não encontrado ou já ativo.\n", cpf);
+    return 0;
 }

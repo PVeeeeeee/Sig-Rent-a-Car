@@ -7,7 +7,8 @@ typedef struct {
     char data_nasc[11];  
     char telefone[12];   
     char email[26];     
-    int funcao;   
+    int funcao; 
+    int status;  
 } Pessoa;
 
 void salvar_pessoa(Pessoa *pessoa);
