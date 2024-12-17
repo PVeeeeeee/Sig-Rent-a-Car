@@ -9,7 +9,8 @@ typedef struct {
     char data_inic[11];         
     char data_final[11];        
     float valor_final;         
-    bool situacao;          
+    bool situacao;
+    int status;          
 } Locacao;
 
 int menu_locacoes(void);

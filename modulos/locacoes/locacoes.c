@@ -30,7 +30,7 @@ int carregar_locacoes(Locacao *l, const char *caminho, const char *cpf_cliente) 
 
     int encontrado = 0;
     while (fread(l, sizeof(Locacao), 1, file)) {
-        if (strcmp(l->cpf_cliente, cpf_cliente) == 0) {
+        if (strcmp(l->cpf_cliente, cpf_cliente) == 0 && l->status == 1) {
             encontrado = 1;
             break;
         }
@@ -105,7 +105,7 @@ void menu_cadastrar_locacao(void) {
     scanf("%f", &l.valor_final);
 
     l.situacao = 1;
-
+    l.status = 1;
     salvar_locacao(&l);
 
     printf("|   | Locação Cadastrada com Sucesso!\n");
