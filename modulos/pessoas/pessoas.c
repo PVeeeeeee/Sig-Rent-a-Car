@@ -54,7 +54,7 @@ int menu_pessoas(void) {
     printf("|                 1 - Cadastrar Pessoa                   |\n");
     printf("|                 2 - Checar Pessoa                      |\n");
     printf("|                 3 - Relatórios                         |\n");
-    printf("|                 4 - Recuperar                          |\n");
+    printf("|                 4 - Recuperar Pessoa                   |\n");
     printf("|                 0 - Menu Principal                     |\n");
     printf("|                                                        |\n");
     printf("----------------------------------------------------------\n");

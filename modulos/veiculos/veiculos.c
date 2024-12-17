@@ -49,11 +49,12 @@ int menu_veiculos(void) {
     printf("|                 4 - Marcas                             |\n");
     printf("|                 5 - Tipos                              |\n");
     printf("|                 6 - Combustíveis                       |\n");
+    printf("|                 7 - Recuperar Veículo                  |\n");
     printf("|                 0 - Menu Principal                     |\n");
     printf("|                                                        |\n");
     printf("----------------------------------------------------------\n");
     printf("\n");
-    opc_veiculos = validar_opcao(0, 6);
+    opc_veiculos = validar_opcao(0, 7);
     return opc_veiculos;
 }
 
@@ -148,7 +149,7 @@ void menu_cadastrar_veiculo(void) {
     } while (!validar_float(&v.valor, 50, 5000));
 
     v.disponibilidade = 1;
-
+    v.status = 1;
     salvar_veiculos(&v, sizeof(Veiculo), "veiculos.dat");
 
     printf("|   |\n");
@@ -195,7 +196,7 @@ void menu_checar_veiculo() {
     }
 
     while (fread(&veiculo, sizeof(Veiculo), 1, arquivo)) {
-        if (strcmp(veiculo.placa, placa) == 0) {
+        if (strcmp(veiculo.placa, placa) == 0 && veiculo.status == 1) {
             veiculo_encontrado = 1;
             break;  
         }
@@ -230,7 +231,7 @@ void menu_checar_veiculo() {
         if (opc_check_veiculo == 1) {
             menu_alterar_veiculo();
         } else if (opc_check_veiculo == 2) {
-            menu_excluir_veiculo();
+            menu_excluir_veiculo(placa);
         } else if (opc_check_veiculo == 0)
         {
             limpa_buffer();
@@ -288,32 +289,95 @@ void menu_alterar_veiculo(void) {
    
 }
 
-// MENU EXCLUIR VEÍCULO
-void menu_excluir_veiculo(void) {
-    char opc_exclr_veiculo;
+// MENU EXCLUIR VEICULO  ----- feito e adaptado com ChatGPT
+void menu_excluir_veiculo(const char *placa) {
+    Veiculo v;
+    int achou = 0;
 
+    FILE *file = fopen("modulos/veiculos/veiculos.dat", "rb");
+    if (file == NULL) {
+        printf("Erro ao abrir o arquivo de veiculos.\n");
+        return;
+    }
+
+    // Verifica se o veículo existe no arquivo
+    while (fread(&v, sizeof(Veiculo), 1, file)) {
+        if (strcmp(v.placa, placa) == 0 && v.status == 1) {
+            achou = 1;
+            break;
+        }
+    }
+    fclose(file);
+
+    if (!achou) {
+        printf("Placa não encontrada ou já excluída.\n");
+        return;
+    }
+
+    char opc_exclr_veiculo[3];
     system("clear||cls");
     printf("_____------------------------------------_____\n");
     printf("|   |        == SIG-Rent-a-Car ==        |   |\n");
     printf("|   |   Sistema de Locação de Veículos   |   |\n");
     printf("----------------------------------------------\n");
-    printf("|   |          EXCLUIR VEÍCULO           |   |\n");
+    printf("|   |           EXCLUIR VEÍCULO           |   |\n");
     printf("----------------------------------------------\n");
-    printf("|   | Chassi:  \n");
-    printf("|   | Marca: \n");
-    printf("|   | Modelo: \n");
-    printf("|   | Cor: \n");
-    printf("|   | Tipo: \n");
-    printf("|   | Combustível: \n");
-    printf("|   | Ano: \n");
-    printf("|   | Lugares: \n");
-    printf("|   | Valor: \n");
+    if (v.disponibilidade == 1) {
+        printf("|   | Disponível\n");
+    } else {
+        printf("|   | Indisponível\n");
+    }
+    printf("|   | Placa: %s\n", v.placa);
+    printf("|   | Chassi: %s\n", v.chassi);
+    printf("|   | Marca: %s\n", v.marca);
+    printf("|   | Modelo: %s\n", v.modelo);
+    printf("|   | Cor: %s\n", v.cor);
+    printf("|   | Tipo: %s\n", v.tipo);
+    printf("|   | Combustível: %s\n", v.combustivel);
+    printf("|   | Ano: %d\n", v.ano);
+    printf("|   | Lugares: %d\n", v.lugares);
+    printf("|   | Valor: %.2f\n", v.valor);
     printf("----------------------------------------------\n");
-    printf("\n");
-    printf("|   | Você tem certeza que deseja excluir?(S/N): ");
-    scanf("%c", &opc_exclr_veiculo);
-    getchar();
+    printf("|   | Status: %s\n", v.status == 1 ? "Ativo" : "Excluído");
     printf("----------------------------------------------\n");
+    printf("|   | Você tem certeza que deseja excluir? (s/n): ");
+    limpa_buffer(); // Certifique-se de que o buffer está limpo
+    fgets(opc_exclr_veiculo, sizeof(opc_exclr_veiculo), stdin);
+    opc_exclr_veiculo[strcspn(opc_exclr_veiculo, "\n")] = '\0'; // Remove o '\n'
+
+    printf("Entrada recebida: '%s'\n", opc_exclr_veiculo);
+    if (strcmp(opc_exclr_veiculo, "s") == 0) {
+        printf("Chamada da função excluir_veiculo com placa: %s\n", placa);
+        excluir_veiculo(placa);
+    } else {
+        printf("Exclusão cancelada.\n");
+    }
+    limpa_buffer();
+}
+
+
+int excluir_veiculo(const char *placa) {
+    Veiculo v;
+    FILE *file = fopen("modulos/veiculos/veiculos.dat", "rb+");
+    if (file == NULL) {
+        printf("Erro ao abrir o arquivo para exclusão.\n");
+        return 0;
+    }
+
+    while (fread(&v, sizeof(Veiculo), 1, file)) {
+        if (strcmp(v.placa, placa) == 0 && v.status == 1) {
+            v.status = 0;
+            fseek(file, -sizeof(Veiculo), SEEK_CUR);
+            fwrite(&v, sizeof(Veiculo), 1, file);
+            fclose(file);
+            printf("Registro com Placa %s excluído.\n", placa);
+            return 1;
+        }
+    }
+
+    fclose(file);
+    printf("Veículo %s não encontrado ou já excluído.\n", placa);
+    return 0;
 }
 
 // MENU RELATÓRIO VEÍCULO
@@ -907,4 +971,48 @@ void menu_relatorio_combustivel(void) {
     printf("------------------------------------------------\n");
     printf("Tecle <ENTER> para prosseguir...    ");
     limpa_buffer();
+}
+
+void menu_recuperar_veiculo(void) {
+    char placa[8];
+
+    printf("Digite o Placa da veiculo para recuperação: ");
+    scanf("%s", placa);
+
+    int resultado = recuperar_veiculo(placa);
+
+    if (resultado == 1) {
+        printf("A recuperação foi realizada com sucesso.\n");
+    } else {
+        printf("Falha na recuperação do Placa %s.\n", placa);
+    }
+
+    printf("Tecle <ENTER> para prosseguir... ");
+    limpa_buffer();
+    getchar();
+}
+
+
+int recuperar_veiculo(const char *placa) {
+    Veiculo v;
+    FILE *file = fopen("modulos/veiculos/veiculos.dat", "rb+");
+    if (file == NULL) {
+        printf("Erro ao abrir o arquivo para recuperação.\n");
+        return 0;
+    }
+
+    while (fread(&v, sizeof(Veiculo), 1, file)) {
+        if (strcmp(v.placa, placa) == 0 && v.status == 0) {
+            v.status = 1; // Marca como ativo novamente
+            fseek(file, -sizeof(Veiculo), SEEK_CUR);
+            fwrite(&v, sizeof(Veiculo), 1, file);
+            fclose(file);
+            printf("Registro com Placa %s recuperado com sucesso.\n", placa);
+            return 1;
+        }
+    }
+
+    fclose(file);
+    printf("Placa %s não encontrado ou já ativo.\n", placa);
+    return 0;
 }

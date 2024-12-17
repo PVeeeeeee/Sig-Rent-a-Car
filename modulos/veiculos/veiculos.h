@@ -13,6 +13,7 @@ typedef struct {
     int lugares;
     float valor;
     bool disponibilidade;
+    int status;
 } Veiculo;
 
 static const char *marcas[] = {"Toyota", "Honda", "Ford", "Chevrolet", "BMW"};
@@ -28,7 +29,7 @@ void exibir_veiculo(const Veiculo *v);
 void menu_cadastrar_veiculo(void);
 void menu_checar_veiculo(void);
 void menu_alterar_veiculo(void);
-void menu_excluir_veiculo(void);
+void menu_excluir_veiculo(const char *placa);
 
 // Funções de relatório
 int menu_relatorio_veiculo(void);

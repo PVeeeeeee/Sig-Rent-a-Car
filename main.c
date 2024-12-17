@@ -121,6 +121,8 @@ int main(void) {
                             menu_relatorio_combustivel();
                         }
                     }
+                } else if (opc_veiculos == 7) {
+                    menu_recuperar_veiculo();
                 }
             }
         } else if (opc_principal == 3) {
