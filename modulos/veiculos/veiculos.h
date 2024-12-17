@@ -28,7 +28,7 @@ int menu_veiculos(void);
 void exibir_veiculo(const Veiculo *v);
 void menu_cadastrar_veiculo(void);
 void menu_checar_veiculo(void);
-void menu_alterar_veiculo(void);
+void menu_alterar_veiculo(const char *placa);
 void menu_excluir_veiculo(const char *placa);
 
 // Funções de relatório

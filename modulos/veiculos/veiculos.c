@@ -229,7 +229,7 @@ void menu_checar_veiculo() {
 
         opc_check_veiculo = validar_opcao(0, 2);
         if (opc_check_veiculo == 1) {
-            menu_alterar_veiculo();
+            menu_alterar_veiculo(placa);
         } else if (opc_check_veiculo == 2) {
             menu_excluir_veiculo(placa);
         } else if (opc_check_veiculo == 0)
@@ -249,45 +249,123 @@ void menu_checar_veiculo() {
 
 
 // MENU ALTERAR VEÍCULO
-void menu_alterar_veiculo(void) {
-    int opc_altr_veiculo;
+void menu_alterar_veiculo(const char *placa) {
+    Veiculo v;
+    int achou = 0;
 
-    system("clear||cls");
-    printf("_____------------------------------------_____\n");
-    printf("|   |        == SIG-Rent-a-Car ==        |   |\n");
-    printf("|   |   Sistema de Locação de Veículos   |   |\n");
-    printf("----------------------------------------------\n");
-    printf("|   |          ALTERAR VEÍCULO           |   |\n");
-    printf("----------------------------------------------\n");
-    printf("|   | Chassi:  \n");
-    printf("|   | Marca: \n");
-    printf("|   | Modelo: \n");
-    printf("|   | Cor: \n");
-    printf("|   | Tipo: \n");
-    printf("|   | Combustível: \n");
-    printf("|   | Ano: \n");
-    printf("|   | Lugares: \n");
-    printf("|   | Valor: \n");
-    printf("----------------------------------------------\n");
-    printf("\n");
-    printf("|   | O que você deseja alterar?:\n");
-    printf("_____--------------------------------_____\n");
-    printf("|   |  1 - Chassi        2 - Marca   |   |\n");
-    printf("------------------------------------------\n");
-    printf("|   |  3 - Modelo        4 - Tipo    |   |\n");
-    printf("------------------------------------------\n");
-    printf("|   |  5 - Combustível   6 - Ano     |   |\n");
-    printf("------------------------------------------\n");
-    printf("|   |  7 - Lugares       8 - Valor   |   |\n");
-    printf("------------------------------------------\n");
-    printf("|   |            0 - Sair            |   |\n");
-    printf("_____--------------------------------_____\n");
-    printf("\n");
-    printf("------------------------------------------\n");
-    opc_altr_veiculo = validar_opcao(0, 8);
-    // fazer demais menus
-   
+    FILE *file = fopen("modulos/veiculos/veiculos.dat", "rb+");
+    if (file == NULL) {
+        printf("Erro ao abrir o arquivo de veículos.\n");
+        return;
+    }
+
+    while (fread(&v, sizeof(Veiculo), 1, file)) {
+        if (strcmp(v.placa, placa) == 0 && v.status == 1) {
+            achou = 1;
+            break;
+        }
+    }
+
+    if (!achou) {
+        printf("Veículo com placa %s não encontrado ou já inativo.\n", placa);
+        fclose(file);
+        return;
+    }
+
+    int opc_altr_veiculo;
+    do {
+        system("clear||cls");
+        printf("_____------------------------------------_____\n");
+        printf("|   |        == SIG-Rent-a-Car ==        |   |\n");
+        printf("|   |   Sistema de Locação de Veículos   |   |\n");
+        printf("----------------------------------------------\n");
+        printf("|   |          ALTERAR VEÍCULO           |   |\n");
+        printf("----------------------------------------------\n");
+        printf("|   | Placa: %s\n", v.placa);
+        printf("|   | Chassi: %s\n", v.chassi);
+        printf("|   | Marca: %s\n", v.marca);
+        printf("|   | Modelo: %s\n", v.modelo);
+        printf("|   | Cor: %s\n", v.cor);
+        printf("|   | Tipo: %s\n", v.tipo);
+        printf("|   | Combustível: %s\n", v.combustivel);
+        printf("|   | Ano: %d\n", v.ano);
+        printf("|   | Lugares: %d\n", v.lugares);
+        printf("|   | Valor: %.2f\n", v.valor);
+        printf("----------------------------------------------\n");
+
+        printf("|   | O que você deseja alterar?:\n");
+        printf("_____--------------------------------_____\n");
+        printf("|   |  1 - Chassi        2 - Marca   |   |\n");
+        printf("------------------------------------------\n");
+        printf("|   |  3 - Modelo        4 - Cor     |   |\n");
+        printf("------------------------------------------\n");
+        printf("|   |  5 - Tipo          6 - Ano     |   |\n");
+        printf("------------------------------------------\n");
+        printf("|   |  7 - Lugares       8 - Valor   |   |\n");
+        printf("------------------------------------------\n");
+        printf("|   |            0 - Sair            |   |\n");
+        printf("_____--------------------------------_____\n");
+        opc_altr_veiculo = validar_opcao(0, 8);
+
+        switch (opc_altr_veiculo) {
+            case 1:
+                printf("Novo Chassi: ");
+                limpa_buffer();
+                fgets(v.chassi, sizeof(v.chassi), stdin);
+                v.chassi[strcspn(v.chassi, "\n")] = '\0';
+                break;
+            case 2:
+                printf("Nova Marca: ");
+                limpa_buffer();
+                fgets(v.marca, sizeof(v.marca), stdin);
+                v.marca[strcspn(v.marca, "\n")] = '\0';
+                break;
+            case 3:
+                printf("Novo Modelo: ");
+                limpa_buffer();
+                fgets(v.modelo, sizeof(v.modelo), stdin);
+                v.modelo[strcspn(v.modelo, "\n")] = '\0';
+                break;
+            case 4:
+                printf("Nova Cor: ");
+                limpa_buffer();
+                fgets(v.cor, sizeof(v.cor), stdin);
+                v.cor[strcspn(v.cor, "\n")] = '\0';
+                break;
+            case 5:
+                printf("Novo Tipo: ");
+                limpa_buffer();
+                fgets(v.tipo, sizeof(v.tipo), stdin);
+                v.tipo[strcspn(v.tipo, "\n")] = '\0';
+                break;
+            case 6:
+                printf("Novo Ano: ");
+                scanf("%d", &v.ano);
+                break;
+            case 7:
+                printf("Novo Número de Lugares: ");
+                scanf("%d", &v.lugares);
+                break;
+            case 8:
+                printf("Novo Valor: ");
+                scanf("%f", &v.valor);
+                break;
+            case 0:
+                printf("Alterações concluídas.\n");
+                break;
+            default:
+                printf("Opção inválida! Tente novamente.\n");
+        }
+    } while (opc_altr_veiculo != 0);
+
+    fseek(file, -sizeof(Veiculo), SEEK_CUR);
+    fwrite(&v, sizeof(Veiculo), 1, file);
+
+    printf("Dados do veículo atualizados com sucesso!\n");
+
+    fclose(file);
 }
+
 
 // MENU EXCLUIR VEICULO  ----- feito e adaptado com ChatGPT
 void menu_excluir_veiculo(const char *placa) {

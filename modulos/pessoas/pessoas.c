@@ -287,7 +287,7 @@ void menu_checar_pessoa(void) {
 }
 
 
-// MENU ALTERAR PESSOA
+// MENU ALTERAR PESSOA ----- Feito com base no menu_excluir_pessoa do ChatGPT
 void menu_alterar_pessoa(const char *cpf) {
     Pessoa p;
     int opc_altr_pessoa;
@@ -299,7 +299,6 @@ void menu_alterar_pessoa(const char *cpf) {
         return;
     }
 
-    // Busca a pessoa pelo CPF
     while (fread(&p, sizeof(Pessoa), 1, file)) {
         if (strcmp(p.cpf, cpf) == 0 && p.status == 1) {
             achou = 1;
@@ -313,7 +312,6 @@ void menu_alterar_pessoa(const char *cpf) {
         return;
     }
     
-    // Exibe dados atuais
     system("clear||cls");
     printf("_____------------------------------------_____\n");
     printf("|   |        == SIG-Rent-a-Car ==        |   |\n");
@@ -376,7 +374,6 @@ void menu_alterar_pessoa(const char *cpf) {
         }
     } while (opc_altr_pessoa != 0);
 
-    // Salva os dados alterados no arquivo
     fseek(file, -sizeof(Pessoa), SEEK_CUR);
     fwrite(&p, sizeof(Pessoa), 1, file);
 
