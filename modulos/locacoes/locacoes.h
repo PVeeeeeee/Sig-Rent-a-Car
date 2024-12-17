@@ -16,8 +16,8 @@ typedef struct {
 int menu_locacoes(void);
 void menu_cadastrar_locacao(void);
 void menu_checar_locacao(void);
-void menu_alterar_locacao(void);
-void menu_excluir_locacao(void);
+void menu_alterar_locacao(const char *cpf_cliente);
+void menu_excluir_locacao(const char *cpf_cliente);
 void relatorio_geral_locacoes(void);
 void relatorio_locacoes_recentes(void);
 void relatorio_locacoes_antigas(void);

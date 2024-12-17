@@ -451,7 +451,6 @@ int excluir_pessoa(const char *cpf) {
             p.status = 0;
             fseek(file, -sizeof(Pessoa), SEEK_CUR);
             fwrite(&p, sizeof(Pessoa), 1, file);
-            fclose(file);
             printf("Registro com CPF %s excluído.\n", cpf);
             return 1;
         }

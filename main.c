@@ -158,6 +158,8 @@ int main(void) {
                             relatorio_veiculo_locacoes();
                         }
                     }
+                }  else if (opc_locacoes == 4) {
+                    menu_recuperar_locacao();
                 }
             }
         

@@ -56,11 +56,12 @@ int menu_locacoes(void) {
     printf("|                1 - Cadastrar Locação                   |\n");
     printf("|                2 - Checar Locação                      |\n");
     printf("|                3 - Relatório                           |\n");
+    printf("|                4 - Recuperar Locação                   |\n");
     printf("|                0 - Menu Principal                      |\n");
     printf("|                                                        |\n");
     printf("----------------------------------------------------------\n");
     printf("\n");
-    opc_locacoes = validar_opcao(0, 3);
+    opc_locacoes = validar_opcao(0, 4);
     return opc_locacoes;
 }
 
@@ -159,6 +160,23 @@ void menu_checar_locacao(void) {
         } else {
             printf("|   | Situação: Inativa\n");
         }
+        printf("----------------------------------------------\n");
+        printf("\n");
+        printf("|   | O que você deseja fazer?\n");
+        printf("_____------------------------------------_____\n");
+        printf("|   | 1 - Alterar  2 - Excluir  0 - Sair |   |\n");
+        printf("_____------------------------------------_____\n");
+        printf("\n");
+
+        int opc_check_locacao = validar_opcao(0, 2);
+
+        if (opc_check_locacao == 1) {
+            menu_alterar_locacao(cpf_cliente);
+        } else if (opc_check_locacao == 2) {
+            menu_excluir_locacao(cpf_cliente);
+        }
+        limpa_buffer();
+        getchar();
     } else {
         printf("Nenhuma locação encontrada para o CPF fornecido.\n");
     }
@@ -170,7 +188,7 @@ void menu_checar_locacao(void) {
 
 
 // MENU ALTERAR LOCAÇÃO
-void menu_alterar_locacao(void) {
+void menu_alterar_locacao(const char *cpf_cliente) {
     int opc_altr_locacao;
     
     system("clear||cls");
@@ -203,9 +221,31 @@ void menu_alterar_locacao(void) {
 }
 
 // MENU EXCLUIR LOCAÇÃO
-void menu_excluir_locacao(void) {
-    char opc_exclr_locacao[2];
+void menu_excluir_locacao(const char *cpf_cliente) {
+    Locacao l;
+    int achou = 0;
 
+    FILE *file = fopen("modulos/locacoes/locacoes.dat", "rb");
+    if (file == NULL) {
+        printf("Erro ao abrir o arquivo de locacoes.\n");
+        return;
+    }
+
+    // Verifica se a locacao existe no arquivo
+    while (fread(&l, sizeof(Locacao), 1, file)) {
+        if (strcmp(l.cpf_cliente, cpf_cliente) == 0 && l.status == 1) {
+            achou = 1;
+            break;
+        }
+    }
+    fclose(file);
+
+    if (!achou) {
+        printf("CPF não encontrado ou já excluído.\n");
+        return;
+    }
+
+    char opc_exclr_locacao[3];
     system("clear||cls");
     printf("_____------------------------------------_____\n");
     printf("|   |        == SIG-Rent-a-Car ==        |   |\n");
@@ -213,22 +253,52 @@ void menu_excluir_locacao(void) {
     printf("----------------------------------------------\n");
     printf("|   |          EXCLUIR LOCAÇÃO           |   |\n");
     printf("----------------------------------------------\n");
-    printf("|   | Cliente (CPF): \n");
-    printf("|   | Funcionário (CPF): \n");
-    printf("|   | Placa do Veículo: \n");
-    printf("|   | Data Início: \n");
-    printf("|   | Data Final: \n");
-    printf("|   | Valor Final: \n");
-    printf("|   | Situação (F/A): \n");
+    printf("|   | Cliente (CPF): %s\n", l.cpf_cliente);
+    printf("|   | Funcionário (CPF): %s\n", l.cpf_funcionario);
+    printf("|   | Placa do Veículo: %s\n", l.placa_veiculo);
+    printf("|   | Data Início: %s\n", l.data_inic);
+    printf("|   | Data Final: %s\n", l.data_final);
+    printf("|   | Valor Final: %.2f\n", l.valor_final);
+    printf("|   | Situação: %c\n", l.situacao);
+    printf("|   | Status: %s\n", l.status == 1 ? "Ativo" : "Excluído");
     printf("----------------------------------------------\n");
     printf("\n");
     printf("|   | Você tem certeza que deseja excluir?(S/N): ");
-    
-    getchar(); 
-    scanf("%1s", opc_exclr_locacao);
+    limpa_buffer();
+    fgets(opc_exclr_locacao, sizeof(opc_exclr_locacao), stdin);
+    opc_exclr_locacao[strcspn(opc_exclr_locacao, "\n")] = '\0';
 
-    printf("----------------------------------------------\n");
+    if (strcmp(opc_exclr_locacao, "s") == 0 || strcmp(opc_exclr_locacao, "S") == 0) {
+        printf("Chamada da função excluir_locacao com CPF do cliente: %s\n", cpf_cliente);
+        excluir_locacao(cpf_cliente);
+    } else {
+        printf("Exclusão cancelada.\n");
+    }
 }
+
+int excluir_locacao(const char *cpf_cliente) {
+    Locacao l;
+    FILE *file = fopen("modulos/locacoes/locacoes.dat", "rb+");
+    if (file == NULL) {
+        printf("Erro ao abrir o arquivo para exclusão.\n");
+        return 0;
+    }
+
+    while (fread(&l, sizeof(Locacao), 1, file)) {
+        if (strcmp(l.cpf_cliente, cpf_cliente) == 0 && l.status == 1) {
+            l.status = 0;
+            fseek(file, -sizeof(Locacao), SEEK_CUR);
+            fwrite(&l, sizeof(Locacao), 1, file);
+            printf("Locação excluída com sucesso!\n");
+            return 1;
+        }
+    }
+
+    fclose(file);
+    printf("Locação %s não encontrado ou já excluído.\n", cpf_cliente);
+    return 0;
+}
+
 
 
 // MENU RELATÓRIO LOCAÇÃO
@@ -366,4 +436,48 @@ void relatorio_veiculo_locacoes(void) {
     printf("Tecle <ENTER> para prosseguir...    ");
     limpa_buffer();
     getchar();
+}
+
+void menu_recuperar_locacao(void) {
+    char cpf_cliente[12];
+
+    printf("Digite o CPF da pessoa da locação para recuperação (somente números): ");
+    scanf("%s", cpf_cliente);
+
+    int resultado = recuperar_locacao(cpf_cliente);
+
+    if (resultado == 1) {
+        printf("A recuperação foi realizada com sucesso.\n");
+    } else {
+        printf("Falha na recuperação %s.\n", cpf_cliente);
+    }
+
+    printf("Tecle <ENTER> para prosseguir... ");
+    limpa_buffer();
+    getchar();
+}
+
+
+int recuperar_locacao(const char *cpf_cliente) {
+    Locacao l;
+    FILE *file = fopen("modulos/locacoes/locacoes.dat", "rb+");
+    if (file == NULL) {
+        printf("Erro ao abrir o arquivo para recuperação.\n");
+        return 0;
+    }
+
+    while (fread(&l, sizeof(Locacao), 1, file)) {
+        if (strcmp(l.cpf_cliente, cpf_cliente) == 0 && l.status == 0) {
+            l.status = 1; // Marca como ativo novamente
+            fseek(file, -sizeof(Locacao), SEEK_CUR);
+            fwrite(&l, sizeof(Locacao), 1, file);
+            fclose(file);
+            printf("Registro com CPF %s recuperado com sucesso.\n", cpf_cliente);
+            return 1;
+        }
+    }
+
+    fclose(file);
+    printf("CPF %s não encontrado ou já ativo.\n", cpf_cliente);
+    return 0;
 }
