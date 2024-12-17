@@ -262,7 +262,6 @@ void menu_checar_pessoa(void) {
         }
 
         printf("----------------------------------------------\n");
-        printf("\n");
         printf("|   | O que você deseja fazer?\n");
         printf("_____------------------------------------_____\n");
         printf("|   | 1 - Alterar  2 - Excluir  0 - Sair |   |\n");
@@ -312,21 +311,21 @@ void menu_alterar_pessoa(const char *cpf) {
         return;
     }
     
-    system("clear||cls");
-    printf("_____------------------------------------_____\n");
-    printf("|   |        == SIG-Rent-a-Car ==        |   |\n");
-    printf("|   |   Sistema de Locação de Veículos   |   |\n");
-    printf("----------------------------------------------\n");
-    printf("|   |           ALTERAR PESSOA           |   |\n");
-    printf("----------------------------------------------\n");
-    printf("|   | CPF: %s\n", p.cpf);
-    printf("|   | Nome: %s\n", p.nome);
-    printf("|   | Idade: %d\n", p.data_nasc);
-    printf("|   | Telefone: %s\n", p.telefone);
-    printf("|   | E-mail: %s\n", p.email);
-    printf("----------------------------------------------\n");
 
     do {
+        system("clear||cls");
+        printf("_____------------------------------------_____\n");
+        printf("|   |        == SIG-Rent-a-Car ==        |   |\n");
+        printf("|   |   Sistema de Locação de Veículos   |   |\n");
+        printf("----------------------------------------------\n");
+        printf("|   |           ALTERAR PESSOA           |   |\n");
+        printf("----------------------------------------------\n");
+        printf("|   | CPF: %s\n", p.cpf);
+        printf("|   | Nome: %s\n", p.nome);
+        printf("|   | Idade: %d\n", p.data_nasc);
+        printf("|   | Telefone: %s\n", p.telefone);
+        printf("|   | E-mail: %s\n", p.email);
+        printf("----------------------------------------------\n");
         printf("|   | O que você deseja alterar?:\n");
         printf("_____------------------------------------_____\n");
         printf("|   | 1 - Nome       2 - Idade           |   |\n");
@@ -344,11 +343,22 @@ void menu_alterar_pessoa(const char *cpf) {
                 limpa_buffer();
                 fgets(p.nome, sizeof(p.nome), stdin);
                 p.nome[strcspn(p.nome, "\n")] = '\0';
+                
+                while (!validar_nome(p.nome)) {
+                    printf("Por favor, insira um Nome válido: ");
+                    fgets(p.nome, sizeof(p.nome), stdin);
+                    p.nome[strcspn(p.nome, "\n")] = '\0';
+                }
                 break;
 
             case 2:
-                printf("Nova Idade: ");
-                scanf("%d", &p.data_nasc);
+                printf("Nova data de nascimento (ddmmaaaa): ");
+                scanf(" %8s", p.data_nasc);
+                
+                while (!validar_data(p.data_nasc)) {
+                    printf("Por favor, insira uma Data válida: ");
+                    scanf(" %8s", p.data_nasc);
+                }
                 break;
 
             case 3:
@@ -356,6 +366,12 @@ void menu_alterar_pessoa(const char *cpf) {
                 limpa_buffer();
                 fgets(p.telefone, sizeof(p.telefone), stdin);
                 p.telefone[strcspn(p.telefone, "\n")] = '\0';
+                
+                while (!validar_telefone(p.telefone)) {
+                    printf("Por favor, insira um Telefone válido: ");
+                    fgets(p.telefone, sizeof(p.telefone), stdin);
+                    p.telefone[strcspn(p.telefone, "\n")] = '\0';
+                }
                 break;
 
             case 4:
@@ -363,15 +379,22 @@ void menu_alterar_pessoa(const char *cpf) {
                 limpa_buffer();
                 fgets(p.email, sizeof(p.email), stdin);
                 p.email[strcspn(p.email, "\n")] = '\0';
+                
+                while (!validar_email(p.email)) {
+                    printf("Por favor, insira um E-mail válido: ");
+                    fgets(p.email, sizeof(p.email), stdin);
+                    p.email[strcspn(p.email, "\n")] = '\0';
+                }
                 break;
 
             case 0:
-                printf("Alterações concluídas.\n");
+                printf("Alterações concluidas.\n");
                 break;
 
             default:
                 printf("Opção inválida. Tente novamente.\n");
         }
+
     } while (opc_altr_pessoa != 0);
 
     fseek(file, -sizeof(Pessoa), SEEK_CUR);

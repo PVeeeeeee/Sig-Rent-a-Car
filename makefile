@@ -1,21 +1,15 @@
-# Definindo o compilador e as flags
 CC = gcc
 CFLAGS = -Wall -g
 
-# Nome do projeto (que será o nome do executável)
 EXEC = Sig-Rent-a-Car
 
-# Arquivos fonte
 SRC = modulos/menu/menu.c modulos/pessoas/pessoas.c modulos/veiculos/veiculos.c modulos/locacoes/locacoes.c main.c funcoes/funcoes.c
 
-# Arquivos objeto
 OBJ = $(SRC:.c=.o)
 
-# Regra principal para criar o executável
 $(EXEC): $(OBJ)
 	$(CC) $(OBJ) -o $(EXEC)
 
-# Limpeza dos arquivos gerados
 clean:
 	@if exist Sig-Rent-a-Car.exe del /q Sig-Rent-a-Car.exe
 	@if exist *.o del /q *.o
@@ -29,6 +23,5 @@ clean:
 	@if exist modulos\veiculos\*.dat del /q modulos\veiculos\*.dat
 	@if exist modulos\locacoes\*.dat del /q modulos\locacoes\*.dat
 
-# Regra para rodar o programa (opcional)
 run: $(EXEC)
 	./$(EXEC)
