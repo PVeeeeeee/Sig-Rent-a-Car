@@ -276,6 +276,8 @@ void menu_checar_pessoa(void) {
         } else if (opc_check_pessoa == 2) {
             menu_excluir_pessoa(cpf);
         }
+        limpa_buffer();
+        getchar();
     } else {
         printf("Pessoa com CPF %s não encontrada!\n", cpf);
         printf("Tecle <ENTER> para prosseguir... ");
@@ -287,8 +289,31 @@ void menu_checar_pessoa(void) {
 
 // MENU ALTERAR PESSOA
 void menu_alterar_pessoa(const char *cpf) {
+    Pessoa p;
     int opc_altr_pessoa;
+    int achou = 0;
 
+    FILE *file = fopen("modulos/pessoas/pessoas.dat", "rb+");
+    if (file == NULL) {
+        printf("Erro ao abrir o arquivo de pessoas.\n");
+        return;
+    }
+
+    // Busca a pessoa pelo CPF
+    while (fread(&p, sizeof(Pessoa), 1, file)) {
+        if (strcmp(p.cpf, cpf) == 0 && p.status == 1) {
+            achou = 1;
+            break;
+        }
+    }
+
+    if (!achou) {
+        printf("Pessoa com CPF %s não encontrada ou inativa.\n", cpf);
+        fclose(file);
+        return;
+    }
+    
+    // Exibe dados atuais
     system("clear||cls");
     printf("_____------------------------------------_____\n");
     printf("|   |        == SIG-Rent-a-Car ==        |   |\n");
@@ -296,24 +321,70 @@ void menu_alterar_pessoa(const char *cpf) {
     printf("----------------------------------------------\n");
     printf("|   |           ALTERAR PESSOA           |   |\n");
     printf("----------------------------------------------\n");
-    printf("|   | Nome: \n");
-    printf("|   | Idade: \n");
-    printf("|   | Telefone: \n");
-    printf("|   | E-mail: \n");
+    printf("|   | CPF: %s\n", p.cpf);
+    printf("|   | Nome: %s\n", p.nome);
+    printf("|   | Idade: %d\n", p.data_nasc);
+    printf("|   | Telefone: %s\n", p.telefone);
+    printf("|   | E-mail: %s\n", p.email);
     printf("----------------------------------------------\n");
-    printf("\n");
-    printf("|   | O que você deseja alterar?:\n");
-    printf("_____------------------------------------_____\n");
-    printf("|   | 1 - Nome       2 - Dta. Nascimento |   |\n");
-    printf("----------------------------------------------\n");
-    printf("|   | 3 - Telefone   4 - E-mail          |   |\n");
-    printf("----------------------------------------------\n");
-    printf("|   | 5 - Função     0 - Sair            |   |\n");
-    printf("_____------------------------------------_____\n");
-    printf("\n");
-    printf("----------------------------------------------\n");
-    opc_altr_pessoa = validar_opcao(0, 5);
+
+    do {
+        printf("|   | O que você deseja alterar?:\n");
+        printf("_____------------------------------------_____\n");
+        printf("|   | 1 - Nome       2 - Idade           |   |\n");
+        printf("----------------------------------------------\n");
+        printf("|   | 3 - Telefone   4 - E-mail          |   |\n");
+        printf("----------------------------------------------\n");
+        printf("|   | 0 - Sair                           |   |\n");
+        printf("_____------------------------------------_____\n");
+
+        opc_altr_pessoa = validar_opcao(0, 4);
+
+        switch (opc_altr_pessoa) {
+            case 1:
+                printf("Novo Nome: ");
+                limpa_buffer();
+                fgets(p.nome, sizeof(p.nome), stdin);
+                p.nome[strcspn(p.nome, "\n")] = '\0';
+                break;
+
+            case 2:
+                printf("Nova Idade: ");
+                scanf("%d", &p.data_nasc);
+                break;
+
+            case 3:
+                printf("Novo Telefone: ");
+                limpa_buffer();
+                fgets(p.telefone, sizeof(p.telefone), stdin);
+                p.telefone[strcspn(p.telefone, "\n")] = '\0';
+                break;
+
+            case 4:
+                printf("Novo E-mail: ");
+                limpa_buffer();
+                fgets(p.email, sizeof(p.email), stdin);
+                p.email[strcspn(p.email, "\n")] = '\0';
+                break;
+
+            case 0:
+                printf("Alterações concluídas.\n");
+                break;
+
+            default:
+                printf("Opção inválida. Tente novamente.\n");
+        }
+    } while (opc_altr_pessoa != 0);
+
+    // Salva os dados alterados no arquivo
+    fseek(file, -sizeof(Pessoa), SEEK_CUR);
+    fwrite(&p, sizeof(Pessoa), 1, file);
+
+    printf("Dados alterados com sucesso!\n");
+
+    fclose(file);
 }
+
 
 // MENU EXCLUIR PESSOA ----- feito e adaptado com ChatGPT
 void menu_excluir_pessoa(const char *cpf) {

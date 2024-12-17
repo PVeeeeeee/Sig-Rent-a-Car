@@ -12,6 +12,8 @@ typedef struct {
 } Pessoa;
 
 void salvar_pessoa(Pessoa *pessoa);
+int excluir_pessoa(const char *cpf);
+int recuperar_pessoa(const char *cpf);
 int carregar_pessoa(Pessoa *data, const char *fileName, const char *cpf);
 int menu_pessoas(void);
 int promover_cliente_funcionario(const char *cpf);
