@@ -11,7 +11,7 @@ typedef struct {
     float valor_final;
     bool situacao;
     int status;
-    Locacao next;
+    Locacao *next;
 } Locacao;
 
 typedef struct {
