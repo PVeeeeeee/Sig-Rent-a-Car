@@ -6,6 +6,7 @@ Esse projeto foi desenvolvido por:
 - Pedro Vitor
 - Elder Bruno
 - Felipe Erik
+- Mosiah Adam
 
 ## 📋 Sobre
 Projeto para avaliação da disciplina <b>DCT1106 | PROGRAMAÇÃO</b> do curso de Sistemas de Informação, da Universidade Federal do Rio Grande do Norte (UFRN). Programa feito na linguagem de programação C, capaz de gerenciar os processos para locações de veículos.
