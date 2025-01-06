@@ -1,17 +1,22 @@
 #ifndef LOCACOES_H
-#include <stdbool.h>
 #define LOCACOES_H
+#include <stdbool.h>
 
 typedef struct {
-    char cpf_cliente[12];       
-    char cpf_funcionario[12];   
-    char placa_veiculo[8];      
-    char data_inic[11];         
-    char data_final[11];        
-    float valor_final;         
+    char cpf_cliente[12];
+    char cpf_funcionario[12];
+    char placa_veiculo[8];
+    char data_inic[11];
+    char data_final[11];
+    float valor_final;
     bool situacao;
-    int status;          
+    int status;
 } Locacao;
+
+typedef struct {
+    Locacao node;
+    Locacao next;
+} LocacaoList;
 
 int menu_locacoes(void);
 void menu_cadastrar_locacao(void);
