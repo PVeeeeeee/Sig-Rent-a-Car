@@ -76,6 +76,14 @@ Pessoa* get_lista_pessoas() {
     return head;
 }
 
+void limpar_lista_pessoas(Pessoa *head) {
+    Pessoa *temp;
+    while (head) {
+        temp = head;
+        head = head->next;
+        free(temp);
+    }
+}
 
 // MENU PESSOAS
 int menu_pessoas(void) {
