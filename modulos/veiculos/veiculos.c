@@ -405,26 +405,22 @@ void menu_alterar_veiculo(const char *placa) {
 
 // MENU EXCLUIR VEICULO  ----- feito e adaptado com ChatGPT
 void menu_excluir_veiculo(const char *placa) {
-    Veiculo v;
+    Veiculo *veiculo, *head = get_lista_veiculos();
+    veiculo = head;
     int achou = 0;
 
-    FILE *file = fopen("modulos/veiculos/veiculos.dat", "rb");
-    if (file == NULL) {
-        printf("Erro ao abrir o arquivo de veiculos.\n");
-        return;
-    }
-
-    // Verifica se o veículo existe no arquivo
-    while (fread(&v, sizeof(Veiculo), 1, file)) {
-        if (strcmp(v.placa, placa) == 0 && v.status == 1) {
+    while (veiculo != NULL) {
+        if (strcmp(veiculo->placa, placa) == 0 && veiculo->status == 1) {
             achou = 1;
+            veiculo->status = 0;
             break;
         }
+        veiculo = veiculo->next;
     }
-    fclose(file);
 
     if (!achou) {
-        printf("Placa não encontrada ou já excluída.\n");
+        printf("Placa não encontrado ou já excluída.\n");
+        limpar_lista_veiculos(head);
         return;
     }
 
@@ -436,23 +432,23 @@ void menu_excluir_veiculo(const char *placa) {
     printf("----------------------------------------------\n");
     printf("|   |           EXCLUIR VEÍCULO           |   |\n");
     printf("----------------------------------------------\n");
-    if (v.disponibilidade == 1) {
+    if (veiculo->disponibilidade == 1) {
         printf("|   | Disponível\n");
     } else {
         printf("|   | Indisponível\n");
     }
-    printf("|   | Placa: %s\n", v.placa);
-    printf("|   | Chassi: %s\n", v.chassi);
-    printf("|   | Marca: %s\n", v.marca);
-    printf("|   | Modelo: %s\n", v.modelo);
-    printf("|   | Cor: %s\n", v.cor);
-    printf("|   | Tipo: %s\n", v.tipo);
-    printf("|   | Combustível: %s\n", v.combustivel);
-    printf("|   | Ano: %d\n", v.ano);
-    printf("|   | Lugares: %d\n", v.lugares);
-    printf("|   | Valor: %.2f\n", v.valor);
+    printf("|   | Placa: %s\n", veiculo->placa);
+    printf("|   | Chassi: %s\n", veiculo->chassi);
+    printf("|   | Marca: %s\n", veiculo->marca);
+    printf("|   | Modelo: %s\n", veiculo->modelo);
+    printf("|   | Cor: %s\n", veiculo->cor);
+    printf("|   | Tipo: %s\n", veiculo->tipo);
+    printf("|   | Combustível: %s\n", veiculo->combustivel);
+    printf("|   | Ano: %d\n", veiculo->ano);
+    printf("|   | Lugares: %d\n", veiculo->lugares);
+    printf("|   | Valor: %.2f\n", veiculo->valor);
     printf("----------------------------------------------\n");
-    printf("|   | Status: %s\n", v.status == 1 ? "Ativo" : "Excluído");
+    printf("|   | Status: %s\n", veiculo->status == 1 ? "Ativo" : "Excluído");
     printf("----------------------------------------------\n");
     printf("|   | Você tem certeza que deseja excluir? (s/n): ");
     limpa_buffer(); // Certifique-se de que o buffer está limpo
@@ -461,11 +457,12 @@ void menu_excluir_veiculo(const char *placa) {
 
     printf("Entrada recebida: '%s'\n", opc_exclr_veiculo);
     if (strcmp(opc_exclr_veiculo, "s") == 0) {
-        printf("Chamada da função excluir_veiculo com placa: %s\n", placa);
-        excluir_veiculo(placa);
+        printf("Excluindo veiculo com a placa: %s\n", placa);
+        printf("%s\n", atualizar_lista_veiculos(head) ? "Veiculo excluído com sucesso!" : "Erro ao atualizar o registro no arquivo!");
     } else {
         printf("Exclusão cancelada.\n");
     }
+    limpar_lista_veiculos(head);
     limpa_buffer();
 }
 
