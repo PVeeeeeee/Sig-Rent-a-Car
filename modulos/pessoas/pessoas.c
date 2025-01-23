@@ -605,6 +605,7 @@ void relatorio_geral_pessoas(void) {
     printf("|             ORDEM ALFABÉTICA [A-Z]           |\n");
     printf("------------------------------------------------\n");
     Pessoa *head = get_lista_pessoas(), *pessoaAtual = head;
+    ordenar_lista_pessoas(head);
     while (pessoaAtual != NULL) {
         printf("\nNome: %s\nCPF: %s\nData Nascimento: %s\nTelefone: %s\nE-mail: %s\nStatus: %s\n", pessoaAtual->nome, pessoaAtual->cpf, pessoaAtual->data_nasc, pessoaAtual->telefone, pessoaAtual->email, pessoaAtual->status ? "Ativo" : "Inativo");
         printf("------------------------------------------------\n");
