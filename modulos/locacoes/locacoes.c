@@ -32,6 +32,39 @@ int carregar_locacoes(Locacao *l, const char *caminho, const char *cpf_cliente) 
     return encontrado;
 }
 
+Locacao* get_lista_locacoes() {
+    Locacao *head = NULL, *current = NULL;
+    Locacao temp;
+
+    FILE *file = fopen("modulos/locacoes/locacoes.dat", "rb");
+
+    if (file == NULL) {
+        printf("Erro: O arquivo de locações não existe.\n");
+        return NULL;
+    }
+
+    while (fread(&temp, sizeof(Locacao), 1, file) == 1) {
+        if (temp.status == 0) continue; 
+
+        Locacao *novo = (Locacao*) malloc(sizeof(Locacao));
+
+        *novo = temp;
+        novo->next = NULL;
+
+        if (head == NULL) {
+            head = novo;
+        } else {
+            current->next = novo;
+        }
+
+        current = novo;
+    }
+
+    fclose(file);
+    return head;
+}
+
+
 
 // MENU LOCAÇÕES
 int menu_locacoes(void) {
