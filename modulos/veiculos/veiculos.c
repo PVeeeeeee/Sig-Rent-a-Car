@@ -308,6 +308,7 @@ void menu_alterar_veiculo(const char *placa) {
 
     if (!achou) {
         printf("Placa não encontrado ou já excluída.\n");
+        limpar_lista_veiculos(head);
         return;
     }
 
