@@ -6,17 +6,8 @@
 #include "veiculos.h"
 
 // BANCO DE DADOS
-void salvar_veiculos(Veiculo *data, size_t size, const char *fileName) {
-    char caminho[50] = "modulos/veiculos/";
-    strcat(caminho, fileName);
-
-    FILE *file = fopen(caminho, "ab"); 
-    if (file == NULL) {
-        printf("Erro ao abrir o arquivo!\n");
-        return;
-    }
-    fwrite(data, size, 1, file);
-    fclose(file);
+void salvar_veiculo(Veiculo *veiculo) {
+    salvar_entidade(veiculo, sizeof(Veiculo), "modulos/veiculos/veiculos.dat");
 }
 
 void carregar_veiculos(Veiculo *data, size_t size, const char *fileName) {
@@ -191,7 +182,7 @@ void menu_cadastrar_veiculo(void) {
 
     v.disponibilidade = 1;
     v.status = 1;
-    salvar_veiculos(&v, sizeof(Veiculo), "veiculos.dat");
+    salvar_veiculo(&v, sizeof(Veiculo), "veiculos.dat");
 
     printf("|   |\n");
     printf("---------------------------------------\n");

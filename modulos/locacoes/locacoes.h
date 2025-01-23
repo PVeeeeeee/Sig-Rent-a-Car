@@ -27,4 +27,8 @@ void relatorio_locacoes_antigas(void);
 void relatorio_locacoes_data(void);
 void relatorio_veiculo_locacoes(void);
 
+Locacao* get_lista_locacoes(void);
+void limpar_lista_locacoes(Locacao*);
+int atualizar_lista_locacoes(Locacao*);
+
 #endif

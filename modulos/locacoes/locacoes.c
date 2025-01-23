@@ -10,16 +10,7 @@
 
 //BANCO DE DADOS
 void salvar_locacao(Locacao *locacao) {
-    char caminho[50] = "modulos/locacoes/locacoes.dat";
-
-    FILE *file = fopen(caminho, "ab");
-    if (file == NULL) {
-        printf("Erro ao abrir o arquivo de locações!\n");
-        return;
-    }
-    
-    fwrite(locacao, sizeof(Locacao), 1, file);
-    fclose(file);
+    salvar_entidade(locacao, sizeof(Locacao), "modulos/locacoes/locacoes.dat");
 }
 
 int carregar_locacoes(Locacao *l, const char *caminho, const char *cpf_cliente) {

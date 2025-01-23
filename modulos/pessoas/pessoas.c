@@ -8,14 +8,7 @@
 
 //BANCO DE DADOS
 void salvar_pessoa(Pessoa *pessoa) {
-    FILE *file = fopen("modulos/pessoas/pessoas.dat", "ab");
-    if (file == NULL) {
-        printf("Erro ao abrir o arquivo para salvar pessoa.\n");
-        return;
-    }
-
-    fwrite(pessoa, sizeof(Pessoa), 1, file);
-    fclose(file);
+    salvar_entidade(pessoa, sizeof(Pessoa), "modulos/pessoas/pessoas.dat");
 }
 
 int carregar_pessoa(Pessoa *data, const char *fileName, const char *cpf) {
