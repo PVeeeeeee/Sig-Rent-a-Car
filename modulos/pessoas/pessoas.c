@@ -670,22 +670,22 @@ int recuperar_pessoa(const char *cpf) {
 void ordenar_lista_pessoas(Pessoa *head)  
 {  
     int swapped;  
-    Pessoa *ptr1, *lptr = NULL;
+    Pessoa *p1, *p2 = NULL;
 
     if (head == NULL) return;
   
     do {
         swapped = 0;  
-        ptr1 = head;  
+        p1 = head;  
   
-        while (ptr1->next != lptr) {
-            if (strcmp(ptr1->nome, ptr1->next->nome) > 0) {
-                swap(ptr1, ptr1->next);  
+        while (p1->next != p2) {
+            if (strcmp(p1->nome, p1->next->nome) > 0) {
+                swap(p1, p1->next);  
                 swapped = 1;  
             }
-            ptr1 = ptr1->next;  
+            p1 = p1->next;  
         }  
-        lptr = ptr1;  
+        p2 = p1;  
     }  
     while (swapped);  
 }
