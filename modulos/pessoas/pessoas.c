@@ -660,3 +660,29 @@ int recuperar_pessoa(const char *cpf) {
     printf("CPF %s não encontrado ou já ativo.\n", cpf);
     return 0;
 }
+
+void ordenar_lista_pessoas(Pessoa *head) {
+    Pessoa *current = head;
+    int status = 0;
+    // 5 4 1
+    // 4 5 1
+
+    // 4 1 5
+    // 1 4 5
+    while (current != NULL) {
+        // while (current->next != NULL) {
+            
+        // }
+        status = strcmp(current->nome, current->next->nome);
+        Pessoa *temp;
+        if (status == 1) {
+            temp = current;
+            current->next = temp;
+            current = current->next;
+        } else if (status == -1) {
+
+        } else {
+
+        }
+    }
+}
