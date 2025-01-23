@@ -64,6 +64,14 @@ Locacao* get_lista_locacoes() {
     return head;
 }
 
+void limpar_lista_locacoes(Locacao *head) {
+    Locacao *temp;
+    while (head) {
+        temp = head;
+        head = head->next;
+        free(temp);
+    }
+}
 
 
 // MENU LOCAÇÕES
