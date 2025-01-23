@@ -661,28 +661,51 @@ int recuperar_pessoa(const char *cpf) {
     return 0;
 }
 
-void ordenar_lista_pessoas(Pessoa *head) {
-    Pessoa *current = head;
-    int status = 0;
-    // 5 4 1
-    // 4 5 1
 
-    // 4 1 5
-    // 1 4 5
-    while (current != NULL) {
-        // while (current->next != NULL) {
-            
-        // }
-        status = strcmp(current->nome, current->next->nome);
-        Pessoa *temp;
-        if (status == 1) {
-            temp = current;
-            current->next = temp;
-            current = current->next;
-        } else if (status == -1) {
+/**
+ * Ordena a lista de pessoas usando bubble sort baseado na ordem alfabética
+ * 
+ * @param Pessoa *head
+ * @return void
+ * 
+ * Authors:
+ *  - https://www.geeksforgeeks.org/c-program-bubble-sort-linked-list/
+ */
+void ordenar_lista_pessoas(Pessoa *head)  
+{  
+    int swapped;  
+    Pessoa *ptr1, *lptr = NULL;
 
-        } else {
-
-        }
-    }
+    if (head == NULL) return;
+  
+    do {
+        swapped = 0;  
+        ptr1 = head;  
+  
+        while (ptr1->next != lptr) {
+            if (strcmp(ptr1->nome, ptr1->next->nome) > 0) {
+                swap(ptr1, ptr1->next);  
+                swapped = 1;  
+            }
+            ptr1 = ptr1->next;  
+        }  
+        lptr = ptr1;  
+    }  
+    while (swapped);  
 }
+
+/**
+ * Realiza o swap/troca no algoritmo de BubbleSort para ordenação de nome
+ * 
+ * @param Pessoa *p1
+ * @param Pessoa *p2
+ * 
+ * @return void
+ */
+void swap(Pessoa *p1, Pessoa *p2) 
+{
+    char temp[51];
+    strcpy(temp, p1->nome);
+    strcpy(p1->nome, p2->nome);
+    strcpy(p2->nome, temp);
+} 
