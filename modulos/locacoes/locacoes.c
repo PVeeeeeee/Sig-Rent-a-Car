@@ -73,6 +73,17 @@ void limpar_lista_locacoes(Locacao *head) {
     }
 }
 
+int atualizar_lista_locacoes(Locacao *head) {
+    if (remove("modulos/locacoes/locacoes.dat") != 0) return 0;
+    
+    Locacao *locacao = head;
+    while (locacao != NULL) {
+        salvar_locacao(locacao);
+        locacao = locacao->next;
+    }
+
+    return 1;
+}
 
 // MENU LOCAÇÕES
 int menu_locacoes(void) {
