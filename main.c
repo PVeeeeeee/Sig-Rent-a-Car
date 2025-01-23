@@ -142,19 +142,6 @@ int main(void) {
                         if (opc_relt_locacoes == 1) {
                             relatorio_geral_locacoes();
                         } else if (opc_relt_locacoes == 2) {
-                            opc_data_relatorio = -1;
-                            while (opc_data_relatorio != 0) {
-                                opc_data_relatorio = relatorio_data_locacoes();
-
-                                if (opc_data_relatorio == 1) {
-                                    relatorio_locacoes_recentes();
-                                } else if (opc_data_relatorio == 2) {
-                                    relatorio_locacoes_antigas();
-                                } else if (opc_data_relatorio == 3) {
-                                    relatorio_locacoes_data();
-                                }
-                            }
-                        } else if (opc_relt_locacoes == 3) {
                             relatorio_veiculo_locacoes();
                         }
                     }

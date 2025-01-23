@@ -161,7 +161,7 @@ int validar_funcao(Pessoa *head, const char *cpf, int funcao) {
 
     while (node != NULL) {
         if (strcmp(node->cpf, cpf) == 0 && node->funcao == funcao) {
-            return 0;
+            return 1;
         }
         node = node->next;
     }
