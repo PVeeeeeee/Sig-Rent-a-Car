@@ -39,6 +39,44 @@ int carregar_pessoa(Pessoa *data, const char *fileName, const char *cpf) {
     return 0;
 }
 
+/**
+ * Ler o arquivo e monta uma Linked List de pessoas
+ * 
+ * @return Pessoa*: Primeiro item da lista
+ */
+Pessoa* get_lista_pessoas() {
+    Pessoa *head = NULL, *current = NULL;
+    Pessoa temp;
+
+    FILE *file = fopen("modulos/pessoas/pessoas.dat", "rb");
+
+    if (file == NULL) {
+        printf("Erro: O arquivo de pessoas não existe.\n");
+        return NULL;
+    }
+
+    while (fread(&temp, sizeof(Pessoa), 1, file) == 1) {
+        if (temp.status == 0) continue; 
+
+        Pessoa *novo = (Pessoa*) malloc(sizeof(Pessoa));
+
+        *novo = temp;
+        novo->next = NULL;
+
+        if (head == NULL) {
+            head = novo;
+        } else {
+            current->next = novo;
+        }
+
+        current = novo;
+    }
+
+    fclose(file);
+    return head;
+}
+
+
 // MENU PESSOAS
 int menu_pessoas(void) {
     int opc_pessoas;
