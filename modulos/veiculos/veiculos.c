@@ -182,7 +182,7 @@ void menu_cadastrar_veiculo(void) {
 
     v.disponibilidade = 1;
     v.status = 1;
-    salvar_veiculo(&v, sizeof(Veiculo), "veiculos.dat");
+    salvar_veiculo(&v);
 
     printf("|   |\n");
     printf("---------------------------------------\n");
