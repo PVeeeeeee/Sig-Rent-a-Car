@@ -1,7 +1,8 @@
 #ifndef VEICULOS_H
 #define VEICULOS_H
 
-typedef struct {
+typedef struct Veiculo Veiculo;
+struct Veiculo {
     char chassi[18];  
     char placa[8];           
     char marca[15];  
@@ -14,7 +15,8 @@ typedef struct {
     float valor;
     bool disponibilidade;
     int status;
-} Veiculo;
+    Veiculo *next;
+};
 
 static const char *marcas[] = {"Toyota", "Honda", "Ford", "Chevrolet", "BMW"};
 static const char *tipos[] = {"Hatchback", "Sedan", "SUV", "Picape", "Conversível"};
