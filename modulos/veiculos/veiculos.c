@@ -300,7 +300,6 @@ void menu_alterar_veiculo(const char *placa) {
     while (veiculo != NULL) {
         if (strcmp(veiculo->placa, placa) == 0 && veiculo->status == 1) {
             achou = 1;
-            veiculo->status = 0;
             break;
         }
         veiculo = veiculo->next;
