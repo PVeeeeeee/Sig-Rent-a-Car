@@ -546,6 +546,16 @@ void relatorio_geral_veiculos(void) {
     printf("------------------------------------------------\n");
     printf("|             ORDEM ALFABÉTICA [A-Z]           |\n");
     printf("------------------------------------------------\n");
+    Veiculo *head = get_lista_veiculos();
+
+    Veiculo *veiculoAtual = head;
+    while (veiculoAtual != NULL) {
+        printf("\nPlaca: %s\nChassi: %s\nMarca: %s\nModelo: %s\nCor: %s\nTipo: %s\nCombustivel: %s\nAno: %s\nLugares: %s\nValor: %s\nStatus: %s\n", veiculoAtual->placa, veiculoAtual->chassi, veiculoAtual->marca, veiculoAtual->modelo, veiculoAtual->cor, veiculoAtual->tipo, veiculoAtual->combustivel, veiculoAtual->ano, veiculoAtual->lugares, veiculoAtual->valor, veiculoAtual->status ? "Ativo" : "Inativo");
+        printf("------------------------------------------------\n");
+        veiculoAtual = veiculoAtual->next;
+    }
+    limpar_lista_veiculos(head);
+
     printf("Tecle <ENTER> para prosseguir...    ");
     limpa_buffer();
 }
