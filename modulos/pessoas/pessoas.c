@@ -547,6 +547,7 @@ void relatorio_clientes(void) {
     printf("------------------------------------------------\n");
     printf("Tecle <ENTER> para prosseguir...    ");
     Pessoa *head = get_lista_pessoas(), *pessoaAtual = head;
+    ordenar_lista_pessoas(head);
     while (pessoaAtual != NULL) {
         if (pessoaAtual->funcao == 0) {
             printf("\nNome: %s\nCPF: %s\nData Nascimento: %s\nTelefone: %s\nE-mail: %s\nStatus: %s\n", pessoaAtual->nome, pessoaAtual->cpf, pessoaAtual->data_nasc, pessoaAtual->telefone, pessoaAtual->email, pessoaAtual->status ? "Ativo" : "Inativo");
@@ -573,6 +574,7 @@ void relatorio_funcionarios(void) {
     printf("------------------------------------------------\n");
     printf("Tecle <ENTER> para prosseguir...    ");
     Pessoa *head = get_lista_pessoas(), *pessoaAtual = head;
+    ordenar_lista_pessoas(head);
     while (pessoaAtual != NULL) {
         if (pessoaAtual->funcao == 1) {
             printf("\nNome: %s\nCPF: %s\nData Nascimento: %s\nTelefone: %s\nE-mail: %s\nStatus: %s\n", pessoaAtual->nome, pessoaAtual->cpf, pessoaAtual->data_nasc, pessoaAtual->telefone, pessoaAtual->email, pessoaAtual->status ? "Ativo" : "Inativo");
