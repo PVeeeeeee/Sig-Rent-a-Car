@@ -365,7 +365,7 @@ void menu_alterar_pessoa(const char *cpf) {
         printf("----------------------------------------------\n");
         printf("|   | CPF: %s\n", pessoa->cpf);
         printf("|   | Nome: %s\n", pessoa->nome);
-        printf("|   | Idade: %d\n", pessoa->data_nasc);
+        printf("|   | Idade: %s\n", pessoa->data_nasc);
         printf("|   | Telefone: %s\n", pessoa->telefone);
         printf("|   | E-mail: %s\n", pessoa->email);
         printf("----------------------------------------------\n");

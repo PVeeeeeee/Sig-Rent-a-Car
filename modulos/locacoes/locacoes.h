@@ -19,8 +19,8 @@ struct Locacao {
 int menu_locacoes(void);
 void menu_cadastrar_locacao(void);
 void menu_checar_locacao(void);
-void menu_alterar_locacao(const char *cpf_cliente);
-void menu_excluir_locacao(const char *cpf_cliente);
+void menu_alterar_locacao(const char*);
+void menu_excluir_locacao(const char*);
 void relatorio_geral_locacoes(void);
 void relatorio_veiculo_locacoes(void);
 
