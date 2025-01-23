@@ -26,5 +26,7 @@ void menu_excluir_pessoa(const char*);
 void relatorio_clientes(void);
 void relatorio_funcionarios(void);
 void relatorio_geral_pessoas(void);
+Pessoa* get_lista_pessoas(void);
+void limpar_lista_pessoas(Pessoa*);
 
 #endif
