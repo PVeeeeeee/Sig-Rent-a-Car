@@ -155,16 +155,20 @@ system("clear||cls");
 
 
 void menu_cadastrar_pessoa(void) {
-    Pessoa p;
+    Pessoa p, *head = get_lista_pessoas();
     int opcao;
 
     do {
+        int isCliente = validar_cliente(head, p.cpf),
+            isFuncionario = validar_funcionario(head, p.cpf);
+
         cabecalho_cadastro_pessoa();
         printf("|   | Deseja cadastrar como:\n");
         printf("|   | 1 - Cliente\n");
         printf("|   | 2 - Funcionário\n");
+        printf("|   | 3 - Cliente e Funcionário\n");
         printf("|   | Escolha: ");
-        opcao = validar_opcao(1, 2);
+        opcao = validar_opcao(1, 3);
 
         cabecalho_cadastro_pessoa();
         printf("|   | CPF: ");
@@ -175,7 +179,7 @@ void menu_cadastrar_pessoa(void) {
             scanf(" %11s", p.cpf);
         }
 
-        if (validar_cliente(p.cpf) && validar_funcionario(p.cpf)) {
+        if (isCliente && isFuncionario) {
             printf("|   | O CPF informado já está cadastrado como Cliente e Funcionário!\n");
             printf("|   | Não é possível criar um novo cadastro.\n");
             break;
@@ -196,7 +200,7 @@ void menu_cadastrar_pessoa(void) {
             break;
         }
 
-        if (validar_funcionario(p.cpf)) {
+        if (isFuncionario) {
             printf("|   | O CPF informado já está cadastrado como Funcionário!\n");
             printf("|   | Não é possível criar um novo cadastro.\n");
             break;
@@ -245,6 +249,10 @@ void menu_cadastrar_pessoa(void) {
             p.funcao = 0;
             p.status = 1;
             salvar_pessoa(&p);
+        } else {
+            p.funcao = 0;
+            p.status = 1;
+            salvar_pessoa(&p);
 
             p.funcao = 1;
             p.status = 1;
@@ -255,6 +263,7 @@ void menu_cadastrar_pessoa(void) {
 
     printf("Tecle <ENTER> para prosseguir... ");
     limpa_buffer();
+    limpar_lista_pessoas(head);
     getchar();
 }
 
