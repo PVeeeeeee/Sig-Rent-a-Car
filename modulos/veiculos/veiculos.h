@@ -24,14 +24,14 @@ static const char *cores[] = {"Preto", "Branco", "Prata", "Vermelho", "Azul"};
 static const char *combustiveis[] = {"Gasolina", "Álcool", "Flex", "Diesel", "Elétrico"};
 
 // Declarações das funções do módulo veiculos.c
-void salvar_veiculos(void *data, size_t size, const char *fileName);
-void carregar_veiculos(void *data, size_t size, const char *fileName);
+void salvar_veiculos(Veiculo*, size_t, const char*);
+void carregar_veiculos(Veiculo*, size_t, const char*);
 int menu_veiculos(void);
-void exibir_veiculo(const Veiculo *v);
+void exibir_veiculo(const Veiculo*);
 void menu_cadastrar_veiculo(void);
 void menu_checar_veiculo(void);
-void menu_alterar_veiculo(const char *placa);
-void menu_excluir_veiculo(const char *placa);
+void menu_alterar_veiculo(const char*);
+void menu_excluir_veiculo(const char*);
 
 // Funções de relatório
 int menu_relatorio_veiculo(void);
