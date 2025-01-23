@@ -357,6 +357,7 @@ void menu_alterar_pessoa(const char *cpf) {
 
     if (!achou) {
         printf("CPF não encontrado ou já excluído.\n");
+        limpar_lista_pessoas(head);
         return;
     }    
 
@@ -468,6 +469,7 @@ void menu_excluir_pessoa(const char *cpf) {
 
     if (!achou) {
         printf("CPF não encontrado ou já excluído.\n");
+        limpar_lista_pessoas(head);
         return;
     }
 
