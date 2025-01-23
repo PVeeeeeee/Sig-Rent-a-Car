@@ -454,23 +454,18 @@ void menu_alterar_pessoa(const char *cpf) {
 
 // MENU EXCLUIR PESSOA ----- feito e adaptado com ChatGPT
 void menu_excluir_pessoa(const char *cpf) {
-    Pessoa p;
+    Pessoa *pessoa, *head = get_lista_pessoas();
+    pessoa = head;
     int achou = 0;
 
-    FILE *file = fopen("modulos/pessoas/pessoas.dat", "rb");
-    if (file == NULL) {
-        printf("Erro ao abrir o arquivo de pessoas.\n");
-        return;
-    }
-
-    // Verifica se a pessoa existe no arquivo
-    while (fread(&p, sizeof(Pessoa), 1, file)) {
-        if (strcmp(p.cpf, cpf) == 0 && p.status == 1) {
+    while (pessoa != NULL) {
+        if (strcmp(pessoa->cpf, cpf) == 0 && pessoa->status == 1) {
             achou = 1;
+            pessoa->status = 0;
             break;
         }
+        pessoa = pessoa->next;
     }
-    fclose(file);
 
     if (!achou) {
         printf("CPF não encontrado ou já excluído.\n");
@@ -485,11 +480,11 @@ void menu_excluir_pessoa(const char *cpf) {
     printf("----------------------------------------------\n");
     printf("|   |           EXCLUIR PESSOA           |   |\n");
     printf("----------------------------------------------\n");
-    printf("|   | Nome: %s\n", p.nome);
-    printf("|   | Data de Nascimento: %s\n", p.data_nasc);
-    printf("|   | Telefone: %s\n", p.telefone);
-    printf("|   | E-mail: %s\n", p.email);
-    printf("|   | Status: %s\n", p.status == 1 ? "Ativo" : "Excluído");
+    printf("|   | Nome: %s\n", pessoa->nome);
+    printf("|   | Data de Nascimento: %s\n", pessoa->data_nasc);
+    printf("|   | Telefone: %s\n", pessoa->telefone);
+    printf("|   | E-mail: %s\n", pessoa->email);
+    printf("|   | Status: %s\n", pessoa->status == 1 ? "Ativo" : "Excluído");
     printf("----------------------------------------------\n");
     printf("|   | Você tem certeza que deseja excluir? (s/n): ");
     limpa_buffer(); // Certifique-se de que o buffer está limpo
@@ -498,14 +493,17 @@ void menu_excluir_pessoa(const char *cpf) {
 
     printf("Entrada recebida: '%s'\n", opc_exclr_pessoa);
     if (strcmp(opc_exclr_pessoa, "s") == 0) {
-        printf("Chamada da função excluir_pessoa com CPF: %s\n", cpf);
-        excluir_pessoa(cpf);
+        printf("Excluindo pessoa com o CPF: %s\n", cpf);
+        printf("%s\n", atualizar_lista_pessoas(head) ? "Pessoa excluída com sucesso!" : "Erro ao atualizar o registro no arquivo!");
     } else {
         printf("Exclusão cancelada.\n");
     }
+    limpar_lista_pessoas(head);
     limpa_buffer();
 }
 
+int atualizar_lista_pessoas(Pessoa *head) {
+    if (remove("modulos/pessoas/pessoas.dat") != 0) return 0;
 
 int excluir_pessoa(const char *cpf) {
     Pessoa p;
@@ -522,12 +520,6 @@ int excluir_pessoa(const char *cpf) {
             fwrite(&p, sizeof(Pessoa), 1, file);
             printf("Registro com CPF %s excluído.\n", cpf);
             return 1;
-        }
-    }
-
-    fclose(file);
-    printf("CPF %s não encontrado ou já excluído.\n", cpf);
-    return 0;
 }
 
 // MENU RELATÓRIO PESSOA
