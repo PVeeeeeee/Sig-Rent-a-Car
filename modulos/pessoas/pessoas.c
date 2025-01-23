@@ -282,7 +282,7 @@ system("clear||cls");
 // MENU CHECAR PESSOA
 void menu_checar_pessoa(void) {
     char cpf[12];
-    Pessoa p;
+    Pessoa p, *head = get_lista_pessoas();
 
     do {
         cabecalho_checar_pessoa();
@@ -302,7 +302,7 @@ void menu_checar_pessoa(void) {
         printf("|   | Telefone: %s\n", p.telefone);
         printf("|   | E-mail: %s\n", p.email);
 
-        if (validar_funcionario(cpf) && p.funcao == 0) {
+        if (validar_funcionario(head, cpf) && p.funcao == 0) {
             printf("|   | Função: Cliente e Funcionário\n");
         } else if (p.funcao == 0) {
             printf("|   | Função: Cliente\n");
@@ -330,14 +330,13 @@ void menu_checar_pessoa(void) {
         } else if (opc_check_pessoa == 2) {
             menu_excluir_pessoa(cpf);
         }
-        limpa_buffer();
-        getchar();
     } else {
         printf("Pessoa com CPF %s não encontrada!\n", cpf);
         printf("Tecle <ENTER> para prosseguir... ");
-        limpa_buffer();
-        getchar();
     }
+    limpa_buffer();
+    limpar_lista_pessoas(head);
+    getchar();
 }
 
 
