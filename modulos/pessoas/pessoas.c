@@ -552,6 +552,16 @@ void relatorio_clientes(void) {
     printf("|            ORDEM ALFABÉTICA [A-Z]            |\n");
     printf("------------------------------------------------\n");
     printf("Tecle <ENTER> para prosseguir...    ");
+    Pessoa *head = get_lista_pessoas(), *pessoaAtual = head;
+    while (pessoaAtual != NULL) {
+        if (pessoaAtual->funcao == 0) {
+            printf("\nNome: %s\nCPF: %s\nData Nascimento: %s\nTelefone: %s\nE-mail: %s\nStatus: %s\n", pessoaAtual->nome, pessoaAtual->cpf, pessoaAtual->data_nasc, pessoaAtual->telefone, pessoaAtual->email, pessoaAtual->status ? "Ativo" : "Inativo");
+            printf("------------------------------------------------\n");
+        }
+        pessoaAtual = pessoaAtual->next;
+    }
+
+    limpar_lista_pessoas(head);
     limpa_buffer();
 }
 
