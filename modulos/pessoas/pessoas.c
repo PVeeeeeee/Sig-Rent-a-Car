@@ -342,29 +342,24 @@ void menu_checar_pessoa(void) {
 
 // MENU ALTERAR PESSOA ----- Feito com base no menu_excluir_pessoa do ChatGPT
 void menu_alterar_pessoa(const char *cpf) {
-    Pessoa p;
     int opc_altr_pessoa;
+    Pessoa *pessoa, *head = get_lista_pessoas();
+    pessoa = head;
     int achou = 0;
 
-    FILE *file = fopen("modulos/pessoas/pessoas.dat", "rb+");
-    if (file == NULL) {
-        printf("Erro ao abrir o arquivo de pessoas.\n");
-        return;
-    }
-
-    while (fread(&p, sizeof(Pessoa), 1, file)) {
-        if (strcmp(p.cpf, cpf) == 0 && p.status == 1) {
+    while (pessoa != NULL) {
+        if (strcmp(pessoa->cpf, cpf) == 0 && pessoa->status == 1) {
             achou = 1;
+            pessoa->status = 0;
             break;
         }
+        pessoa = pessoa->next;
     }
 
     if (!achou) {
-        printf("Pessoa com CPF %s não encontrada ou inativa.\n", cpf);
-        fclose(file);
+        printf("CPF não encontrado ou já excluído.\n");
         return;
-    }
-    
+    }    
 
     do {
         system("clear||cls");
@@ -374,11 +369,11 @@ void menu_alterar_pessoa(const char *cpf) {
         printf("----------------------------------------------\n");
         printf("|   |           ALTERAR PESSOA           |   |\n");
         printf("----------------------------------------------\n");
-        printf("|   | CPF: %s\n", p.cpf);
-        printf("|   | Nome: %s\n", p.nome);
-        printf("|   | Idade: %d\n", p.data_nasc);
-        printf("|   | Telefone: %s\n", p.telefone);
-        printf("|   | E-mail: %s\n", p.email);
+        printf("|   | CPF: %s\n", pessoa->cpf);
+        printf("|   | Nome: %s\n", pessoa->nome);
+        printf("|   | Idade: %d\n", pessoa->data_nasc);
+        printf("|   | Telefone: %s\n", pessoa->telefone);
+        printf("|   | E-mail: %s\n", pessoa->email);
         printf("----------------------------------------------\n");
         printf("|   | O que você deseja alterar?:\n");
         printf("_____------------------------------------_____\n");
@@ -395,49 +390,49 @@ void menu_alterar_pessoa(const char *cpf) {
             case 1:
                 printf("Novo Nome: ");
                 limpa_buffer();
-                fgets(p.nome, sizeof(p.nome), stdin);
-                p.nome[strcspn(p.nome, "\n")] = '\0';
+                fgets(pessoa->nome, sizeof(pessoa->nome), stdin);
+                pessoa->nome[strcspn(pessoa->nome, "\n")] = '\0';
                 
-                while (!validar_nome(p.nome)) {
+                while (!validar_nome(pessoa->nome)) {
                     printf("Por favor, insira um Nome válido: ");
-                    fgets(p.nome, sizeof(p.nome), stdin);
-                    p.nome[strcspn(p.nome, "\n")] = '\0';
+                    fgets(pessoa->nome, sizeof(pessoa->nome), stdin);
+                    pessoa->nome[strcspn(pessoa->nome, "\n")] = '\0';
                 }
                 break;
 
             case 2:
                 printf("Nova data de nascimento (ddmmaaaa): ");
-                scanf(" %8s", p.data_nasc);
+                scanf(" %8s", pessoa->data_nasc);
                 
-                while (!validar_data(p.data_nasc)) {
+                while (!validar_data(pessoa->data_nasc)) {
                     printf("Por favor, insira uma Data válida: ");
-                    scanf(" %8s", p.data_nasc);
+                    scanf(" %8s", pessoa->data_nasc);
                 }
                 break;
 
             case 3:
                 printf("Novo Telefone: ");
                 limpa_buffer();
-                fgets(p.telefone, sizeof(p.telefone), stdin);
-                p.telefone[strcspn(p.telefone, "\n")] = '\0';
+                fgets(pessoa->telefone, sizeof(pessoa->telefone), stdin);
+                pessoa->telefone[strcspn(pessoa->telefone, "\n")] = '\0';
                 
-                while (!validar_telefone(p.telefone)) {
+                while (!validar_telefone(pessoa->telefone)) {
                     printf("Por favor, insira um Telefone válido: ");
-                    fgets(p.telefone, sizeof(p.telefone), stdin);
-                    p.telefone[strcspn(p.telefone, "\n")] = '\0';
+                    fgets(pessoa->telefone, sizeof(pessoa->telefone), stdin);
+                    pessoa->telefone[strcspn(pessoa->telefone, "\n")] = '\0';
                 }
                 break;
 
             case 4:
                 printf("Novo E-mail: ");
                 limpa_buffer();
-                fgets(p.email, sizeof(p.email), stdin);
-                p.email[strcspn(p.email, "\n")] = '\0';
+                fgets(pessoa->email, sizeof(pessoa->email), stdin);
+                pessoa->email[strcspn(pessoa->email, "\n")] = '\0';
                 
-                while (!validar_email(p.email)) {
+                while (!validar_email(pessoa->email)) {
                     printf("Por favor, insira um E-mail válido: ");
-                    fgets(p.email, sizeof(p.email), stdin);
-                    p.email[strcspn(p.email, "\n")] = '\0';
+                    fgets(pessoa->email, sizeof(pessoa->email), stdin);
+                    pessoa->email[strcspn(pessoa->email, "\n")] = '\0';
                 }
                 break;
 
@@ -451,12 +446,9 @@ void menu_alterar_pessoa(const char *cpf) {
 
     } while (opc_altr_pessoa != 0);
 
-    fseek(file, -sizeof(Pessoa), SEEK_CUR);
-    fwrite(&p, sizeof(Pessoa), 1, file);
-
+    atualizar_lista_pessoas(head);
+    limpar_lista_pessoas(head);
     printf("Dados alterados com sucesso!\n");
-
-    fclose(file);
 }
 
 
