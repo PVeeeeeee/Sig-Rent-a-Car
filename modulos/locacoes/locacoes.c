@@ -64,6 +64,40 @@ Locacao* get_lista_locacoes() {
     return head;
 }
 
+Locacao* get_lista_locacoes_por_veiculos(const char *placa) {
+    Locacao *head = NULL, *current = NULL;
+    Locacao temp;
+
+    FILE *file = fopen("modulos/locacoes/locacoes.dat", "rb");
+
+    if (file == NULL) {
+        printf("Erro: O arquivo de locações não existe.\n");
+        return NULL;
+    }
+
+    while (fread(&temp, sizeof(Locacao), 1, file) == 1) {
+        if (temp.status == 0 || strcmp(temp.placa_veiculo, placa) != 0) {
+            continue;
+        } 
+
+        Locacao *novo = (Locacao*) malloc(sizeof(Locacao));
+
+        *novo = temp;
+        novo->next = NULL;
+
+        if (head == NULL) {
+            head = novo;
+        } else {
+            current->next = novo;
+        }
+
+        current = novo;
+    }
+
+    fclose(file);
+    return head;
+}
+
 void limpar_lista_locacoes(Locacao *head) {
     Locacao *temp;
     while (head) {
@@ -122,33 +156,73 @@ void menu_cadastrar_locacao(void) {
     printf("|   |         CADASTRAR LOCAÇÃO          |   |\n");
     printf("----------------------------------------------\n");
 
-    printf("|   | Cliente (CPF): ");
-    scanf("%11s", l.cpf_cliente);
+    int loop = 1;
 
-    if (!validar_cliente(head, l.cpf_cliente)) {
-        printf("|   | Erro: CPF do cliente não encontrado ou inválido!\n");
-        return;
-    }
+    do {
+        printf("|   | Cliente (CPF): ");
+        scanf("%11s", l.cpf_cliente);
+        if (!validar_cliente(head, l.cpf_cliente)) {
+            printf("|   | Erro: CPF do cliente não encontrado ou inválido!\n");
+            continue;
+        }
+        loop = 0;
+    } while(loop);
 
-    printf("|   | Funcionário (CPF): ");
-    scanf("%11s", l.cpf_funcionario);
+    loop = 1;
+    do {
+        printf("|   | Funcionário (CPF): ");
+        scanf("%11s", l.cpf_funcionario);
 
-    if (!validar_funcionario(head, l.cpf_funcionario)) {
-        printf("|   | Erro: CPF do funcionário não encontrado ou inválido!\n");
-        return;
-    }
+        if (!validar_funcionario(head, l.cpf_funcionario)) {
+            printf("|   | Erro: CPF do funcionário não encontrado ou inválido!\n");
+            continue;
+        }
+        loop = 0;
+    } while (loop);
 
-    printf("|   | Placa do Veículo: ");
-    scanf("%7s", l.placa_veiculo);
+    loop = 1;
+    do {
+        printf("|   | Placa do Veículo: ");
+        scanf("%7s", l.placa_veiculo);
 
-    printf("|   | Data Início (DD/MM/AAAA): ");
-    scanf("%10s", l.data_inic);
+        if (!validar_placa(l.placa_veiculo)) {
+            printf("|   | Erro: Placa inválida!\n");
+            continue;
+        }
+        loop = 0;
+    } while (loop);
 
-    printf("|   | Data Final (DD/MM/AAAA): ");
-    scanf("%10s", l.data_final);
+    loop = 1;
+    do {
+        printf("|   | Data Início (DD/MM/AAAA): ");
+        scanf("%10s", l.data_inic);
+        if (!validar_data(l.data_inic)) {
+            printf("|   | Erro: Data inválida!\n");
+            continue;
+        }
+        loop = 0;
+    } while (loop);
 
-    printf("|   | Valor Final: ");
-    scanf("%f", &l.valor_final);
+    do {
+        printf("|   | Data Final (DD/MM/AAAA): ");
+        scanf("%10s", l.data_final);
+        if (!validar_data(l.data_inic)) {
+            printf("|   | Erro: Data inválida!\n");
+            continue;
+        }
+        loop = 0;
+    } while (loop);
+
+    loop = 1;
+    do {
+        printf("|   | Valor Final: ");
+        scanf("%f", &l.valor_final);
+        if (!validar_float(&l.valor_final, 50, 10000)) {
+            printf("|   | Erro: Valor inválido!\n");
+            continue;
+        }
+        loop = 0;
+    } while (loop);
 
     l.situacao = 1;
     l.status = 1;
@@ -270,26 +344,22 @@ void menu_alterar_locacao(const char *cpf_cliente) {
 
 // MENU EXCLUIR LOCAÇÃO
 void menu_excluir_locacao(const char *cpf_cliente) {
-    Locacao l;
+    Locacao *locacao, *head = get_lista_locacoes();
+    locacao = head;
     int achou = 0;
 
-    FILE *file = fopen("modulos/locacoes/locacoes.dat", "rb");
-    if (file == NULL) {
-        printf("Erro ao abrir o arquivo de locacoes.\n");
-        return;
-    }
-
-    // Verifica se a locacao existe no arquivo
-    while (fread(&l, sizeof(Locacao), 1, file)) {
-        if (strcmp(l.cpf_cliente, cpf_cliente) == 0 && l.status == 1) {
+    while (locacao != NULL) {
+        if (strcmp(locacao->cpf_cliente, cpf_cliente) == 0 && locacao->status == 1) {
             achou = 1;
+            locacao->status = 0;
             break;
         }
+        locacao = locacao->next;
     }
-    fclose(file);
 
     if (!achou) {
         printf("CPF não encontrado ou já excluído.\n");
+        limpar_lista_locacoes(head);
         return;
     }
 
@@ -301,14 +371,14 @@ void menu_excluir_locacao(const char *cpf_cliente) {
     printf("----------------------------------------------\n");
     printf("|   |          EXCLUIR LOCAÇÃO           |   |\n");
     printf("----------------------------------------------\n");
-    printf("|   | Cliente (CPF): %s\n", l.cpf_cliente);
-    printf("|   | Funcionário (CPF): %s\n", l.cpf_funcionario);
-    printf("|   | Placa do Veículo: %s\n", l.placa_veiculo);
-    printf("|   | Data Início: %s\n", l.data_inic);
-    printf("|   | Data Final: %s\n", l.data_final);
-    printf("|   | Valor Final: %.2f\n", l.valor_final);
-    printf("|   | Situação: %c\n", l.situacao);
-    printf("|   | Status: %s\n", l.status == 1 ? "Ativo" : "Excluído");
+    printf("|   | Cliente (CPF): %s\n", locacao->cpf_cliente);
+    printf("|   | Funcionário (CPF): %s\n", locacao->cpf_funcionario);
+    printf("|   | Placa do Veículo: %s\n", locacao->placa_veiculo);
+    printf("|   | Data Início: %s\n", locacao->data_inic);
+    printf("|   | Data Final: %s\n", locacao->data_final);
+    printf("|   | Valor Final: %.2f\n", locacao->valor_final);
+    printf("|   | Situação: %c\n", locacao->situacao);
+    printf("|   | Status: %s\n", locacao->status == 1 ? "Ativo" : "Excluído");
     printf("----------------------------------------------\n");
     printf("\n");
     printf("|   | Você tem certeza que deseja excluir?(S/N): ");
@@ -317,11 +387,11 @@ void menu_excluir_locacao(const char *cpf_cliente) {
     opc_exclr_locacao[strcspn(opc_exclr_locacao, "\n")] = '\0';
 
     if (strcmp(opc_exclr_locacao, "s") == 0 || strcmp(opc_exclr_locacao, "S") == 0) {
-        printf("Chamada da função excluir_locacao com CPF do cliente: %s\n", cpf_cliente);
-        excluir_locacao(cpf_cliente);
+        printf("%s\n", atualizar_lista_locacoes(head) ? "Locação excluída com sucesso!" : "Erro ao atualizar o registro no arquivo!");
     } else {
         printf("Exclusão cancelada.\n");
     }
+    limpar_lista_locacoes(head);
 }
 
 int excluir_locacao(const char *cpf_cliente) {
@@ -364,9 +434,9 @@ int menu_relatorio_locacao(void) {
     printf("|           por ordem destas opções:           |\n");
     printf("------------------------------------------------\n");
     printf("|                                              |\n");
-    printf("|         1 - Geral          2 - Data          |\n");
+    printf("|         1 - Geral          2 - Veículo       |\n");
     printf("|                                              |\n");
-    printf("|         3 - Veículo        0 - Voltar        |\n");
+    printf("|                  0 - Voltar                  |\n");
     printf("|                                              |\n");
     printf("------------------------------------------------\n");
     printf("\n");
@@ -387,84 +457,14 @@ void relatorio_geral_locacoes() {
     printf("|                   ORDEM ID                   |\n");
     printf("------------------------------------------------\n");
     printf("Tecle <ENTER> para prosseguir...    ");
+    Locacao *head = get_lista_locacoes(), *locacao = head;
+    while (locacao != NULL) {
+        printf("\nCPF Cliente: %s\nCPF Funcionário: %s\nPlaca do veículo: %s\nData início: %s\nData final: %s\nValor Final: %.2f\nSituação: %d\n", locacao->cpf_cliente, locacao->cpf_funcionario, locacao->placa_veiculo, locacao->data_inic, locacao->data_final, locacao->valor_final, locacao->situacao);
+        printf("------------------------------------------------\n");
+        locacao = locacao->next;
+    }
+    limpar_lista_locacoes(head);
     limpa_buffer();
-}
-
-// RELATÓRIO LOCAÇÃO DATA
-int relatorio_data_locacoes(void) {
-    int opc_data_relt;
-
-    system("clear||cls");
-    limpa_buffer();
-    printf("_____--------------------------------------_____\n");
-    printf("|   |         == SIG-Rent-a-Car ==         |   |\n");
-    printf("|   |    Sistema de Locação de Veículos    |   |\n");
-    printf("------------------------------------------------\n");
-    printf("|   |           RELATÓRIO - DATA           |   |\n");
-    printf("------------------------------------------------\n");
-    printf("|     Os relatórios podem ser visualizados     |\n");
-    printf("|           por ordem destas opções:           |\n");
-    printf("------------------------------------------------\n");
-    printf("|                                              |\n");
-    printf("|      1 - Recentes           2 - Antigas      |\n");
-    printf("|                                              |\n");
-    printf("|      3 - Data Específica    0 - Voltar       |\n");
-    printf("|                                              |\n");
-    printf("------------------------------------------------\n");
-    printf("\n");
-    opc_data_relt = validar_opcao(0, 3);
-    return opc_data_relt;
-}
-
-// RELATÓRIO LOCAÇÃO DATA RECENTE
-void relatorio_locacoes_recentes(void) {
-    system("clear||cls");
-    limpa_buffer();
-    printf("_____--------------------------------------_____\n");
-    printf("|   |         == SIG-Rent-a-Car ==         |   |\n");
-    printf("|   |    Sistema de Locação de Veículos    |   |\n");
-    printf("------------------------------------------------\n");
-    printf("|   |         RELATÓRIO - LOCAÇÕES         |   |\n");
-    printf("------------------------------------------------\n");
-    printf("|             RECENTES -> ANTIGAS              |\n");
-    printf("------------------------------------------------\n");
-    printf("Tecle <ENTER> para prosseguir...    ");
-    limpa_buffer();
-}
-
-// RELATÓRIO LOCAÇÃO DATA ANTIGA
-void relatorio_locacoes_antigas(void) {
-    system("clear||cls");
-    limpa_buffer();
-    printf("_____--------------------------------------_____\n");
-    printf("|   |         == SIG-Rent-a-Car ==         |   |\n");
-    printf("|   |    Sistema de Locação de Veículos    |   |\n");
-    printf("------------------------------------------------\n");
-    printf("|   |         RELATÓRIO - LOCAÇÕES         |   |\n");
-    printf("------------------------------------------------\n");
-    printf("|             ANTIGAS -> RECENTES              |\n");
-    printf("------------------------------------------------\n");
-    printf("Tecle <ENTER> para prosseguir...    ");
-    limpa_buffer();
-}
-
-// RELATÓRIO LOCAÇÕES DATA ESPECÍFICA
-void relatorio_locacoes_data(void) {
-    char data[9];
-
-    system("clear||cls");
-    limpa_buffer();
-    printf("_____--------------------------------------_____\n");
-    printf("|   |         == SIG-Rent-a-Car ==         |   |\n");
-    printf("|   |    Sistema de Locação de Veículos    |   |\n");
-    printf("------------------------------------------------\n");
-    printf("|   |         RELATÓRIO - LOCAÇÕES         |   |\n");
-    printf("------------------------------------------------\n");
-    printf("|   | Digite a Data: ");
-    scanf("%c", data);
-    printf("Tecle <ENTER> para prosseguir...    ");
-    limpa_buffer();
-    getchar();
 }
 
 // RELATÓRIO LOCAÇÕES VEÍCULO
@@ -480,7 +480,16 @@ void relatorio_veiculo_locacoes(void) {
     printf("|   |         RELATÓRIO - LOCAÇÕES         |   |\n");
     printf("------------------------------------------------\n");
     printf("|   | Digite a Placa: ");
-    scanf("%c", placa);
+    scanf("%s", placa);
+
+    Locacao l, *head = get_lista_locacoes_por_veiculos(placa), *locacao = head;
+
+    while (locacao != NULL) {
+        printf("\nCPF Cliente: %s\nCPF Funcionário: %s\nPlaca do veículo: %s\nData início: %s\nData final: %s\nValor Final: %.2f\nSituação: %d\n", locacao->cpf_cliente, locacao->cpf_funcionario, locacao->placa_veiculo, locacao->data_inic, locacao->data_final, locacao->valor_final, locacao->situacao);
+        printf("------------------------------------------------\n");
+        locacao = locacao->next;
+    }
+    limpar_lista_locacoes(head);
     printf("Tecle <ENTER> para prosseguir...    ");
     limpa_buffer();
     getchar();
