@@ -246,10 +246,9 @@ void menu_cadastrar_pessoa(void) {
             salvar_pessoa(&p);
             printf("|   | Cliente cadastrado com sucesso!\n");
         } else if (opcao == 2) {
-            p.funcao = 1;
+            p.funcao = 0;
             p.status = 1;
             salvar_pessoa(&p);
-            printf("|   | Funcionário cadastrados com sucesso!\n");
         } else {
             p.funcao = 0;
             p.status = 1;
@@ -358,7 +357,6 @@ void menu_alterar_pessoa(const char *cpf) {
 
     if (!achou) {
         printf("CPF não encontrado ou já excluído.\n");
-        limpar_lista_pessoas(head);
         return;
     }    
 
@@ -470,7 +468,6 @@ void menu_excluir_pessoa(const char *cpf) {
 
     if (!achou) {
         printf("CPF não encontrado ou já excluído.\n");
-        limpar_lista_pessoas(head);
         return;
     }
 
@@ -553,16 +550,6 @@ void relatorio_clientes(void) {
     printf("|            ORDEM ALFABÉTICA [A-Z]            |\n");
     printf("------------------------------------------------\n");
     printf("Tecle <ENTER> para prosseguir...    ");
-    Pessoa *head = get_lista_pessoas(), *pessoaAtual = head;
-    while (pessoaAtual != NULL) {
-        if (pessoaAtual->funcao == 0) {
-            printf("\nNome: %s\nCPF: %s\nData Nascimento: %s\nTelefone: %s\nE-mail: %s\nStatus: %s\n", pessoaAtual->nome, pessoaAtual->cpf, pessoaAtual->data_nasc, pessoaAtual->telefone, pessoaAtual->email, pessoaAtual->status ? "Ativo" : "Inativo");
-            printf("------------------------------------------------\n");
-        }
-        pessoaAtual = pessoaAtual->next;
-    }
-
-    limpar_lista_pessoas(head);
     limpa_buffer();
 }
 
@@ -579,16 +566,6 @@ void relatorio_funcionarios(void) {
     printf("|            ORDEM ALFABÉTICA [A-Z]            |\n");
     printf("------------------------------------------------\n");
     printf("Tecle <ENTER> para prosseguir...    ");
-    Pessoa *head = get_lista_pessoas(), *pessoaAtual = head;
-    while (pessoaAtual != NULL) {
-        if (pessoaAtual->funcao == 1) {
-            printf("\nNome: %s\nCPF: %s\nData Nascimento: %s\nTelefone: %s\nE-mail: %s\nStatus: %s\n", pessoaAtual->nome, pessoaAtual->cpf, pessoaAtual->data_nasc, pessoaAtual->telefone, pessoaAtual->email, pessoaAtual->status ? "Ativo" : "Inativo");
-            printf("------------------------------------------------\n");
-        }
-        pessoaAtual = pessoaAtual->next;
-    }
-
-    limpar_lista_pessoas(head);
     limpa_buffer();
 }
 
@@ -604,9 +581,11 @@ void relatorio_geral_pessoas(void) {
     printf("------------------------------------------------\n");
     printf("|             ORDEM ALFABÉTICA [A-Z]           |\n");
     printf("------------------------------------------------\n");
-    Pessoa *head = get_lista_pessoas(), *pessoaAtual = head;
+    Pessoa *head = get_lista_pessoas();
+    
+    Pessoa *pessoaAtual = head;
     while (pessoaAtual != NULL) {
-        printf("\nNome: %s\nCPF: %s\nData Nascimento: %s\nTelefone: %s\nE-mail: %s\nStatus: %s\n", pessoaAtual->nome, pessoaAtual->cpf, pessoaAtual->data_nasc, pessoaAtual->telefone, pessoaAtual->email, pessoaAtual->status ? "Ativo" : "Inativo");
+        printf("Nome: %s\nCPF: %s\nData Nascimento: %s\nTelefone: %s\nE-mail: %s\nStatus: %s\n", pessoaAtual->nome, pessoaAtual->cpf, pessoaAtual->data_nasc, pessoaAtual->telefone, pessoaAtual->email, pessoaAtual->status ? "Ativo" : "Inativo");
         printf("------------------------------------------------\n");
         pessoaAtual = pessoaAtual->next;
     }
