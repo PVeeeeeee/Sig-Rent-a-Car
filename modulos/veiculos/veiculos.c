@@ -19,7 +19,7 @@ void salvar_veiculos(void *data, size_t size, const char *fileName) {
     fclose(file);
 }
 
-void carregar_veiculos(void *data, size_t size, const char *fileName) {
+void carregar_veiculos(Veiculo *data, size_t size, const char *fileName) {
     char caminho[50] = "modulos/veiculos/";
     strcat(caminho, fileName);
 
@@ -61,6 +61,15 @@ Veiculo* get_lista_veiculos() {
     
     fclose(file);
     return head;
+}
+
+void limpar_lista_veiculos(Veiculo *head) {
+    Veiculo *temp;
+    while (head) {
+        temp = head;
+        head = head->next;
+        free(temp);
+    }
 }
 
 // MENU VEÍCULOS
