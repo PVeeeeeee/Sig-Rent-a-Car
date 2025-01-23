@@ -145,7 +145,7 @@ const char* selecionar_opcao(const char *opcoes[], int tamanho, const char *titu
 
 // MENU CADASTRAR VEÍCULO
 void menu_cadastrar_veiculo(void) {
-    Veiculo v;
+    Veiculo v, *head = get_lista_veiculos();
 
     do {
         cabecalho_cadastrar_veiculo();
@@ -201,6 +201,7 @@ void menu_cadastrar_veiculo(void) {
 
     printf("\nTecle <ENTER> para prosseguir...");
     limpa_buffer();
+    limpar_lista_veiculos(head);
     getchar();
 }
 
