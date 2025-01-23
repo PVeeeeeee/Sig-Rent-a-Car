@@ -156,45 +156,25 @@ int validar_placa(const char *placa) {
     return 1;
 }
 
+int validar_funcao(Pessoa *head, const char *cpf, int funcao) {
+    Pessoa *node = head;
 
-int validar_cliente(const char *cpf) {
-    Pessoa pessoa;
-    char caminho[50] = "modulos/pessoas/pessoas.dat";
-
-    FILE *file = fopen(caminho, "rb");
-    if (file == NULL) {
-        return 0;
-    }
-
-    while (fread(&pessoa, sizeof(Pessoa), 1, file)) {
-        if (strcmp(pessoa.cpf, cpf) == 0 && pessoa.funcao == 0) {
-            fclose(file);
-            return 1;
+    while (node != NULL) {
+        if (strcmp(node->cpf, cpf) == 0 && node->funcao == funcao) {
+            return 0;
         }
+        node = node->next;
     }
-
-    fclose(file);
+    
     return 0;
 }
 
-int validar_funcionario(const char *cpf) {
-    Pessoa pessoa;
-    char caminho[50] = "modulos/pessoas/pessoas.dat";
+int validar_cliente(Pessoa *head, const char *cpf) {
+    validar_funcao(head, cpf, 0);
+}
 
-    FILE *file = fopen(caminho, "rb");
-    if (file == NULL) {
-        return 0;
-    }
-
-    while (fread(&pessoa, sizeof(Pessoa), 1, file)) {
-        if (strcmp(pessoa.cpf, cpf) == 0 && pessoa.funcao == 1) {
-            fclose(file);
-            return 1;
-        }
-    }
-
-    fclose(file);
-    return 0;
+int validar_funcionario(Pessoa *head, const char *cpf) {
+    validar_funcao(head, cpf, 1);
 }
 
 

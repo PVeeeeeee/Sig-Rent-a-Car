@@ -2,7 +2,9 @@
 #define LOCACOES_H
 #include <stdbool.h>
 
-typedef struct {
+typedef struct Locacao Locacao;
+
+struct Locacao {
     char cpf_cliente[12];
     char cpf_funcionario[12];
     char placa_veiculo[8];
@@ -12,12 +14,7 @@ typedef struct {
     bool situacao;
     int status;
     Locacao *next;
-} Locacao;
-
-typedef struct {
-    Locacao node;
-    Locacao next;
-} LocacaoList;
+};
 
 int menu_locacoes(void);
 void menu_cadastrar_locacao(void);

@@ -11,7 +11,8 @@ struct Pessoa {
     char email[26];     
     int funcao; 
     int status;
-} Pessoa;
+    Pessoa *next;
+};
 
 void salvar_pessoa(Pessoa*);
 int excluir_pessoa(Pessoa*);

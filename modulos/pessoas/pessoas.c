@@ -582,6 +582,17 @@ void relatorio_geral_pessoas(void) {
     printf("------------------------------------------------\n");
     printf("|             ORDEM ALFABÉTICA [A-Z]           |\n");
     printf("------------------------------------------------\n");
+    Pessoa *head = get_lista_pessoas();
+    
+    Pessoa *pessoaAtual = head;
+    while (pessoaAtual != NULL) {
+        printf("Nome: %s\nCPF: %s\nData Nascimento: %s\nTelefone: %s\nE-mail: %s\nStatus: %s\n", pessoaAtual->nome, pessoaAtual->cpf, pessoaAtual->data_nasc, pessoaAtual->telefone, pessoaAtual->email, pessoaAtual->status ? "Ativo" : "Inativo");
+        printf("------------------------------------------------\n");
+        pessoaAtual = pessoaAtual->next;
+    }
+
+    limpar_lista_pessoas(head);
+    
     printf("Tecle <ENTER> para prosseguir...    ");
     limpa_buffer();
 }

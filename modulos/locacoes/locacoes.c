@@ -5,6 +5,7 @@
 #include <stdbool.h>
 #include "../../funcoes/funcoes.h"
 #include "locacoes.h"
+#include "../pessoas/pessoas.h"
 
 
 //BANCO DE DADOS
@@ -68,6 +69,7 @@ int menu_locacoes(void) {
 // MENU CADASTRAR LOCAÇÃO
 void menu_cadastrar_locacao(void) {
     Locacao l;
+    Pessoa *head = get_lista_pessoas();
 
     system("clear||cls");
     printf("_____------------------------------------_____\n");
@@ -80,7 +82,7 @@ void menu_cadastrar_locacao(void) {
     printf("|   | Cliente (CPF): ");
     scanf("%11s", l.cpf_cliente);
 
-    if (!validar_cliente(l.cpf_cliente)) {
+    if (!validar_cliente(head, l.cpf_cliente)) {
         printf("|   | Erro: CPF do cliente não encontrado ou inválido!\n");
         return;
     }
@@ -88,7 +90,7 @@ void menu_cadastrar_locacao(void) {
     printf("|   | Funcionário (CPF): ");
     scanf("%11s", l.cpf_funcionario);
 
-    if (!validar_funcionario(l.cpf_funcionario)) {
+    if (!validar_funcionario(head, l.cpf_funcionario)) {
         printf("|   | Erro: CPF do funcionário não encontrado ou inválido!\n");
         return;
     }
@@ -112,6 +114,7 @@ void menu_cadastrar_locacao(void) {
     printf("|   | Locação Cadastrada com Sucesso!\n");
     printf("Tecle <ENTER> para prosseguir...    ");
     limpa_buffer();
+    limpar_lista_pessoas(head);
     getchar();
 }
 
@@ -119,6 +122,7 @@ void menu_cadastrar_locacao(void) {
 void menu_checar_locacao(void) {
     char cpf_cliente[12];
     Locacao l;
+    Pessoa *head = get_lista_pessoas();
 
     system("clear||cls");
     printf("_____------------------------------------_____\n");
@@ -130,7 +134,7 @@ void menu_checar_locacao(void) {
     do {
         printf("|   | Digite o CPF do Cliente: ");
         scanf(" %11s", cpf_cliente);
-    } while (!validar_cliente(cpf_cliente));
+    } while (!validar_cliente(head, cpf_cliente));
 
     if (carregar_locacoes(&l, "modulos/locacoes/locacoes.dat", cpf_cliente)) {
         system("clear||cls");
@@ -183,6 +187,7 @@ void menu_checar_locacao(void) {
 
     printf("\nTecle <ENTER> para prosseguir... ");
     limpa_buffer();
+    limpar_lista_pessoas(head);
     getchar();
 }
 

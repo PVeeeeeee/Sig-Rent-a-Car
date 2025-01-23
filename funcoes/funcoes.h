@@ -1,4 +1,5 @@
 #include <stdbool.h>
+#include "../modulos/pessoas/pessoas.h"
 // ASSINATURAS DAS FUNÇÕES
 
 
@@ -20,7 +21,8 @@ int validar_placa(const char *placa);
 int validar_texto(const char *texto, int max_len);
 bool validar_inteiro(int *valor, int minimo, int maximo);
 bool validar_float(float *valor, float minimo, float maximo);
-int validar_cliente(const char *cpf);
-int validar_funcionario(const char *cpf);
+int validar_funcao(Pessoa*, const char*, int);
+int validar_cliente(Pessoa*, const char*);
+int validar_funcionario(Pessoa*, const char*);
 int verificar_existencia_chassi(const char *chassi);
 int verificar_existencia_placa(const char *placa);
