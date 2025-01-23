@@ -26,3 +26,4 @@ int validar_cliente(Pessoa*, const char*);
 int validar_funcionario(Pessoa*, const char*);
 int verificar_existencia_chassi(const char *chassi);
 int verificar_existencia_placa(const char *placa);
+void salvar_entidade(void*, size_t, const char*);
