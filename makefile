@@ -11,6 +11,8 @@ $(EXEC): $(OBJ)
 	$(CC) $(OBJ) -o $(EXEC)
 
 clean:
+	@echo "Cleaning up..."
+ifeq ($(OS),Windows_NT)
 	@if exist Sig-Rent-a-Car.exe del /q Sig-Rent-a-Car.exe
 	@if exist *.o del /q *.o
 	@if exist modulos\menu\*.o del /q modulos\menu\*.o
