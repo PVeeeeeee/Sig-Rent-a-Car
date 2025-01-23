@@ -504,22 +504,14 @@ void menu_excluir_pessoa(const char *cpf) {
 
 int atualizar_lista_pessoas(Pessoa *head) {
     if (remove("modulos/pessoas/pessoas.dat") != 0) return 0;
-
-int excluir_pessoa(const char *cpf) {
-    Pessoa p;
-    FILE *file = fopen("modulos/pessoas/pessoas.dat", "rb+");
-    if (file == NULL) {
-        printf("Erro ao abrir o arquivo para exclusão.\n");
-        return 0;
+    
+    Pessoa *pessoa = head;
+    while (pessoa != NULL) {
+        salvar_pessoa(pessoa);
+        pessoa = pessoa->next;
     }
 
-    while (fread(&p, sizeof(Pessoa), 1, file)) {
-        if (strcmp(p.cpf, cpf) == 0 && p.status == 1) {
-            p.status = 0;
-            fseek(file, -sizeof(Pessoa), SEEK_CUR);
-            fwrite(&p, sizeof(Pessoa), 1, file);
-            printf("Registro com CPF %s excluído.\n", cpf);
-            return 1;
+    return 1;
 }
 
 // MENU RELATÓRIO PESSOA
