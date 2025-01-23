@@ -185,7 +185,7 @@ void menu_cadastrar_pessoa(void) {
             break;
         }
 
-        if (validar_cliente(p.cpf)) {
+        if (isCliente) {
             printf("|   | O CPF informado já está cadastrado como Cliente.\n");
             printf("|   | Deseja promover esse Cliente a Funcionário?\n");
             printf("|   | 1 - Sim  |  0 - Não\n");
