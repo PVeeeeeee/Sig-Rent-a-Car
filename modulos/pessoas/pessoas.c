@@ -350,7 +350,6 @@ void menu_alterar_pessoa(const char *cpf) {
     while (pessoa != NULL) {
         if (strcmp(pessoa->cpf, cpf) == 0 && pessoa->status == 1) {
             achou = 1;
-            pessoa->status = 0;
             break;
         }
         pessoa = pessoa->next;
