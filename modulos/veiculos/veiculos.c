@@ -174,6 +174,8 @@ void menu_cadastrar_veiculo(void) {
         scanf("%d", &v.lugares);
     } while (!validar_inteiro(&v.lugares, 1, 50));
 
+    limpa_buffer();
+
     do {
         cabecalho_cadastrar_veiculo();
         printf("|   | Valor: \n|   | ");
@@ -540,7 +542,7 @@ void relatorio_geral_veiculos(void) {
 
     Veiculo *veiculoAtual = head;
     while (veiculoAtual != NULL) {
-        printf("\nPlaca: %s\nChassi: %s\nMarca: %s\nModelo: %s\nCor: %s\nTipo: %s\nCombustivel: %s\nAno: %s\nLugares: %s\nValor: %s\nStatus: %s\n", veiculoAtual->placa, veiculoAtual->chassi, veiculoAtual->marca, veiculoAtual->modelo, veiculoAtual->cor, veiculoAtual->tipo, veiculoAtual->combustivel, veiculoAtual->ano, veiculoAtual->lugares, veiculoAtual->valor, veiculoAtual->status ? "Ativo" : "Inativo");
+        printf("\nPlaca: %s\nChassi: %s\nMarca: %s\nModelo: %s\nCor: %s\nTipo: %s\nCombustivel: %s\nAno: %d\nLugares: %d\nValor: %.2f\n", veiculoAtual->placa, veiculoAtual->chassi, veiculoAtual->marca, veiculoAtual->modelo, veiculoAtual->cor, veiculoAtual->tipo, veiculoAtual->combustivel, veiculoAtual->ano, veiculoAtual->lugares, veiculoAtual->valor);
         printf("------------------------------------------------\n");
         veiculoAtual = veiculoAtual->next;
     }
