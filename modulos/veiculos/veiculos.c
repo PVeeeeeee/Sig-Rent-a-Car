@@ -221,7 +221,7 @@ system("clear||cls");
 // MENU CHECAR VEÍCULO
 void menu_checar_veiculo() {
     char placa[8];
-    Veiculo veiculo;
+    Veiculo v, *head = get_lista_veiculos();
     int opc_check_veiculo;
     int veiculo_encontrado = 0;
 
@@ -237,8 +237,8 @@ void menu_checar_veiculo() {
         return;
     }
 
-    while (fread(&veiculo, sizeof(Veiculo), 1, arquivo)) {
-        if (strcmp(veiculo.placa, placa) == 0 && veiculo.status == 1) {
+    while (fread(&v, sizeof(Veiculo), 1, arquivo)) {
+        if (strcmp(v.placa, placa) == 0 && v.status == 1) {
             veiculo_encontrado = 1;
             break;  
         }
@@ -248,21 +248,21 @@ void menu_checar_veiculo() {
 
     if (veiculo_encontrado) {
         cabecalho_checar_veiculo();
-        if (veiculo.disponibilidade == 1) {
+        if (v.disponibilidade == 1) {
         printf("|   | Disponível\n");
         } else {
         printf("|   | Indisponível\n");
         }
-        printf("|   | Placa: %s\n", veiculo.placa);
-        printf("|   | Chassi: %s\n", veiculo.chassi);
-        printf("|   | Marca: %s\n", veiculo.marca);
-        printf("|   | Modelo: %s\n", veiculo.modelo);
-        printf("|   | Cor: %s\n", veiculo.cor);
-        printf("|   | Tipo: %s\n", veiculo.tipo);
-        printf("|   | Combustível: %s\n", veiculo.combustivel);
-        printf("|   | Ano: %d\n", veiculo.ano);
-        printf("|   | Lugares: %d\n", veiculo.lugares);
-        printf("|   | Valor: %.2f\n", veiculo.valor);
+        printf("|   | Placa: %s\n", v.placa);
+        printf("|   | Chassi: %s\n", v.chassi);
+        printf("|   | Marca: %s\n", v.marca);
+        printf("|   | Modelo: %s\n", v.modelo);
+        printf("|   | Cor: %s\n", v.cor);
+        printf("|   | Tipo: %s\n", v.tipo);
+        printf("|   | Combustível: %s\n", v.combustivel);
+        printf("|   | Ano: %d\n", v.ano);
+        printf("|   | Lugares: %d\n", v.lugares);
+        printf("|   | Valor: %.2f\n", v.valor);
         printf("----------------------------------------------\n");
 
         printf("|   | O que você deseja fazer?\n");
@@ -286,6 +286,7 @@ void menu_checar_veiculo() {
 
     printf("\nTecle <ENTER> para prosseguir...");
     limpa_buffer();
+    limpar_lista_veiculos(head);
     getchar(); 
 }
 
