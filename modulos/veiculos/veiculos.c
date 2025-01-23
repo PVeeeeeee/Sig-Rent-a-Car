@@ -31,6 +31,38 @@ void carregar_veiculos(void *data, size_t size, const char *fileName) {
     fclose(file);
 }
 
+Veiculo* get_lista_veiculos() {
+    Veiculo *head = NULL, *current = NULL;
+    Veiculo temp;
+
+    FILE *file = fopen("modulos/veiculos/veiculos.dat", "rb");
+    
+    if (file == NULL) {
+        printf("Erro: O arquivo de veículos não existe.\n");
+        return NULL;
+    }
+
+    while (fread(&temp, sizeof(Veiculo), 1, file) == 1) {
+        if (temp.status == 0) continue; 
+        
+        Veiculo *novo = (Veiculo*) malloc(sizeof(Veiculo));
+        
+        *novo = temp;
+        novo->next = NULL;
+
+        if (head == NULL) {
+            head = novo;
+        } else {
+            current->next = novo;
+        }
+
+        current = novo;
+    }
+    
+    fclose(file);
+    return head;
+}
+
 // MENU VEÍCULOS
 int menu_veiculos(void) {
     int opc_veiculos;
