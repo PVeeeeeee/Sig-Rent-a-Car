@@ -470,6 +470,18 @@ void menu_excluir_veiculo(const char *placa) {
     limpa_buffer();
 }
 
+int atualizar_lista_veiculos(Veiculo *head) {
+    if (remove("modulos/veiculos/veiculos.dat") != 0) return 0;
+    
+    Veiculo *veiculo = head;
+    while (veiculo != NULL) {
+        salvar_veiculo(veiculo);
+        veiculo = veiculo->next;
+    }
+
+    return 1;
+}
+
 
 int excluir_veiculo(const char *placa) {
     Veiculo v;
