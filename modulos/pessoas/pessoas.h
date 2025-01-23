@@ -13,16 +13,16 @@ struct Pessoa {
     int status;
 } Pessoa;
 
-void salvar_pessoa(Pessoa *pessoa);
-int excluir_pessoa(const char *cpf);
-int recuperar_pessoa(const char *cpf);
-int carregar_pessoa(Pessoa *data, const char *fileName, const char *cpf);
+void salvar_pessoa(Pessoa*);
+int excluir_pessoa(Pessoa*);
+int recuperar_pessoa(const char*);
+int carregar_pessoa(Pessoa*, const char*, const char*);
 int menu_pessoas(void);
-int promover_cliente_funcionario(const char *cpf);
+int promover_cliente_funcionario(const char*);
 void menu_cadastrar_pessoa(void);
 void menu_checar_pessoa(void);
-void menu_alterar_pessoa(const char *cpf);
-void menu_excluir_pessoa(const char *cpf);
+void menu_alterar_pessoa(const char*);
+void menu_excluir_pessoa(const char*);
 void relatorio_clientes(void);
 void relatorio_funcionarios(void);
 void relatorio_geral_pessoas(void);
