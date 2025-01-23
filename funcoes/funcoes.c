@@ -215,3 +215,13 @@ int verificar_existencia_placa(const char *placa) {
     fclose(arquivo);
     return 0;
 }
+
+void salvar_entidade(void *data, size_t size, const char *caminho) {
+    FILE *file = fopen(caminho, "ab"); 
+    if (file == NULL) {
+        printf("Erro ao abrir o arquivo!\n");
+        return;
+    }
+    fwrite(data, size, 1, file);
+    fclose(file);
+}
