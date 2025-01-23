@@ -1,7 +1,8 @@
 #ifndef VEICULOS_H
 #define VEICULOS_H
 
-typedef struct {
+typedef struct Veiculo Veiculo;
+struct Veiculo {
     char chassi[18];  
     char placa[8];           
     char marca[15];  
@@ -14,7 +15,8 @@ typedef struct {
     float valor;
     bool disponibilidade;
     int status;
-} Veiculo;
+    Veiculo *next;
+};
 
 static const char *marcas[] = {"Toyota", "Honda", "Ford", "Chevrolet", "BMW"};
 static const char *tipos[] = {"Hatchback", "Sedan", "SUV", "Picape", "Conversível"};
@@ -22,14 +24,14 @@ static const char *cores[] = {"Preto", "Branco", "Prata", "Vermelho", "Azul"};
 static const char *combustiveis[] = {"Gasolina", "Álcool", "Flex", "Diesel", "Elétrico"};
 
 // Declarações das funções do módulo veiculos.c
-void salvar_veiculos(void *data, size_t size, const char *fileName);
-void carregar_veiculos(void *data, size_t size, const char *fileName);
+void salvar_veiculos(Veiculo*, size_t, const char*);
+void carregar_veiculos(Veiculo*, size_t, const char*);
 int menu_veiculos(void);
-void exibir_veiculo(const Veiculo *v);
+void exibir_veiculo(const Veiculo*);
 void menu_cadastrar_veiculo(void);
 void menu_checar_veiculo(void);
-void menu_alterar_veiculo(const char *placa);
-void menu_excluir_veiculo(const char *placa);
+void menu_alterar_veiculo(const char*);
+void menu_excluir_veiculo(const char*);
 
 // Funções de relatório
 int menu_relatorio_veiculo(void);
@@ -66,5 +68,9 @@ void menu_checar_combustivel(void);
 void menu_alterar_combustivel(void);
 void menu_excluir_combustivel(void);
 void menu_relatorio_combustivel(void);
+
+Veiculo* get_lista_veiculos(void);
+void limpar_lista_veiculos(Veiculo*);
+int atualizar_lista_veiculos(Veiculo*);
 
 #endif

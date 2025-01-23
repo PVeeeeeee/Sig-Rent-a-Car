@@ -19,7 +19,7 @@ void salvar_veiculos(void *data, size_t size, const char *fileName) {
     fclose(file);
 }
 
-void carregar_veiculos(void *data, size_t size, const char *fileName) {
+void carregar_veiculos(Veiculo *data, size_t size, const char *fileName) {
     char caminho[50] = "modulos/veiculos/";
     strcat(caminho, fileName);
 
@@ -29,6 +29,47 @@ void carregar_veiculos(void *data, size_t size, const char *fileName) {
         return;
     }
     fclose(file);
+}
+
+Veiculo* get_lista_veiculos() {
+    Veiculo *head = NULL, *current = NULL;
+    Veiculo temp;
+
+    FILE *file = fopen("modulos/veiculos/veiculos.dat", "rb");
+    
+    if (file == NULL) {
+        printf("Erro: O arquivo de veículos não existe.\n");
+        return NULL;
+    }
+
+    while (fread(&temp, sizeof(Veiculo), 1, file) == 1) {
+        if (temp.status == 0) continue; 
+        
+        Veiculo *novo = (Veiculo*) malloc(sizeof(Veiculo));
+        
+        *novo = temp;
+        novo->next = NULL;
+
+        if (head == NULL) {
+            head = novo;
+        } else {
+            current->next = novo;
+        }
+
+        current = novo;
+    }
+    
+    fclose(file);
+    return head;
+}
+
+void limpar_lista_veiculos(Veiculo *head) {
+    Veiculo *temp;
+    while (head) {
+        temp = head;
+        head = head->next;
+        free(temp);
+    }
 }
 
 // MENU VEÍCULOS
