@@ -246,9 +246,10 @@ void menu_cadastrar_pessoa(void) {
             salvar_pessoa(&p);
             printf("|   | Cliente cadastrado com sucesso!\n");
         } else if (opcao == 2) {
-            p.funcao = 0;
+            p.funcao = 1;
             p.status = 1;
             salvar_pessoa(&p);
+            printf("|   | Funcionário cadastrados com sucesso!\n");
         } else {
             p.funcao = 0;
             p.status = 1;
