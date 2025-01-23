@@ -6,7 +6,7 @@
 #include "veiculos.h"
 
 // BANCO DE DADOS
-void salvar_veiculos(void *data, size_t size, const char *fileName) {
+void salvar_veiculos(Veiculo *data, size_t size, const char *fileName) {
     char caminho[50] = "modulos/veiculos/";
     strcat(caminho, fileName);
 
