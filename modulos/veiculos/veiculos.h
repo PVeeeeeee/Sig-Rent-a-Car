@@ -69,4 +69,8 @@ void menu_alterar_combustivel(void);
 void menu_excluir_combustivel(void);
 void menu_relatorio_combustivel(void);
 
+Veiculo* get_lista_veiculos(void);
+void limpar_lista_veiculos(Veiculo*);
+int atualizar_lista_veiculos(Veiculo*);
+
 #endif
