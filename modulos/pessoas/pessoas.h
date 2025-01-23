@@ -31,5 +31,6 @@ Pessoa* get_lista_pessoas(void);
 void limpar_lista_pessoas(Pessoa*);
 int atualizar_lista_pessoas(Pessoa*);
 void ordenar_lista_por_nome(Pessoa*);
+void swap(Pessoa*, Pessoa*);
 
 #endif
