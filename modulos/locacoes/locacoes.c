@@ -485,10 +485,24 @@ void relatorio_veiculo_locacoes(void) {
     Locacao l, *head = get_lista_locacoes_por_veiculos(placa), *locacao = head;
 
     while (locacao != NULL) {
-        printf("\nCPF Cliente: %s\nCPF Funcionário: %s\nPlaca do veículo: %s\nData início: %s\nData final: %s\nValor Final: %.2f\nSituação: %d\n", locacao->cpf_cliente, locacao->cpf_funcionario, locacao->placa_veiculo, locacao->data_inic, locacao->data_final, locacao->valor_final, locacao->situacao);
+        char nome_cliente[40];
+        char nome_funcionario[40];
+
+        Pessoa cliente;
+        if (carregar_pessoa(&cliente, "pessoas.dat", locacao->cpf_cliente)) {
+            strcpy(nome_cliente, cliente.nome);
+        }
+
+        Pessoa funcionario;
+        if (carregar_pessoa(&funcionario, "pessoas.dat", locacao->cpf_funcionario)) {
+            strcpy(nome_funcionario, funcionario.nome);
+        }
+
+        printf("\nNome do Cliente: %s\nNome do Funcionário: %s\nPlaca do veículo: %s\nData início: %s\nData final: %s\nValor Final: %.2f\nSituação: %d\n", nome_cliente, nome_funcionario, locacao->placa_veiculo, locacao->data_inic, locacao->data_final, locacao->valor_final, locacao->situacao);
         printf("------------------------------------------------\n");
         locacao = locacao->next;
     }
+
     limpar_lista_locacoes(head);
     printf("Tecle <ENTER> para prosseguir...    ");
     limpa_buffer();
